@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shop_id: 1
+  country_id: 1
+  prefecture_id: 1
+  city_id: 1
+  name: MyString
+  short_desc: MyString
+  long_desc: MyText
+  longitude: 9.99
+  latitude: 9.99
+  image_path: MyString
+
+two:
+  shop_id: 1
+  country_id: 1
+  prefecture_id: 1
+  city_id: 1
+  name: MyString
+  short_desc: MyString
+  long_desc: MyText
+  longitude: 9.99
+  latitude: 9.99
+  image_path: MyString

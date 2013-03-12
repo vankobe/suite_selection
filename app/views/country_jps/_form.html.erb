@@ -1,0 +1,21 @@
+<%= form_for(@country_jp) do |f| %>
+  <% if @country_jp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@country_jp.errors.count, "error") %> prohibited this country_jp from being saved:</h2>
+
+      <ul>
+      <% @country_jp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

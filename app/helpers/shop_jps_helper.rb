@@ -1,0 +1,2 @@
+module ShopJpsHelper
+end

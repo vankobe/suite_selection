@@ -1,0 +1,61 @@
+<%= form_tag({:controller => "shops", :action => "create"},{:multipart => true}) do  %>
+  <% if @shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+      <ul>
+      <% @shop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+     <label>本国名</label>
+     <input id="shop_original_country_id" name="shop[original_country_id]" type="text" value="本国" />
+  </div>
+
+  <div class="field">
+     <p>所在地</p>
+     <label>国名</label>
+     <select id="shop_country_id" name="shop_jp[country_id]">
+       <%= options_for_select [["日本", 1]]%>
+     </select>
+     <label>県名</label>
+     <select id="shop_prefecture_id" name="shop_jp[prefecture_id]">
+       <%= options_for_select [["北海道", 1]]%>
+     </select>
+     <label>地域名</label>
+     <select id="shop_city_id" name="shop_jp[city_id]">
+       <%= options_for_select [["札幌", 1]]%>
+     </select>
+  </div>
+  <div class="field">
+     <label>ショップ名</label>
+     <input id="shop_name" name="shop_jp[name]" type="text" value="名前" />
+  </div>
+  <div class="field">
+     <label>概要</label>
+     <input id="shop_short_desc" name="shop_jp[short_desc]" type="text" value="概要" />
+  </div>
+  <div class="field">
+     <label>説明</label>
+     <input id="shop_long_desc" name="shop_jp[long_desc]" type="textarea" value="説明" />
+  </div>
+  <div class="field">
+     <label>緯度</label>
+     <input id="shop_latitude" name="shop_jp[latutyde]" type="text" value="緯度" />
+  </div>
+  <div class="field">
+     <label>経度</label>
+     <input id="shop_longitude" name="shop_jp[longitude]" type="text" value="経度" />
+  </div>
+  <div class="field">
+     <label>画像</label>
+     <input id="shop_image" name="shop_image" type="file" value="参照" />
+  </div>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>
+

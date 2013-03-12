@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Country:</b>
+  <%= @shop_link.country_id %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @shop_link.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_shop_link_path(@shop_link) %> |
+<%= link_to 'Back', shop_links_path %>

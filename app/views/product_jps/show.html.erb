@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Product:</b>
+  <%= @product_jp.product_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @product_jp.name %>
+</p>
+
+<p>
+  <b>Short desc:</b>
+  <%= @product_jp.short_desc %>
+</p>
+
+<p>
+  <b>Long desc:</b>
+  <%= @product_jp.long_desc %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_jp_path(@product_jp) %> |
+<%= link_to 'Back', product_jps_path %>

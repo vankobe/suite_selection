@@ -1,0 +1,2 @@
+module CountryJpsHelper
+end
