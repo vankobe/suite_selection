@@ -25,7 +25,6 @@ class ShopsController < ApplicationController
   # GET /shops/new.json
   def new
     @shop = Shop.new
-    @shop_jp = ShopJp.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,21 +40,10 @@ class ShopsController < ApplicationController
   # POST /shops
   # POST /shops.json
   def create
-raise params.inspect
     @shop = Shop.new(params[:shop])
-    @shop_jq = Shop.new(params[:shop_jq])
-    
-    Shop.transaction do
-      if @shop.save! && @shop_jq.save!
-        File.open(File.join(Rails.root, "public", "images", sprintf("%08d",@shop.id)), "w") do |f|
-          f.write(params[:image])
-        end
-        saved_flg = true
-      end
-    end
 
     respond_to do |format|
-      if saved_flg
+      if @shop.save
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else

@@ -3,7 +3,14 @@
 <table>
   <tr>
     <th>Score</th>
-    <th>Original country</th>
+    <th>Country</th>
+    <th>State</th>
+    <th>Address</th>
+    <th>Name</th>
+    <th>Home url</th>
+    <th>Online url</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +19,14 @@
 <% @shops.each do |shop| %>
   <tr>
     <td><%= shop.score %></td>
-    <td><%= shop.original_country_id %></td>
+    <td><%= shop.country_id %></td>
+    <td><%= shop.state_id %></td>
+    <td><%= shop.address %></td>
+    <td><%= shop.name %></td>
+    <td><%= shop.home_url %></td>
+    <td><%= shop.online_url %></td>
+    <td><%= shop.longitude %></td>
+    <td><%= shop.latitude %></td>
     <td><%= link_to 'Show', shop %></td>
     <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
     <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
