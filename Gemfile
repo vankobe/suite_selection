@@ -41,4 +41,5 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-gem 'rmagick'
+gem 'rack-cache'
+gem 'dragonfly'

@@ -38,6 +38,9 @@ GEM
       execjs
     coffee-script-source (1.6.1)
     commonjs (0.2.6)
+    dragonfly (0.9.14)
+      multi_json (~> 1.0)
+      rack
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -109,7 +112,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.2)
-    rmagick (2.13.2)
     sass (3.2.7)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -142,13 +144,14 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  dragonfly
   jquery-rails
   less-rails
   mysql2
   omniauth
   omniauth-facebook
+  rack-cache
   rails (= 3.2.12)
-  rmagick
   sass-rails (~> 3.2.3)
   therubyracer
   twitter-bootstrap-rails
