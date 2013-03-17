@@ -2,6 +2,10 @@
 
 one:
   nickname: MyString
+  email: MyString
+  image_url: MyString
 
 two:
   nickname: MyString
+  email: MyString
+  image_url: MyString

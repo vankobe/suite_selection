@@ -18,7 +18,7 @@ class ReviewsControllerTest < ActionController::TestCase
 
   test "should create review" do
     assert_difference('Review.count') do
-      post :create, review: { country_id: @review.country_id, product_id: @review.product_id, score: @review.score, user_id: @review.user_id }
+      post :create, review: { country_id: @review.country_id, language_id: @review.language_id, product_id: @review.product_id, score: @review.score, subject: @review.subject, user_id: @review.user_id }
     end
 
     assert_redirected_to review_path(assigns(:review))
@@ -35,7 +35,7 @@ class ReviewsControllerTest < ActionController::TestCase
   end
 
   test "should update review" do
-    put :update, id: @review, review: { country_id: @review.country_id, product_id: @review.product_id, score: @review.score, user_id: @review.user_id }
+    put :update, id: @review, review: { country_id: @review.country_id, language_id: @review.language_id, product_id: @review.product_id, score: @review.score, subject: @review.subject, user_id: @review.user_id }
     assert_redirected_to review_path(assigns(:review))
   end
 

@@ -3,13 +3,15 @@
 one:
   shop_id: 1
   country_id: 1
+  name: MyString
+  url: MyString
   currency_id: 1
   price: 1
-  image_path: MyString
 
 two:
   shop_id: 1
   country_id: 1
+  name: MyString
+  url: MyString
   currency_id: 1
   price: 1
-  image_path: MyString

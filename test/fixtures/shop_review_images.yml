@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shop_id: 1
+  review_id: 1
+  image_path: MyString
+  comment: MyText
+
+two:
+  shop_id: 1
+  review_id: 1
+  image_path: MyString
+  comment: MyText

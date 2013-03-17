@@ -2,8 +2,22 @@
 
 one:
   score: 1.5
-  original_country_id: 1
+  country_id: 1
+  state_id: 1
+  address: MyString
+  name: MyString
+  home_url: MyString
+  online_url: MyString
+  longitude: 9.99
+  latitude: 9.99
 
 two:
   score: 1.5
-  original_country_id: 1
+  country_id: 1
+  state_id: 1
+  address: MyString
+  name: MyString
+  home_url: MyString
+  online_url: MyString
+  longitude: 9.99
+  latitude: 9.99
