@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @review_image.id %>
+</p>
+
+<p>
+  <b>Shop:</b>
+  <%= @review_image.shop_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @review_image.user_id %>
+</p>
+
+<p>
+  <b>Review:</b>
+  <%= @review_image.review_id %>
+</p>
+
+<p>
+  <b>Image path:</b>
+  <%= @review_image.image_path %>
+</p>
+
+<p>
+  <b>Commment:</b>
+  <%= @review_image.commment %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_image_path(@review_image) %> |
+<%= link_to 'Back', review_images_path %>

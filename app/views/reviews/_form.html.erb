@@ -1,4 +1,4 @@
-<%= form_for(@review) do |f| %>
+<%= form_tag({:controller => "reviews", :action => "create"},{:multipart => true}) do  %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -11,23 +11,24 @@
     </div>
   <% end %>
 
+  <label>評価</label>
+  <select id="review_score" name="review[score]">
+    <%= options_for_select Review::SCORES%>
+  </select>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <label>概要</label>
+    <input id="review_subject" name="review[subject]"type="text" value="タイトル">
   </div>
   <div class="field">
-    <%= f.label :product_id %><br />
-    <%= f.number_field :product_id %>
+    <label>本文</label>
+    <input id="comment" name="comment"type="textarea" value="本文">
   </div>
   <div class="field">
-    <%= f.label :score %><br />
-    <%= f.text_field :score %>
+     <label>画像</label>
+     <input id="review_image" name="review_image" type="file" value="参照" />
   </div>
-  <div class="field">
-    <%= f.label :country_id %><br />
-    <%= f.number_field :country_id %>
-  </div>
+  <input id="review_product_id" name="review[product_id]"type="hidden" value=<%=@product_id %>>
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_tag %>
   </div>
 <% end %>

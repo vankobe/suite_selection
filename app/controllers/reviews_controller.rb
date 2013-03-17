@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
@@ -24,6 +25,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.json
   def new
+    @product_id = params[:product_id]
     @review = Review.new
 
     respond_to do |format|
@@ -40,16 +42,21 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(params[:review])
+    raise '画像を選択してください' if params[:review_image].blank?
+    review = Review.new(params[:review])
+    review_content = review.build_review_content({:comment => params[:comment]})
+
+    Shop.transaction do
+      review.save!
+      review_content.save!
+
+      # 画像を保存
+      ReviewImage.save_from_image_file(params[:review_image], review)
+    end
 
     respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render json: @review, status: :created, location: @review }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to :controller => 'products', :action => "show"}
+      format.json { render json: review, status: :created, location: review }
     end
   end
 

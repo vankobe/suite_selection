@@ -1,0 +1,2 @@
+module ReviewImagesHelper
+end

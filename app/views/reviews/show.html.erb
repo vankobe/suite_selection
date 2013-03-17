@@ -20,6 +20,16 @@
   <%= @review.country_id %>
 </p>
 
+<p>
+  <b>Language:</b>
+  <%= @review.language_id %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @review.subject %>
+</p>
+
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>

@@ -6,6 +6,8 @@
     <th>Product</th>
     <th>Score</th>
     <th>Country</th>
+    <th>Language</th>
+    <th>Subject</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +19,8 @@
     <td><%= review.product_id %></td>
     <td><%= review.score %></td>
     <td><%= review.country_id %></td>
+    <td><%= review.language_id %></td>
+    <td><%= review.subject %></td>
     <td><%= link_to 'Show', review %></td>
     <td><%= link_to 'Edit', edit_review_path(review) %></td>
     <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>

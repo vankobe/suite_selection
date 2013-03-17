@@ -1,35 +1,27 @@
 SuiteSelection::Application.routes.draw do
-  resources :country_jps
 
+  get "welcome/index"
 
-  resources :users
-
-
-  resources :shop_home_links
-
-
-  resources :shop_links
-
-
-  resources :shop_jps
-
-
-  resources :shops
-
-
-  resources :review_contents
-
-
-  resources :reviews
-
-
-  resources :product_links
-
-
-  resources :product_jps
-
-
-  resources :products
+#  resources :review_images
+#
+#
+#  resources :review_contents
+#
+#
+#  resources :reviews
+#
+#
+#  resources :products
+#
+#
+#  resources :shop_review_images
+#
+#
+#  resources :shop_reviews
+#
+#
+#  resources :shops
+#
 
 
   # The priority is based upon order of creation:
@@ -81,11 +73,16 @@ SuiteSelection::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # ro t :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match ':controller/:action/(.:format)'
+
+  root :to => 'welcome#index'
+# for omniauth settings
+match 'auth/:provider/callback' => 'sessions#login'
+match '/logout' => 'sessions#logout', :as => :logout
 end

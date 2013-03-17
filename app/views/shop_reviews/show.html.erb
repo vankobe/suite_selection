@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shop:</b>
+  <%= @shop_review.shop_id %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%= @shop_review.language_id %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @shop_review.subject %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @shop_review.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_shop_review_path(@shop_review) %> |
+<%= link_to 'Back', shop_reviews_path %>

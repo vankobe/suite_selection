@@ -1,0 +1,29 @@
+<%= form_tag({:controller => "shop_reviews", :action => "create"},{:multipart => true}) do  %>
+  <% if @shop_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shop_review.errors.count, "error") %> prohibited this shop_review from being saved:</h2>
+
+      <ul>
+      <% @shop_review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+     <label>概要</label>
+     <input id="shop_review_subject" name="shop_review[subject]" type="text" value="" />
+  </div>
+  <div class="field">
+     <label>説明</label>
+     <input id="shop_review_comment" name="shop_review[comment]" type="textarea" value="" />
+  </div>
+  <div class="field">
+     <label>画像</label>
+     <input id="shop_review_image" name="shop_review_image" type="file" value="参照" />
+  </div>
+  <input id="shop_review_shop_id" name="shop_review[shop_id]"type="hidden" value=<%=@shop_id%>>
+  <div class="actions">
+    <%= submit_tag "確認" %>
+  </div>
+<% end %>

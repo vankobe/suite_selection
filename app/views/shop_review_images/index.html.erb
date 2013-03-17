@@ -1,0 +1,29 @@
+<h1>Listing shop_review_images</h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Review</th>
+    <th>Image path</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shop_review_images.each do |shop_review_image| %>
+  <tr>
+    <td><%= shop_review_image.shop_id %></td>
+    <td><%= shop_review_image.review_id %></td>
+    <td><%= shop_review_image.image_path %></td>
+    <td><%= shop_review_image.comment %></td>
+    <td><%= link_to 'Show', shop_review_image %></td>
+    <td><%= link_to 'Edit', edit_shop_review_image_path(shop_review_image) %></td>
+    <td><%= link_to 'Destroy', shop_review_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop review image', new_shop_review_image_path %>

@@ -1,0 +1,29 @@
+<h1>Listing shop_reviews</h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Language</th>
+    <th>Subject</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shop_reviews.each do |shop_review| %>
+  <tr>
+    <td><%= shop_review.shop_id %></td>
+    <td><%= shop_review.language_id %></td>
+    <td><%= shop_review.subject %></td>
+    <td><%= shop_review.comment %></td>
+    <td><%= link_to 'Show', shop_review %></td>
+    <td><%= link_to 'Edit', edit_shop_review_path(shop_review) %></td>
+    <td><%= link_to 'Destroy', shop_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop review', new_shop_review_path %>
