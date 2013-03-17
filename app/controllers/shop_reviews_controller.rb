@@ -1,5 +1,7 @@
 #encoding: utf-8
 class ShopReviewsController < ApplicationController
+  before_filter :get_user, :only => [:new, :edit, :create]
+  
   # GET /shop_reviews
   # GET /shop_reviews.json
   def index
@@ -25,10 +27,9 @@ class ShopReviewsController < ApplicationController
   # GET /shop_reviews/new
   # GET /shop_reviews/new.json
   def new
+    raise 'shop_idがありません'  if params[:shop_id].blank?
+
     @shop_review = ShopReview.new
-    if params[:shop_id].blank?
-      raise 'shop_idがありません'
-    end
     @shop_id = params[:shop_id]
 
     respond_to do |format|
@@ -39,21 +40,23 @@ class ShopReviewsController < ApplicationController
 
   # GET /shop_reviews/1/edit
   def edit
-    @shop_review = ShopReview.find(params[:id])
+    @shop_review = ShopReview.where(["id = ?", params[:id]])
   end
 
   # POST /shop_reviews
   # POST /shop_reviews.json
   def create
     raise '画像を選択してください' if params[:shop_review_image].blank?
-    shop_review = ShopReview.new(params[:shop_review])
+    shop_review_params = params[:shop_review].merge(:user_id => @user.id)
+
+    shop_review = ShopReview.new(shop_review_params)
     Shop.transaction do
       shop_review.save!
       ShopReviewImage.save_from_image_file(params[:shop_review_image], shop_review)
     end
 
     respond_to do |format|
-      format.html { redirect_to :controller => "shops", :action => "preview", :shop_review_id => shop_review.id }
+      format.html { redirect_to :controller => "shops", :action => "show", :id => shop_review.shop_id }
 #      format.json { render json: shop_review, status: :created, location: shop_review }
     end
   end

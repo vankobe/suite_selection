@@ -1,4 +1,6 @@
 class ShopsController < ApplicationController
+  before_filter :get_user, :only => [:new, :edit, :create]
+
   # GET /shops
   # GET /shops.json
   def index
@@ -14,9 +16,11 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     @shop = Shop.find(params[:id])
+    @shop_review = ShopReview.where(["shop_id=?", @shop.id]).first
+    @shop_review_image = @shop_review.images.first
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html  #show.html.erb
       format.json { render json: @shop }
     end
   end
@@ -52,13 +56,6 @@ class ShopsController < ApplicationController
       end
     end
   end
-
-  def preview
-    shop_review_id = params[:shop_review_id]
-    @shop_review = ShopReview.find(shop_review_id)
-    @shop =Shop.find(@shop_review.shop_id)
-    @shop_review_image = @shop_review.images.first
-  end 
 
   # PUT /shops/1
   # PUT /shops/1.json
