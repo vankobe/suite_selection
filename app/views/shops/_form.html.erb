@@ -20,18 +20,18 @@
     <%= options_for_select [["北海道", 1]]%>
   </select>
   <label>住所</label>
-  <input id="shop_address" name="shop[address]" type="text" value="住所">
+  <input id="shop_address" name="shop[address]" type="text" value=<%= @shop.address%>>
   <div class="field">
      <label>ブランド名</label>
-     <input id="shop_name" name="shop[name]" type="text" value="名前" />
+     <input id="shop_name" name="shop[name]" type="text" value=<%= @shop.name%> />
   </div>
   <div class="field">
      <label>ホームページ</label>
-     <input id="shop_name" name="shop[home_url]" type="text" value="http://" />
+     <input id="shop_name" name="shop[home_url]" type="text" value=<%= @shop.home_url%> />
   </div>
   <div class="field">
      <label>オンラインショップページ</label>
-     <input id="shop_name" name="shop[online_url]" type="text" value="http://" />
+     <input id="shop_name" name="shop[online_url]" type="text" value=<%= @shop.online_url%> />
   </div>
   <div class="actions">
     <%= submit_tag "保存"%>

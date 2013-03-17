@@ -27,9 +27,9 @@
     <td><%= shop.online_url %></td>
     <td><%= shop.longitude %></td>
     <td><%= shop.latitude %></td>
-    <td><%= link_to 'Show', shop %></td>
-    <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-    <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', shop_path(shop.id) %></td>
+    <td><%= link_to 'Edit', edit_shop_path(shop.id) %></td>
+    <td><%= link_to 'Destroy', delete_shop_path(shop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

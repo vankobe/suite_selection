@@ -1,50 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Score:</b>
-  <%= @shop.score %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%= @shop.country_id %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @shop.state_id %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @shop.address %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @shop.name %>
-</p>
-
-<p>
-  <b>Home url:</b>
-  <%= @shop.home_url %>
-</p>
-
-<p>
-  <b>Online url:</b>
-  <%= @shop.online_url %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @shop.longitude %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @shop.latitude %>
-</p>
-
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<div id="shop_image">
+  <%= image_tag @shop_review_image.image_path%>
+</div>
+<div id="shop_info">
+  <p>所在地</p>
+  <label>国名</label>
+    <p><%= MasterTable::CountryJp::Name[@shop.country_id] %></p>
+  <label>県名</label>
+    <p><%= @shop.state_id %></p>
+  <label>住所</label>
+    <p><%= @shop.address %></p>
+  <label>ブランド名</label>
+    <p><%= @shop.name %></p>
+  <label>ホームページ</label>
+    <p><%= @shop.home_url %></p>
+  <label>オンラインショップページ</label>
+    <p><%= @shop.online_url %></p>
+</div>
+<div id="shop_review">
+  <label>概要</label>
+    <p><%= @shop_review.subject %></p>
+  <label>説明</label>
+    <p><%= @shop_review.comment %></p>
+</div>
+~
+<%= link_to 'Edit', edit_shop_path(@shop.id) %> |
 <%= link_to 'Back', shops_path %>

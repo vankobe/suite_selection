@@ -23,6 +23,7 @@
      <input id="shop_review_image" name="shop_review_image" type="file" value="参照" />
   </div>
   <input id="shop_review_shop_id" name="shop_review[shop_id]"type="hidden" value=<%=@shop_id%>>
+  <input id="shop_review_language_id" name="shop_review[language_id]"type="hidden" value=<%=MasterTable::Language::JAPANESE%>
   <div class="actions">
     <%= submit_tag "確認" %>
   </div>
