@@ -1,22 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @shop.name %></h1>
 <div id="shop_image">
-  <%= image_tag @shop_review_image.image_path%>
+  <%= image_tag @shop_review_image.shop_review_image.thumb("200x200#").url%>
 </div>
 <div id="shop_info">
   <p>所在地</p>
-  <label>国名</label>
-    <p><%= MasterTable::CountryJp::Name[@shop.country_id] %></p>
-  <label>県名</label>
-    <p><%= @shop.state_id %></p>
-  <label>住所</label>
-    <p><%= @shop.address %></p>
-  <label>ブランド名</label>
-    <p><%= @shop.name %></p>
-  <label>ホームページ</label>
-    <p><%= @shop.home_url %></p>
-  <label>オンラインショップページ</label>
-    <p><%= @shop.online_url %></p>
+    <p><%= MasterTable::CountryJp::Name[@shop.country_id] %> <%= @shop.state_id %><%= @shop.address %></p>
+  <a href="<%= @shop.home_url %>">ホームページ</a>
+  <a href="<%= @shop.online_url %>">オンラインショップページ</a>
 </div>
 <div id="shop_review">
   <label>概要</label>

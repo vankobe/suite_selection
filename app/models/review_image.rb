@@ -10,7 +10,6 @@ class ReviewImage < ActiveRecord::Base
     def save_from_image_file(image, review)
       image = Magick::ImageList.new(image)
       raise "フォーマットはjpgにしてください" unless image.format !~ /jpe*g/i
-raise "aaa"
       
       IMAGE_SIZES.each do |image_size|
         image.resize(image_size, image_size).write(file_path(image_size))
