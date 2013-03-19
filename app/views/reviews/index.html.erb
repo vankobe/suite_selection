@@ -21,9 +21,9 @@
     <td><%= review.country_id %></td>
     <td><%= review.language_id %></td>
     <td><%= review.subject %></td>
-    <td><%= link_to 'Show', review %></td>
-    <td><%= link_to 'Edit', edit_review_path(review) %></td>
-    <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', review_path(review.id) %></td>
+    <td><%= link_to 'Edit', edit_review_path(review.id) %></td>
+    <td><%= link_to 'Destroy', delete_review_path(review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

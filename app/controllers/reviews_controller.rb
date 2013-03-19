@@ -51,11 +51,13 @@ class ReviewsController < ApplicationController
       review_content.save!
 
       # 画像を保存
-      ReviewImage.save_from_image_file(params[:review_image], review)
+      unless params[:review_image].nil?
+        review_image = ReviewImage.create(:review_image => params[:review_image])
+      end
     end
 
     respond_to do |format|
-      format.html { redirect_to :controller => 'products', :action => "show"}
+      format.html { redirect_to :controller => 'products', :action => "show", :id => review.product_id }
       format.json { render json: review, status: :created, location: review }
     end
   end

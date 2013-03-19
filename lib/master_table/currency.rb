@@ -5,5 +5,9 @@ module MasterTable
       "￥" => 1,
       "$"  => 2
     }
+    View = {
+      1 => "￥",
+      2 => "$"
+    }
   end
 end

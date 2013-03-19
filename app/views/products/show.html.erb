@@ -1,35 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Shop:</b>
-  <%= @product.shop_id %>
-</p>
+<h1><%= @product.name %></h1>
+<div id="product_image">
+  <%- if @review_images.present? -%>
+    <% @review_images.each do |review_image| %>
+      <%= image_tag review_image.review_image.thumb("200x200#").url%>
+    <%- end -%>
+  <%- end -%>
+</div>
+<div id="product_info">
+  <table id="product_info_table">
+    <tr>
+      <th>購入国</th>
+      <td><%= MasterTable::CountryJp::Name[@product.country_id] %></td>
+    </tr>
+    <tr>
+      <th>値段</th>
+      <td><%= MasterTable::Currency::View[@product.currency_id]%> <%= @product.price%></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="<%= @product.url %>">オンラインショップページ</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="product_review">
+  <%- if @review.present? -%>
+    <% @review.each do |review| %>
+    <label>タイトル</label>
+      <p><%= review.subject %></p>
+    <label>本文</label>
+      <p><%= review.content ? review.content.comment : ""%></p>
+    <%- end -%>
+  <%- end -%>
+</div>
 
-<p>
-  <b>Country:</b>
-  <%= @product.country_id %>
-</p>
 
-<p>
-  <b>Name:</b>
-  <%= @product.name %>
-</p>
+<%= @shop.name %></h1>
 
-<p>
-  <b>Url:</b>
-  <%= @product.url %>
-</p>
-
-<p>
-  <b>Currency:</b>
-  <%= @product.currency_id %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
-
-
+<div id="shop_info">
+  <p>所在地</p>
+    <p><%= MasterTable::CountryJp::Name[@shop.country_id] %> <%= @shop.state_id %><%= @shop.address %></p>
+  <a href="<%= @shop.home_url %>">ホームページ</a>
+  <a href="<%= @shop.online_url %>">オンラインショップページ</a>
+</div>
+~<p id="notice"><%= notice %></p>
 <%= link_to 'Edit', edit_product_path(@product.id) %> |
 <%= link_to 'Back', products_path %>

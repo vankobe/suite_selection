@@ -1,4 +1,6 @@
+# encoding: utf-8
 class ProductsController < ApplicationController
+  include SweetaErrors
   # GET /products
   # GET /products.json
   def index
@@ -13,7 +15,14 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @product = Product.where(["id = ?", params[:id].to_i]).first
+    raise NoProductError if @product.blank?
+
+    @shop = Shop.where(["id = ?", @product.shop_id]).first
+    raise NoShopError if @shop.blank?
+    
+    @reviews = Review.where(["product_id = ?", @product.id])
+    @review_images = ReviewImage.where(["product_id = ?", @product.id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,6 +33,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
+    @shop_id = params[:shop_id]
+    raise "お探しのお店が見つかりません" unless @shop_id.present?
     @product = Product.new
 
     respond_to do |format|
