@@ -42,4 +42,24 @@ module ApplicationHelper
   def delete_shop_review_path(shop_review_id)
     {:controller => "shop_reviews", :action => "destroy", :id => shop_review_id}
   end
+
+  def products_path
+    {:controller => "products", :action => "index"}
+  end
+
+  def edit_product_path(product_id)
+    {:controller => "products", :action => "edit", :id => product_id}
+  end
+
+  def new_product_path
+    {:controller => "products", :action => "new"}
+  end
+
+  def product_path(product_id)
+    {:controller => "products", :action => "show", :id => product_id}
+  end
+
+  def delete_product_path(product_id)
+    {:controller => "products", :action => "destroy", :id => product_id}
+  end
 end
