@@ -50,9 +50,15 @@ class ShopReviewsController < ApplicationController
     shop_review_params = params[:shop_review].merge(:user_id => @user.id)
 
     shop_review = ShopReview.new(shop_review_params)
+    unless params[:shop_review_image].nil?
+      shop_review_image = ShopReviewImage.create(:shop_review_image => params[:shop_review_image])
+    end
     Shop.transaction do
       shop_review.save!
-      ShopReviewImage.save_from_image_file(params[:shop_review_image], shop_review)
+      shop_review_image.shop_id = params[:shop_review][:shop_id]
+      shop_review_image.user_id = @user.id
+      shop_review_image.review_id = shop_review.id
+      shop_review_image.save!
     end
 
     respond_to do |format|

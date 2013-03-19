@@ -16,7 +16,7 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     @shop = Shop.find(params[:id])
-    @shop_review = ShopReview.where(["shop_id=?", @shop.id]).first
+    @shop_review = ShopReview.where(["shop_id=?", @shop.id]).last
     @shop_review_image = @shop_review.images.first
 
     respond_to do |format|
