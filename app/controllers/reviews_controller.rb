@@ -1,5 +1,7 @@
 # encoding: utf-8
 class ReviewsController < ApplicationController
+  before_filter :get_user, :only => [:new, :edit, :create]
+
   # GET /reviews
   # GET /reviews.json
   def index
@@ -46,14 +48,17 @@ class ReviewsController < ApplicationController
     review = Review.new(params[:review])
     review_content = review.build_review_content({:comment => params[:comment]})
 
+    unless params[:review_image].nil?
+      review_image = ReviewImage.create(:review_image => params[:review_image])
+    end
+
     Shop.transaction do
       review.save!
       review_content.save!
-
-      # 画像を保存
-      unless params[:review_image].nil?
-        review_image = ReviewImage.create(:review_image => params[:review_image])
-      end
+      review_image.user_id = @user.id
+      review_image.product_id = review.product_id
+      review_image.review_id = review.id
+      review_image.save!
     end
 
     respond_to do |format|
