@@ -39942,3 +39942,1471 @@ ActionController::RoutingError (No route matches [GET] "/assets/favicon.ico"):
 
 
   Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/products/show?id=4" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProduct Load (0.8ms)[0m  [1mSELECT `products`.* FROM `products` WHERE (id = 4) LIMIT 1[0m
+  [1m[35mShop Load (0.5ms)[0m  SELECT `shops`.* FROM `shops` WHERE (id = 3) LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `review_images` WHERE (product_id = 4)[0m
+  Rendered products/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 41ms (Views: 36.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/product_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/products.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/country_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/product_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/review_contents.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /country_jps.css - 304 Not Modified (1ms)
+Served asset /product_links.css - 304 Not Modified (1ms)
+Served asset /products.css - 304 Not Modified (0ms)
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+Served asset /product_jps.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /review_contents.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/shop_home_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/shop_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+Served asset /review_images.css - 304 Not Modified (0ms)
+Served asset /reviews.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/shop_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/shop_review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /shop_jps.css - 304 Not Modified (1ms)
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /shop_home_links.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shops.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/users.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/welcome.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /shop_review_images.css - 304 Not Modified (14ms)
+Served asset /shop_links.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /shops.css - 304 Not Modified (2ms)
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /users.css - 304 Not Modified (0ms)
+Served asset /shop_reviews.css - 304 Not Modified (28ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (26ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (12ms)
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (19ms)
+Served asset /twitter/bootstrap/bootstrap-affix.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/country_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/product_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/product_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/products.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /country_jps.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (164ms)
+Served asset /product_jps.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+
+
+Started GET "/assets/review_contents.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /jquery.js - 304 Not Modified (260ms)
+
+
+Started GET "/assets/reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:33 +0900
+Served asset /product_links.js - 304 Not Modified (5ms)
+Served asset /products.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_home_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+
+
+Started GET "/assets/sessions.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+Served asset /review_contents.js - 304 Not Modified (0ms)
+Served asset /reviews.js - 304 Not Modified (0ms)
+Served asset /review_images.js - 304 Not Modified (13ms)
+
+
+
+
+Started GET "/assets/shop_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+Started GET "/assets/shop_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+
+
+Started GET "/assets/shop_reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+
+
+Started GET "/assets/shop_review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+Served asset /shop_home_links.js - 304 Not Modified (1ms)
+Served asset /sessions.js - 304 Not Modified (1ms)
+Served asset /shop_links.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shops.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+Served asset /shop_reviews.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+Served asset /shop_review_images.js - 304 Not Modified (1ms)
+Served asset /shop_jps.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+
+
+Started GET "/assets/application.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+Served asset /shops.js - 304 Not Modified (0ms)
+Served asset /users.js - 304 Not Modified (0ms)
+Served asset /welcome.js - 304 Not Modified (9ms)
+Served asset /application.js - 304 Not Modified (65ms)
+
+
+Started GET "/assets/favicon.ico" for 192.168.56.101 at 2013-03-20 01:19:34 +0900
+Served asset /favicon.ico - 404 Not Found (9ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon.ico"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  dragonfly (0.9.14) lib/dragonfly/middleware.rb:13:in `call'
+  rack-cache (1.2) lib/rack/cache/context.rb:136:in `forward'
+  rack-cache (1.2) lib/rack/cache/context.rb:245:in `fetch'
+  rack-cache (1.2) lib/rack/cache/context.rb:185:in `lookup'
+  rack-cache (1.2) lib/rack/cache/context.rb:66:in `call!'
+  rack-cache (1.2) lib/rack/cache/context.rb:51:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  railties (3.2.12) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (3.0.19) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:206:in `start_request_handler'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:171:in `block in handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/utils.rb:470:in `safe_fork'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:166:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:129:in `start'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:253:in `block (2 levels) in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:246:in `block in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+  <internal:prelude>:10:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:244:in `spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:137:in `spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) helper-scripts/passenger-spawn-server:99:in `<main>'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/products/new?shop_id=3" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+Processing by ProductsController#new as HTML
+  Parameters: {"shop_id"=>"3"}
+  Rendered products/_form.html.erb (2.6ms)
+  Rendered products/new.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 42ms (Views: 41.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+
+
+Started GET "/assets/product_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+
+
+Started GET "/assets/country_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+
+
+Started GET "/assets/products.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+
+
+Started GET "/assets/product_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+Served asset /product_jps.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/review_contents.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+Served asset /country_jps.css - 304 Not Modified (12ms)
+Served asset /products.css - 304 Not Modified (17ms)
+
+
+Started GET "/assets/reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+Served asset /product_links.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+
+
+Started GET "/assets/review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+
+
+Started GET "/assets/sessions.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:41 +0900
+Served asset /review_contents.css - 304 Not Modified (1ms)
+Served asset /application.css - 304 Not Modified (125ms)
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+Served asset /review_images.css - 304 Not Modified (1ms)
+Served asset /reviews.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/shop_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_home_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/shop_reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/shop_review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/shops.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /shop_reviews.css - 304 Not Modified (0ms)
+Served asset /shop_home_links.css - 304 Not Modified (0ms)
+Served asset /shop_jps.css - 304 Not Modified (0ms)
+Served asset /shop_links.css - 304 Not Modified (0ms)
+Served asset /shop_review_images.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/welcome.css?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /shops.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+Served asset /users.css - 304 Not Modified (0ms)
+Served asset /welcome.css - 304 Not Modified (1ms)
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (23ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (16ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (44ms)
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (18ms)
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (26ms)
+
+
+Started GET "/assets/country_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/product_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /twitter/bootstrap/bootstrap-affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/product_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/products.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+Served asset /country_jps.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/review_contents.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /product_jps.js - 304 Not Modified (1ms)
+Served asset /product_links.js - 304 Not Modified (0ms)
+
+
+Served asset /products.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/sessions.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Started GET "/assets/review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /review_contents.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_home_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/shop_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /review_images.js - 304 Not Modified (0ms)
+Served asset /reviews.js - 304 Not Modified (1ms)
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /shop_home_links.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/shop_review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+
+
+Started GET "/assets/shops.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /shop_jps.js - 304 Not Modified (1ms)
+Served asset /shop_links.js - 304 Not Modified (1ms)
+Served asset /shop_review_images.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /shop_reviews.js - 304 Not Modified (9ms)
+Served asset /shops.js - 304 Not Modified (0ms)
+
+
+
+
+Started GET "/assets/welcome.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Started GET "/assets/application.js?body=1" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /users.js - 304 Not Modified (1ms)
+Served asset /welcome.js - 304 Not Modified (9ms)
+Served asset /twitter/bootstrap.js - 304 Not Modified (192ms)
+Served asset /application.js - 304 Not Modified (47ms)
+
+
+Started GET "/assets/favicon.ico" for 192.168.56.101 at 2013-03-20 01:19:42 +0900
+Served asset /favicon.ico - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon.ico"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  dragonfly (0.9.14) lib/dragonfly/middleware.rb:13:in `call'
+  rack-cache (1.2) lib/rack/cache/context.rb:136:in `forward'
+  rack-cache (1.2) lib/rack/cache/context.rb:245:in `fetch'
+  rack-cache (1.2) lib/rack/cache/context.rb:185:in `lookup'
+  rack-cache (1.2) lib/rack/cache/context.rb:66:in `call!'
+  rack-cache (1.2) lib/rack/cache/context.rb:51:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  railties (3.2.12) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (3.0.19) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:206:in `start_request_handler'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:171:in `block in handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/utils.rb:470:in `safe_fork'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:166:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:129:in `start'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:253:in `block (2 levels) in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:246:in `block in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+  <internal:prelude>:10:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:244:in `spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:137:in `spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) helper-scripts/passenger-spawn-server:99:in `<main>'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (24.1ms)
+
+
+Started POST "/products/create" for 192.168.56.101 at 2013-03-20 01:20:35 +0900
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ckrP2rvd/HgOvyO+joZISNNQkv6R8o7l/7TTEdnwxc0=", "product"=>{"country_id"=>"1", "name"=>"チーズケーキ", "url"=>"http://www.letao.jp/products/detail.php?product_id=29", "currency_id"=>"1", "price"=>"1575", "shop_id"=>"3"}, "commit"=>"保存"}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO `products` (`country_id`, `created_at`, `currency_id`, `name`, `price`, `shop_id`, `updated_at`, `url`) VALUES (1, '2013-03-19 16:20:35', 1, 'チーズケーキ', 1575, 3, '2013-03-19 16:20:35', 'http://www.letao.jp/products/detail.php?product_id=29')
+  [1m[36m (93.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://192.168.56.102/reviews/new?product_id=5
+Completed 302 Found in 202ms (ActiveRecord: 98.8ms)
+
+
+Started GET "/reviews/new?product_id=5" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Processing by ReviewsController#new as HTML
+  Parameters: {"product_id"=>"5"}
+  Rendered reviews/_form.html.erb (30.6ms)
+  Rendered reviews/new.html.erb within layouts/application (34.6ms)
+Completed 200 OK in 197ms (Views: 186.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/products.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/product_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/product_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/country_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /country_jps.css - 304 Not Modified (1ms)
+Served asset /product_links.css - 304 Not Modified (0ms)
+Served asset /product_jps.css - 304 Not Modified (0ms)
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+Served asset /products.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/review_contents.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/sessions.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /review_contents.css - 304 Not Modified (1ms)
+Served asset /reviews.css - 304 Not Modified (0ms)
+Served asset /review_images.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_home_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/shop_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/shop_review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /shop_home_links.css - 304 Not Modified (0ms)
+Served asset /shop_jps.css - 304 Not Modified (1ms)
+Served asset /shop_links.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shops.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/users.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /shop_review_images.css - 304 Not Modified (1ms)
+Served asset /application.css - 304 Not Modified (172ms)
+Served asset /shop_reviews.css - 304 Not Modified (1ms)
+Served asset /shops.css - 304 Not Modified (0ms)
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+Served asset /jquery.js - 304 Not Modified (0ms)
+Served asset /welcome.css - 304 Not Modified (8ms)
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (2ms)
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (2ms)
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (6ms)
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-affix.js - 304 Not Modified (2ms)
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+Served asset /twitter/bootstrap.js - 304 Not Modified (30ms)
+
+
+Started GET "/assets/review_contents.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/country_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/product_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/product_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+Started GET "/assets/products.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+Served asset /review_contents.js - 304 Not Modified (1ms)
+Served asset /products.js - 304 Not Modified (0ms)
+Served asset /country_jps.js - 304 Not Modified (1ms)
+Served asset /product_links.js - 304 Not Modified (0ms)
+Served asset /product_jps.js - 304 Not Modified (0ms)
+Served asset /review_images.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:36 +0900
+
+
+
+
+Started GET "/assets/shop_home_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+
+
+Started GET "/assets/shop_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+
+
+Started GET "/assets/shop_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+
+
+Started GET "/assets/sessions.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+Started GET "/assets/shop_review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+Served asset /reviews.js - 304 Not Modified (0ms)
+Served asset /shop_jps.js - 304 Not Modified (0ms)
+Served asset /shop_links.js - 304 Not Modified (0ms)
+Served asset /sessions.js - 304 Not Modified (0ms)
+Served asset /shop_review_images.js - 304 Not Modified (0ms)
+Served asset /shop_home_links.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+
+
+Started GET "/assets/welcome.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+
+
+Started GET "/assets/shops.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+
+
+Started GET "/assets/shop_reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+
+
+Started GET "/assets/users.js?body=1" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+Served asset /shop_reviews.js - 304 Not Modified (0ms)
+Served asset /welcome.js - 304 Not Modified (0ms)
+Served asset /users.js - 304 Not Modified (0ms)
+Served asset /shops.js - 304 Not Modified (0ms)
+Served asset /application.js - 304 Not Modified (60ms)
+
+
+Started GET "/assets/favicon.ico" for 192.168.56.101 at 2013-03-20 01:20:37 +0900
+Served asset /favicon.ico - 404 Not Found (5ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon.ico"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  dragonfly (0.9.14) lib/dragonfly/middleware.rb:13:in `call'
+  rack-cache (1.2) lib/rack/cache/context.rb:136:in `forward'
+  rack-cache (1.2) lib/rack/cache/context.rb:245:in `fetch'
+  rack-cache (1.2) lib/rack/cache/context.rb:185:in `lookup'
+  rack-cache (1.2) lib/rack/cache/context.rb:66:in `call!'
+  rack-cache (1.2) lib/rack/cache/context.rb:51:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  railties (3.2.12) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (3.0.19) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:206:in `start_request_handler'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:171:in `block in handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/utils.rb:470:in `safe_fork'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:166:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:129:in `start'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:253:in `block (2 levels) in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:246:in `block in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+  <internal:prelude>:10:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:244:in `spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:137:in `spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) helper-scripts/passenger-spawn-server:99:in `<main>'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.7ms)
+
+
+Started POST "/reviews/create" for 192.168.56.101 at 2013-03-20 01:21:01 +0900
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ckrP2rvd/HgOvyO+joZISNNQkv6R8o7l/7TTEdnwxc0=", "review"=>{"score"=>"4.0", "subject"=>"とろける食感", "language_id"=>"1", "product_id"=>"5"}, "comment"=>"たまらなくおいしいです", "review_image"=>#<ActionDispatch::Http::UploadedFile:0xa96f208 @original_filename="12.10.24 rutao cake.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"review_image\"; filename=\"12.10.24 rutao cake.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20130320-5629-kazn34>>, "commit"=>"Save changes"}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `reviews` (`created_at`, `language_id`, `product_id`, `score`, `subject`, `updated_at`, `user_id`) VALUES ('2013-03-19 16:21:01', 1, 5, 4.0, 'とろける食感', '2013-03-19 16:21:01', NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `review_contents` (`comment`, `created_at`, `review_id`, `updated_at`) VALUES ('たまらなくおいしいです', '2013-03-19 16:21:01', 7, '2013-03-19 16:21:01')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `review_images` (`commment`, `created_at`, `product_id`, `review_id`, `review_image_name`, `review_image_uid`, `updated_at`, `user_id`) VALUES (NULL, '2013-03-19 16:21:01', NULL, NULL, '12.10.24 rutao cake.jpg', '2013/03/20/01_21_01_663_12.10.24_rutao_cake.jpg', '2013-03-19 16:21:01', NULL)
+  [1m[36m (98.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://192.168.56.102/products/show?id=5
+Completed 302 Found in 283ms (ActiveRecord: 110.2ms)
+
+
+Started GET "/products/show?id=5" for 192.168.56.101 at 2013-03-20 01:21:01 +0900
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProduct Load (0.7ms)[0m  SELECT `products`.* FROM `products` WHERE (id = 5) LIMIT 1
+  [1m[36mShop Load (0.4ms)[0m  [1mSELECT `shops`.* FROM `shops` WHERE (id = 3) LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `review_images` WHERE (product_id = 5)
+  Rendered products/show.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 187ms (Views: 152.7ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/products.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/country_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/product_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/product_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /product_jps.css - 304 Not Modified (0ms)
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+Served asset /country_jps.css - 304 Not Modified (0ms)
+Served asset /products.css - 304 Not Modified (0ms)
+Served asset /product_links.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/review_contents.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/sessions.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /review_contents.css - 304 Not Modified (0ms)
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+Served asset /reviews.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_home_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/shop_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /review_images.css - 304 Not Modified (1ms)
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/shop_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /shop_jps.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /shop_review_images.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /shop_home_links.css - 304 Not Modified (23ms)
+
+
+Started GET "/assets/shops.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /shop_links.css - 304 Not Modified (14ms)
+Served asset /shop_reviews.css - 304 Not Modified (0ms)
+Served asset /application.css - 304 Not Modified (124ms)
+Served asset /shops.css - 304 Not Modified (0ms)
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/welcome.css?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+Served asset /jquery.js - 304 Not Modified (0ms)
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (1ms)
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (10ms)
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (6ms)
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-affix.js - 304 Not Modified (0ms)
+Served asset /bootstrap.js - 304 Not Modified (11ms)
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/product_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/product_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/products.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/country_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:02 +0900
+
+
+Started GET "/assets/review_contents.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+Served asset /product_links.js - 304 Not Modified (1ms)
+Served asset /product_jps.js - 304 Not Modified (0ms)
+Served asset /review_contents.js - 304 Not Modified (0ms)
+Served asset /country_jps.js - 304 Not Modified (0ms)
+Served asset /review_images.js - 304 Not Modified (0ms)
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/sessions.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/shop_review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/shop_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/shop_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/shop_home_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+Served asset /reviews.js - 304 Not Modified (1ms)
+Served asset /shop_home_links.js - 304 Not Modified (0ms)
+Served asset /shop_jps.js - 304 Not Modified (0ms)
+Served asset /shop_links.js - 304 Not Modified (0ms)
+Served asset /sessions.js - 304 Not Modified (1ms)
+Served asset /shop_review_images.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/welcome.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/application.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/shops.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+
+
+Started GET "/assets/shop_reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+Served asset /shop_reviews.js - 304 Not Modified (1ms)
+Served asset /users.js - 304 Not Modified (0ms)
+Served asset /welcome.js - 304 Not Modified (0ms)
+Served asset /shops.js - 304 Not Modified (7ms)
+Served asset /application.js - 304 Not Modified (40ms)
+
+
+Started GET "/assets/favicon.ico" for 192.168.56.101 at 2013-03-20 01:21:03 +0900
+Served asset /favicon.ico - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon.ico"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  dragonfly (0.9.14) lib/dragonfly/middleware.rb:13:in `call'
+  rack-cache (1.2) lib/rack/cache/context.rb:136:in `forward'
+  rack-cache (1.2) lib/rack/cache/context.rb:245:in `fetch'
+  rack-cache (1.2) lib/rack/cache/context.rb:185:in `lookup'
+  rack-cache (1.2) lib/rack/cache/context.rb:66:in `call!'
+  rack-cache (1.2) lib/rack/cache/context.rb:51:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  railties (3.2.12) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (3.0.19) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:206:in `start_request_handler'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:171:in `block in handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/utils.rb:470:in `safe_fork'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:166:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:129:in `start'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:253:in `block (2 levels) in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:246:in `block in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+  <internal:prelude>:10:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:244:in `spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:137:in `spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) helper-scripts/passenger-spawn-server:99:in `<main>'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/favicon.ico" for 192.168.56.101 at 2013-03-20 01:27:58 +0900
+Served asset /favicon.ico - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon.ico"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  dragonfly (0.9.14) lib/dragonfly/middleware.rb:13:in `call'
+  rack-cache (1.2) lib/rack/cache/context.rb:136:in `forward'
+  rack-cache (1.2) lib/rack/cache/context.rb:245:in `fetch'
+  rack-cache (1.2) lib/rack/cache/context.rb:185:in `lookup'
+  rack-cache (1.2) lib/rack/cache/context.rb:66:in `call!'
+  rack-cache (1.2) lib/rack/cache/context.rb:51:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  railties (3.2.12) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (3.0.19) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:206:in `start_request_handler'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:171:in `block in handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/utils.rb:470:in `safe_fork'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:166:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:129:in `start'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:253:in `block (2 levels) in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:246:in `block in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+  <internal:prelude>:10:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:244:in `spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:137:in `spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) helper-scripts/passenger-spawn-server:99:in `<main>'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started POST "/reviews/create" for 192.168.56.101 at 2013-03-20 01:28:00 +0900
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ckrP2rvd/HgOvyO+joZISNNQkv6R8o7l/7TTEdnwxc0=", "review"=>{"score"=>"4.0", "subject"=>"とろける食感", "language_id"=>"1", "product_id"=>"5"}, "comment"=>"たまらなくおいしいです", "review_image"=>#<ActionDispatch::Http::UploadedFile:0xb20a534 @original_filename="12.10.24 rutao cake.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"review_image\"; filename=\"12.10.24 rutao cake.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20130320-5629-1k2c0rl>>, "commit"=>"Save changes"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (id = 1) LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `review_images` (`commment`, `created_at`, `product_id`, `review_id`, `review_image_name`, `review_image_uid`, `updated_at`, `user_id`) VALUES (NULL, '2013-03-19 16:28:00', NULL, NULL, '12.10.24 rutao cake.jpg', '2013/03/20/01_28_00_492_12.10.24_rutao_cake.jpg', '2013-03-19 16:28:00', NULL)[0m
+  [1m[35m (111.2ms)[0m  COMMIT
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO `reviews` (`created_at`, `language_id`, `product_id`, `score`, `subject`, `updated_at`, `user_id`) VALUES ('2013-03-19 16:28:00', 1, 5, 4.0, 'とろける食感', '2013-03-19 16:28:00', NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO `review_contents` (`comment`, `created_at`, `review_id`, `updated_at`) VALUES ('たまらなくおいしいです', '2013-03-19 16:28:00', 8, '2013-03-19 16:28:00')[0m
+  [1m[35m (2.5ms)[0m  UPDATE `review_images` SET `user_id` = 1, `product_id` = 5, `review_id` = 8, `updated_at` = '2013-03-19 16:28:00' WHERE `review_images`.`id` = 7
+  [1m[36m (63.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://192.168.56.102/products/show?id=5
+Completed 302 Found in 321ms (ActiveRecord: 198.5ms)
+
+
+Started GET "/products/show?id=5" for 192.168.56.101 at 2013-03-20 01:28:00 +0900
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE (id = 5) LIMIT 1
+  [1m[36mShop Load (0.2ms)[0m  [1mSELECT `shops`.* FROM `shops` WHERE (id = 3) LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `review_images` WHERE (product_id = 5)
+  [1m[36mReviewImage Load (0.4ms)[0m  [1mSELECT `review_images`.* FROM `review_images` WHERE (product_id = 5)[0m
+  Rendered products/show.html.erb within layouts/application (87.8ms)
+Completed 200 OK in 144ms (Views: 116.1ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:00 +0900
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/products.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:00 +0900
+Served asset /products.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/product_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:00 +0900
+Served asset /product_links.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/product_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /product_jps.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/country_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /country_jps.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/review_contents.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /review_contents.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /review_images.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /reviews.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_home_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /shop_home_links.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_jps.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /shop_jps.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_links.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /shop_links.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_reviews.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /shop_reviews.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shops.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /shops.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_review_images.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /shop_review_images.css - 304 Not Modified (43ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap/bootstrap-affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/product_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /product_jps.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/country_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /country_jps.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/product_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /product_links.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/products.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/review_contents.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /review_contents.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_home_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /shop_home_links.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /review_images.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:01 +0900
+Served asset /reviews.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_jps.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /shop_jps.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_review_images.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /shop_review_images.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/shop_reviews.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /shop_reviews.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shop_links.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /shop_links.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/shops.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /shops.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 192.168.56.101 at 2013-03-20 01:28:02 +0900
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/favicon.ico" for 192.168.56.101 at 2013-03-20 01:28:03 +0900
+Served asset /favicon.ico - 404 Not Found (10ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/favicon.ico"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  dragonfly (0.9.14) lib/dragonfly/middleware.rb:13:in `call'
+  rack-cache (1.2) lib/rack/cache/context.rb:136:in `forward'
+  rack-cache (1.2) lib/rack/cache/context.rb:245:in `fetch'
+  rack-cache (1.2) lib/rack/cache/context.rb:185:in `lookup'
+  rack-cache (1.2) lib/rack/cache/context.rb:66:in `call!'
+  rack-cache (1.2) lib/rack/cache/context.rb:51:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  railties (3.2.12) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (3.0.19) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+  passenger (3.0.19) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:206:in `start_request_handler'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:171:in `block in handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/utils.rb:470:in `safe_fork'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:166:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.19) lib/phusion_passenger/rack/application_spawner.rb:129:in `start'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:253:in `block (2 levels) in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:246:in `block in spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+  <internal:prelude>:10:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:244:in `spawn_rack_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:137:in `spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.19) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.19) helper-scripts/passenger-spawn-server:99:in `<main>'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+Connecting to database specified by database.yml
