@@ -16,25 +16,52 @@
     </div>
   <% end %>
 
-  <label>国名</label>
-  <select id="product_country_id" name="product[country_id]">
-    <%= options_for_select(MasterTable::CountryJp::Options, :selected => @product.country_id)%>
-  </select>
-  <div class="field">
-     <label>商品名</label>
-     <input id="product_name" name="product[name]" type="text" value="<%= @product.name %>" />
-  </div>
-  <div class="field">
-     <label>販売ページ</label>
-     <input id="product_url" name="product[url]" type="text" value="<%= @product.url %>" />
-  </div>
-  <div id="price">
-     <label>値段</label>
-     <select id="product_currency_id" name="product[currency_id]">
-       <%= options_for_select(MasterTable::Currency::Options, :selected => @product.currency_id) %>
-     </select>
+<table class="table  table-bordered table-striped">
+  <tr>
+    <th class="span2">国名</th>
+    <td>
+      <%= select :product, :country_id, options_for_select(MasterTable::CountryJp::Options, :selected => @product.country_id)%>
+    </td>
+  </tr>
+  <tr>
+    <th>商品名</th>
+    <td>
+      <input id="product_name" name="product[name]" type="text" value="<%= @product.name %>" />
+    </td>
+  </tr>
+  <tr>
+    <th>カテゴリー</th>
+    <td>
+      <%= select :product_content, :category_id, options_for_select(MasterTable::Category::NAME.invert) %>
+      <%= select :product_content, :type_id, options_for_select(MasterTable::CountryJp::Options, :selected => @product.country_id)%>
+    </td>
+  </tr>
+  <tr>
+    <th>内容</th>
+    <td>
+      <%- MasterTable::CountryJp::Options.each do |key, value| -%>
+        <%= check_box :product_content, :flavor_id, {}, value, false%>
+        <%= key %>
+        <%= select :product_content, :quantity, (1..100).to_a %>
+      <%- end -%>
+    </td>
+  </tr>
+  <tr>
+    <th>販売ページ</th>
+    <td>
+      <input id="product_url" name="product[url]" type="text" value="<%= @product.url %>" />
+    </td>
+  </tr>
+  <tr>
+    <th>値段</th>
+    <td>
+      <select id="product_currency_id" name="product[currency_id]">
+        <%= options_for_select(MasterTable::Currency::Options, :selected => @product.currency_id) %>
+      </select>
      <input id="product_price" name="product[price]" type="text" value="<%= @product.price %>" />
-  </div>
+    </td>
+  </tr>
+</table>
   <input id="product_shop_id" name="product[shop_id]"type="hidden" value=<%=@shop_id %>>
   <div class="actions">
     <%= submit_tag "保存" %>

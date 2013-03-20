@@ -1,6 +1,8 @@
 # encoding: utf-8
 class ProductsController < ApplicationController
   include SweetaErrors
+  before_filter :get_user, :only => [:new, :edit, :create]
+
   # GET /products
   # GET /products.json
   def index

@@ -16,7 +16,7 @@
     <%= options_for_select((Review::SCORES), :selected => @review.score)%>
   </select>
   <div class="field">
-    <label>概要</label>
+    <label>タイトル</label>
     <input id="review_subject" name="review[subject]"type="text" value="<%= @review.subject%>">
   </div>
   <div class="field">
@@ -30,6 +30,6 @@
   <input id="review_language_id" name="review[language_id]"type="hidden" value=<%=MasterTable::Language::JAPANESE%>>
   <input id="review_product_id" name="review[product_id]"type="hidden" value=<%=@product_id %>>
   <div class="actions">
-    <%= submit_tag %>
+    <%= submit_tag "保存" %>
   </div>
 <% end %>

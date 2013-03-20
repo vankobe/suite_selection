@@ -1,5 +1,15 @@
 SuiteSelection::Application.routes.draw do
 
+  resources :flavors
+
+
+  resources :product_types
+
+
+  get "search/products"
+
+  get "search/shops"
+
   get "welcome/index"
 
 #  resources :review_images

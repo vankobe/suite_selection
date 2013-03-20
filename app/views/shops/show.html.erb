@@ -16,6 +16,6 @@
   <label>説明</label>
     <p><%= @shop_review.comment %></p>
 </div>
-~
+<%= link_to "商品を登録する", {:controller => 'products', :action => 'new', :shop_id => @shop.id}%>
 <%= link_to 'Edit', edit_shop_path(@shop.id) %> |
 <%= link_to 'Back', shops_path %>
