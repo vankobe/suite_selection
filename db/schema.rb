@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323150216) do
+ActiveRecord::Schema.define(:version => 20130323184854) do
 
   create_table "flavors", :force => true do |t|
     t.string   "name"
@@ -117,11 +117,13 @@ ActiveRecord::Schema.define(:version => 20130323150216) do
   end
 
   create_table "users", :force => true do |t|
+    t.integer  "facebook_uid", :limit => 8
     t.string   "nickname"
     t.string   "email"
     t.string   "image_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "facebook_url"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
 end

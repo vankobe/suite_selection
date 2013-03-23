@@ -2,10 +2,13 @@
 class ShopReviewImage < ActiveRecord::Base
   attr_accessible :comment, :review_id, :shop_id,  :shop_review_image
   belongs_to :shop_review
+
+  validates :shop_id, :review_id, :shop_review_image, :presence => true
+  validates :comment, :length => {:min => 100, :max => 10000}
   image_accessor :shop_review_image
 
-  FILE_DIR_ROOT = File.join(Rails.root, "app", "assets", "images", "/")
-  FILE_DIR = File.join("shop", "/")
+#  FILE_DIR_ROOT = File.join(Rails.root, "app", "assets", "images", "/")
+#  FILE_DIR = File.join("shop", "/")
 
 #  class << self
 #    def save_from_image_file(image, review)

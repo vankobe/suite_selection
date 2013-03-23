@@ -4,6 +4,9 @@ class ProductContent < ActiveRecord::Base
   belongs_to :type, :class_name => "ProductType"
   belongs_to :flavor
 
+  validates :category_id, :flavor_id, :product_id, :quantity, :type_id, :presence => true
+  validates :quantity, :numericality => true, :less_than_or_equal_to => 10000
+
   def category_name
     MasterTable::Category::NAME[self.category_id]
   end

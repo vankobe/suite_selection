@@ -25,7 +25,10 @@ class ProductsController < ApplicationController
     raise NoShopError if @shop.blank?
     
     @reviews = @product.review
-    @review_images = ReviewImage.where(["product_id = ?", @product.id])
+    @review_images = @product.review_image
+    
+    @main_review = @reviews.first
+    @main_image  = @review_images.first
 
     respond_to do |format|
       format.html # show.html.erb

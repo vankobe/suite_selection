@@ -1,11 +1,15 @@
 class ReviewImage < ActiveRecord::Base
-  attr_accessible :commment, :id, :review_id, :shop_id, :user_id, :review_image
+  attr_accessible :commment, :review_id, :shop_id, :user_id, :review_image
   belongs_to :review
   belongs_to :product
+
+  validates :review_id, :shop_id, :user_id, :review_image, :presence => true
+  validates :comment, :length => {:max => 300}
+
   image_accessor :review_image
 
-  FILE_DIR= File.join(Rails.root, "app", "assets", "images", "review")
-  IMAGE_SIZES = [50, 100, 150, 320, 640]
+#  FILE_DIR= File.join(Rails.root, "app", "assets", "images", "review")
+#  IMAGE_SIZES = [50, 100, 150, 320, 640]
 
 #  class << self
 #    def save_from_image_file(image, review)
