@@ -4,7 +4,7 @@ class ReviewImage < ActiveRecord::Base
   belongs_to :product
 
   validates :review_id, :shop_id, :user_id, :review_image, :presence => true
-  validates :comment, :length => {:max => 300}
+  validates :comment, :length => {:maximum => 300}
 
   image_accessor :review_image
 

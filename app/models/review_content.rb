@@ -3,5 +3,5 @@ class ReviewContent < ActiveRecord::Base
   belongs_to :review
 
   validates :review_id, :comment, :presence => true
-  validates :comment, :length => {:min => 100, :max => 1000}
+  validates :comment, :length => {:minimum => 100, :maximum => 1000}
 end

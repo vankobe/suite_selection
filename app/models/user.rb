@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   validates :facebook_uid, :nickname, :email, :presence => true
   validates :facebook_uid, :uniqueness => true
-  validates :nickname, :length => {:max => 50}
+  validates :nickname, :length => {:maximum => 50}
 
   def self.create_account(auth)
     user = User.new

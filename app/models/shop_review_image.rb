@@ -4,7 +4,7 @@ class ShopReviewImage < ActiveRecord::Base
   belongs_to :shop_review
 
   validates :shop_id, :review_id, :shop_review_image, :presence => true
-  validates :comment, :length => {:min => 100, :max => 10000}
+  validates :comment, :length => {:minimum => 100, :maximum => 10000}
   image_accessor :shop_review_image
 
 #  FILE_DIR_ROOT = File.join(Rails.root, "app", "assets", "images", "/")

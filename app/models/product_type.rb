@@ -3,5 +3,5 @@ class ProductType < ActiveRecord::Base
   has_many :product_content, :foreign_key => "type_id"
 
   validates :category_id, :name, :presence => true
-  validates :name, :length => {:max => 50}
+  validates :name, :length => {:maximum => 50}
 end

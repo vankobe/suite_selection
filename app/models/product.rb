@@ -7,8 +7,8 @@ class Product < ActiveRecord::Base
   has_many :review_image, :order => "id DESC"
 
   validates :country_id, :currency_id, :name, :price, :shop_id, :url, :presence => true
-  validates :name, :length => {:max => 200}
+  validates :name, :length => {:maximum => 200}
   validates :url, :format => {:with => /~http(s)*:\/\//}
-  validates :price, :length => {:max => 8, :min => 2}
+  validates :price, :length => {:maximum => 8, :min => 2}
   
 end
