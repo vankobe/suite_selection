@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_id: 1
+  category_id: 1
+  type_id: 1
+  flavor_id: 1
+  quantity: 1
+
+two:
+  product_id: 1
+  category_id: 1
+  type_id: 1
+  flavor_id: 1
+  quantity: 1
