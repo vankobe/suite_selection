@@ -1,9 +1,58 @@
+<script>
+  var SearchType = {};
+  SearchType = {
+    search: function(category){
+      var category_id = category.val();
+      $.ajax({
+        type: "POST",
+        url: "/api/get_type_from_category/",
+        dataType: "html",
+        data: {category_id: category_id},
+        success: function(html){
+          category.parent().append(html)
+        },
+        error: function() {
+        }
+      });
+    }
+  };
+
+  var ProductContent={}
+  ProductContent ={
+    check: function(){
+      
+    }
+  }
+  $(function(){
+    $("#product_content_category_id").on("change", function(){
+      $("#product_type").remove();
+      SearchType.search($(this));
+    });
+//    $(".flavors ").on("change", function(){
+//      var flavor_id = $(this).attr("data-flavor_id");
+//      if ($(this).find("input[type=number]").val() != 0){
+//        if ($(this).find("input[type=hidden]").size() == 0) {
+//        $("<input />").attr('type', 'hidden')
+//                      .attr('name', "product_content[flavor_"+ flavor_id +"][flavor_id]")
+//                      .attr('value', flavor_id)
+//                      .appendTo($(this));
+//        }
+//      } else {
+//        $(this).find("input[type=hidden]").remove();
+//      }
+//    });
+  });
+</script>
 <style>
   #product_currency_id {
     width:50px;
   }
+  .flavors {
+    display:inline;
+    float: left;
+  }
 </style>
-<%= form_tag({:controller => "products", :action => "create"}) do  %>
+<%= form_tag({:controller => "products", :action => "create"}, :class => "span10") do  %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -36,23 +85,14 @@
      <input id="product_price" name="product[price]" type="text" value="<%= @product.price %>" />
     </td>
   </tr>
-  <tr>
-    <th>カテゴリー</th>
-    <td>
-      <%= select :product_content, :category_id, options_for_select(MasterTable::Category::NAME.invert) %>
-      <%= select :product_content, :type_id, options_for_select(MasterTable::CountryJp::Options, :selected => @product.country_id)%>
-    </td>
-  </tr>
-  <tr>
-    <th>内容</th>
-    <td>
-      <%- MasterTable::CountryJp::Options.each do |key, value| -%>
-        <%= check_box :product_content, :flavor_id, {}, value, false%>
-        <%= key %>
-        <%= select :product_content, :quantity, (1..100).to_a %>
+  <%- contents = @product.try(:contents) || []
+      if contents.present?
+        contents.each do |content| -%>
+          <%= render :partial => 'product_content_form', :locals => {:category_id => content.category_id, :flavor_id => content.flavor_id, :quantity => content.quantity} %>
+        <%- end -%>
+      <%- else -%>
+        <%= render :partial => 'product_content_form' %>
       <%- end -%>
-    </td>
-  </tr>
   <tr>
     <th>販売ページ</th>
     <td>

@@ -1,0 +1,19 @@
+<%-
+  reviews ||= nil
+-%>
+<div id="product_review">
+  <%- if reviews.present? -%>
+    <% reviews.each do |review| %>
+    <div class="review_box span3">
+      <p class="review_subject"><strong><%= review.subject %></strong>&nbsp;評価<%= review.score%></p>
+      <p class="review_content"><%= review.content ? review.content.comment : ""%></p>
+    <%- if user = review.user-%>
+      <div class="user_box">
+        <%= image_tag user.image_url%>
+        <p><%= user.nickname %></p>
+      </div>
+    <%- end -%>
+    </div>
+    <%- end -%>
+  <%- end -%>
+</div>

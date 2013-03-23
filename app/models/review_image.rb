@@ -1,6 +1,7 @@
 class ReviewImage < ActiveRecord::Base
   attr_accessible :commment, :id, :review_id, :shop_id, :user_id, :review_image
   belongs_to :review
+  belongs_to :product
   image_accessor :review_image
 
   FILE_DIR= File.join(Rails.root, "app", "assets", "images", "review")

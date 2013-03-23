@@ -1,0 +1,22 @@
+<div id="shop_info">
+  <table class="table table-striped span3.5">
+    <tr>
+      <th class="span1.5">ショップ名</th>
+      <td><%= shop.name %></td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td><%= MasterTable::CountryJp::Name[shop.country_id] %><%= shop.state.name %><br /><%= shop.address %></td>
+    </tr>
+    <tr>
+     <td colspan="2">
+       <a href="<%= shop.home_url %>">ホームページ</a>
+     </td>
+    </tr>
+    <tr>
+     <td colspan="2">
+       <a href="<%= shop.online_url %>">オンラインショップページ</a>
+     </td>
+    </tr>
+  </table>
+</div>

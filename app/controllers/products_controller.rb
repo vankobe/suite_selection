@@ -19,11 +19,12 @@ class ProductsController < ApplicationController
   def show
     @product = Product.where(["id = ?", params[:id].to_i]).first
     raise NoProductError if @product.blank?
+    @product_contents = @product.contents
 
-    @shop = Shop.where(["id = ?", @product.shop_id]).first
+    @shop = @product.shop
     raise NoShopError if @shop.blank?
     
-    @reviews = Review.where(["product_id = ?", @product.id])
+    @reviews = @product.review
     @review_images = ReviewImage.where(["product_id = ?", @product.id])
 
     respond_to do |format|
@@ -38,6 +39,8 @@ class ProductsController < ApplicationController
     @shop_id = params[:shop_id]
     raise "お探しのお店が見つかりません" unless @shop_id.present?
     @product = Product.new
+    @product_types = ProductType.all
+    @flavors = Flavor.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,9 +57,22 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(params[:product])
+    content_params = params[:product_content]
+    flavors     = params[:product_flavor]
+    saved_flg   = false
+    Product.transaction do
+      @product.save!
+      flavors.each do |flavor_id, quantity|
+        if quantity.to_i != 0
+          product_content = ProductContent.new(content_params.merge(:product_id => @product.id, :flavor_id => flavor_id, :quantity => quantity))
+          product_content.save!
+        end
+      end
+      saved_flg = true
+    end
 
     respond_to do |format|
-      if @product.save
+      if saved_flg
         format.html { redirect_to :controller => "reviews", :action => "new", :product_id => @product.id }
         format.json { render json: @product, status: :created, location: @product }
       else

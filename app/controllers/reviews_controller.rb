@@ -45,8 +45,8 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     raise '画像を選択してください' if params[:review_image].blank?
-    review = Review.new(params[:review])
-    review_content = review.build_review_content({:comment => params[:comment]})
+    review = Review.new(params[:review].merge(:user_id => @user.id))
+    review_content = review.build_content({:comment => params[:comment]})
 
     unless params[:review_image].nil?
       review_image = ReviewImage.create(:review_image => params[:review_image])

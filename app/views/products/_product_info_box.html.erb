@@ -1,0 +1,33 @@
+<%-
+product ||= nil
+product_contents ||= nil
+-%>
+<div id="product_info">
+  <table id="product_info_table" class="table table-striped span5">
+    <tr>
+      <th >商品名</th>
+      <td><%= product.name %></td>
+    </tr>
+    <tr>
+      <th >販売</th>
+      <td><%= MasterTable::CountryJp::Name[product.country_id] %></td>
+    </tr>
+    <tr>
+      <th rowspan=<%= product_contents.length + 1%>>内容</th>
+    <%- product_contents.each do |content|-%>
+    <tr>
+      <td><%= content.type.name %>&nbsp;<%= content.flavor.name%>&nbsp;&nbsp;<%= content.quantity%>個</td>
+    </tr>
+    <%- end -%>
+    </tr>
+    <tr>
+      <th>値段</th>
+      <td><%= MasterTable::Currency::View[product.currency_id]%> <%= product.price%></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="<%= product.url %>"><%= product.name %>を買う</a>
+      </td>
+    </tr>
+  </table>
+</div>

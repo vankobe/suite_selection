@@ -1,0 +1,25 @@
+<%-
+  #locals
+  category_id ||= nil
+  flavor_id ||= nil
+  quantity ||= nil
+-%>
+<tr>
+  <th>カテゴリー</th>
+  <td>
+    <%= select :product_content, :category_id, options_for_select(MasterTable::Category::NAME.invert, :selected => category_id) %>
+  </td>
+</tr>
+<tr>
+  <th>内容</th>
+  <td>
+  <%- if @flavors.present?-%>
+    <%- @flavors.each do |flavor| -%>
+      <div class="flavors span1.5" data-flavor_id="<%= flavor.id%>">
+      <%= flavor.name %>
+      <%= number_field_tag "product_flavor[#{flavor.id}]", 0,{:min => 0, :class => "span1"} %>
+      </div>
+    <%- end -%>
+  <%- end -%>
+  </td>
+</tr>
