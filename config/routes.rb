@@ -1,10 +1,8 @@
 SuiteSelection::Application.routes.draw do
 
-  resources :flavors
-
-
   resources :product_types
 
+  resources :flavors
 
   get "search/products"
 

@@ -30,6 +30,13 @@
     </td>
   </tr>
   <tr>
+    <th>値段</th>
+    <td>
+     <%= select :product, :currency_id, options_for_select(MasterTable::Currency::Options, :selected => @product.currency_id) %>
+     <input id="product_price" name="product[price]" type="text" value="<%= @product.price %>" />
+    </td>
+  </tr>
+  <tr>
     <th>カテゴリー</th>
     <td>
       <%= select :product_content, :category_id, options_for_select(MasterTable::Category::NAME.invert) %>
@@ -50,15 +57,6 @@
     <th>販売ページ</th>
     <td>
       <input id="product_url" name="product[url]" type="text" value="<%= @product.url %>" />
-    </td>
-  </tr>
-  <tr>
-    <th>値段</th>
-    <td>
-      <select id="product_currency_id" name="product[currency_id]">
-        <%= options_for_select(MasterTable::Currency::Options, :selected => @product.currency_id) %>
-      </select>
-     <input id="product_price" name="product[price]" type="text" value="<%= @product.price %>" />
     </td>
   </tr>
 </table>

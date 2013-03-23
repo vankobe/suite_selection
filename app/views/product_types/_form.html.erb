@@ -13,13 +13,13 @@
 
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
+    <%= select :product_type, :category_id, options_for_select(MasterTable::Category::NAME.invert) %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "保存"%>
   </div>
 <% end %>

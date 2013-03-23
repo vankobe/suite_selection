@@ -11,7 +11,7 @@
 
 <% @product_types.each do |product_type| %>
   <tr>
-    <td><%= product_type.category_id %></td>
+    <td><%= MasterTable::Category::NAME[product_type.category_id] %></td>
     <td><%= product_type.name %></td>
     <td><%= link_to 'Show', product_type %></td>
     <td><%= link_to 'Edit', edit_product_type_path(product_type) %></td>
