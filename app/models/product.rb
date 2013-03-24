@@ -8,7 +8,6 @@ class Product < ActiveRecord::Base
 
   validates :country_id, :currency_id, :name, :price, :shop_id, :url, :presence => true
   validates :name, :length => {:maximum => 200}
-  validates :url, :format => {:with => /~http(s)*:\/\//}
-  validates :price, :length => {:maximum => 8, :min => 2}
-  
+  validates :url, :format => {:with => /^http(s)*:\/\//}
+  validates_numericality_of :price, :less_than_or_equal_to => 1000000
 end

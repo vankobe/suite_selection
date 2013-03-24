@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :review
+  has_many :shop_review
 
   validates :facebook_uid, :nickname, :email, :presence => true
   validates :facebook_uid, :uniqueness => true

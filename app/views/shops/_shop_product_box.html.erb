@@ -1,0 +1,15 @@
+<%-
+  products ||= nil
+-%>
+<div id="shop_products">
+  <table class="table table-striped">
+  <caption>商品一覧</caption>
+  <%- if products.present? -%>
+    <%- products.each do |product|-%>
+      <tr>
+        <th><%= link_to product.name, {:controller => 'products', :action => 'show', :id => product.id}%><%= product.score%><th>
+      </tr>
+    <%- end -%>
+  <%- end -%>
+  </table>
+</div>

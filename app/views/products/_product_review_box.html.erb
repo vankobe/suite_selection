@@ -1,19 +1,28 @@
 <%-
   reviews ||= nil
 -%>
-<div id="product_review">
+<style>
+.user_box {
+  float:left;
+  margin-top: 9px;
+}
+.review_subject span {
+  float:right;
+}
+</style>
+<div id="product_review" class="span6">
   <%- if reviews.present? -%>
     <% reviews.each do |review| %>
-    <div class="review_box span6">
-      <p class="review_subject span4"><strong><%= review.subject %></strong>&nbsp;評価<%= review.score%></p>
-      <p class="review_content span4"><%= review.content ? review.content.comment : ""%></p>
+    <div class="review_box span4">
+      <p class="review_subject"><strong><%= review.subject %></strong><span>評価<%= review.score%></span></p>
+      <p class="review_content"><%= review.content ? review.content.comment : ""%></p>
+    </div>
     <%- if user = review.user-%>
-      <div class="user_box span2">
+      <div class="user_box span1.5">
         <%= image_tag user.image_url%>
-        <p><%= user.nickname %></p>
+        <p><a href="<%= user.facebook_url%>"><%= user.nickname %></a></p>
       </div>
     <%- end -%>
-    </div>
     <%- end -%>
   <%- end -%>
 </div>

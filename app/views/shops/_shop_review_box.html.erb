@@ -1,0 +1,28 @@
+<%-
+  reviews ||= nil
+-%>
+<style>
+.user_box {
+  float:left;
+  margin-top: 9px;
+}
+.review_subject span {
+  float:right;
+}
+</style>
+<div id="shop_review" class="span6">
+  <%- if reviews.present? -%>
+    <% reviews.each do |review| %>
+    <div class="review_box span4">
+      <p class="review_subject"><strong><%= review.subject %></strong><span>評価<%= review.score%></span></p>
+      <p class="review_content"><%= review.comment%></p>
+    </div>
+    <%- if user = review.user-%>
+      <div class="user_box span1.5">
+        <%= image_tag user.image_url%>
+        <p><a href="<%= user.facebook_url%>"><%= user.nickname %></a></p>
+      </div>
+    <%- end -%>
+    <%- end -%>
+  <%- end -%>
+</div>

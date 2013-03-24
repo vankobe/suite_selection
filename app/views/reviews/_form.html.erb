@@ -16,20 +16,20 @@
     <%= options_for_select((Review::SCORES), :selected => @review.score)%>
   </select>
   <div class="field">
-    <label>タイトル</label>
-    <input id="review_subject" name="review[subject]"type="text" value="<%= @review.subject%>">
-  </div>
-  <div class="field">
-    <label>本文</label>
-    <input id="comment" name="comment"type="textarea" value="<%= @review.content ? @review.content.comment : ""%>">
-  </div>
-  <div class="field">
      <label>画像</label>
      <input id="review_image" name="review_image" type="file" value="参照" />
+  </div>
+  <div class="field">
+    <label>タイトル</label>
+    <input id="review_subject" name="review[subject]"type="text" class="input-xxlarge" value="<%= @review.subject%>">
+  </div>
+  <div class="field">
+      <label class="field" for="textarea">本文</label>
+      <textarea class="input-xxlarge" id="comment" name="comment" rows="5"></textarea>
   </div>
   <input id="review_language_id" name="review[language_id]"type="hidden" value=<%=MasterTable::Language::JAPANESE%>>
   <input id="review_product_id" name="review[product_id]"type="hidden" value=<%=@product_id %>>
   <div class="actions">
-    <%= submit_tag "保存" %>
+    <%= submit_tag "保存", :class => "btn btn-success" %>
   </div>
 <% end %>

@@ -2,8 +2,11 @@
 product ||= nil
 product_contents ||= nil
 -%>
-<div id="product_info">
-  <table id="product_info_table" class="table table-striped span5">
+<style>
+
+</style>
+<div id="product_info span8">
+  <table id="product_info_table" class="table table-striped span8">
     <tr>
       <th >商品名</th>
       <td><%= product.name %></td>
@@ -26,7 +29,7 @@ product_contents ||= nil
     </tr>
     <tr>
       <td colspan="2">
-        <a href="<%= product.url %>"><%= product.name %>を買う</a>
+        <a href="<%= product.url %>"><input type="button" class="btn btn-success span4" value="<%= product.name %>を買う" /></a>
       </td>
     </tr>
   </table>

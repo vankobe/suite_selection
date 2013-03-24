@@ -1,4 +1,46 @@
-<%= form_tag({:controller => "search", :action => "product"}) do  %>
-
+<div id="search_box">
+  <div id="shop_search">
+    <ul>
+    <%- @shops.each do |shop|-%>
+      <li>
+        <%= link_to shop.name, {:controller => "search", :action => "products", :shop_id => shop.id}%>
+      </li>
+    <%- end -%>
+    </ul>
+  </div>
+  <div id="category_search">
+    <ul>
+    <%- MasterTable::Category::NAME.each do |category_id, category_name|-%>
+      <li>
+        <%= link_to category_name, {:controller => "search", :action => "products", :category_id => category_id}%>
+        <ul>
+        <%- category_types = @types.select{|type| type.category_id == category_id}
+            category_types.each do |type|-%>
+          <li>
+            <%= link_to type.name, {:controller => "search", :action => "products", :type_id => type.id}%>
+          </li>
+        <%- end -%>
+        </ul>
+      </li>
+    <%- end -%>
+    </ul>
+  </div>
+  <div id="flavor_search">
+    <ul>
+      <%- @flavors.each do |flavor| -%>
+      <li>
+        <%= link_to flavor.name, {:controller => "search", :action => "products", :flavor_id => flavor.id}%>
+      </li>
+      <%- end -%>
+    </ul>
+  </div>
+</div>
+<%= form_tag({:controller => "search", :action => "products"}) do  %>
 <%- end -%>
-
+<div id="main">
+  <%- if @products.present?-%>
+    <%- @products.each do |product| -%>
+      <h3><%= product.name %></h3>
+    <%- end -%>
+  <%- end -%>
+</div>

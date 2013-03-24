@@ -9,7 +9,7 @@
     float:left;
   }
   #product_image {
-    clear:left;
+    float:left;
   }
   #product_info {
     clear:both;
@@ -31,6 +31,9 @@
   .review_content {
     background-color: #ffeeee;
   }
+  .guide {
+    clear:both;
+  }
 </style>
 <p id="notice"><%= notice %></p>
 
@@ -41,7 +44,6 @@
     <%= image_tag @main_image.review_image.thumb("500x400#").url%>
   <%- end -%>
 </div>
-<%= render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
 <div id="product_image">
   <%- if @review_images.present? -%>
     <% @review_images.each do |review_image| %>
@@ -51,5 +53,8 @@
 </div>
 <%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
 <%= render :partial => 'product_review_box', :locals => {:reviews => @reviews}%>
-<%= link_to 'Edit', edit_product_path(@product.id) %> |
-<%= link_to 'Back', products_path %>
+<%= render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
+<div class="guide">
+  <%= link_to 'Edit', edit_product_path(@product.id) %> |
+  <%= link_to 'Back', products_path %>
+</div>

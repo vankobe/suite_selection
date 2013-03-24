@@ -1,9 +1,9 @@
 class ReviewImage < ActiveRecord::Base
-  attr_accessible :commment, :review_id, :shop_id, :user_id, :review_image
+  attr_accessible :commment, :review_id, :product_id, :user_id, :review_image
   belongs_to :review
   belongs_to :product
 
-  validates :review_id, :shop_id, :user_id, :review_image, :presence => true
+  validates :review_id, :product_id, :user_id, :review_image, :presence => true
   validates :comment, :length => {:maximum => 300}
 
   image_accessor :review_image

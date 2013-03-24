@@ -2,6 +2,7 @@
 class ShopReviewImage < ActiveRecord::Base
   attr_accessible :comment, :review_id, :shop_id,  :shop_review_image
   belongs_to :shop_review
+  belongs_to :shop
 
   validates :shop_id, :review_id, :shop_review_image, :presence => true
   validates :comment, :length => {:minimum => 100, :maximum => 10000}
