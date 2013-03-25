@@ -1,23 +1,34 @@
-<div id="search_box">
+<style>
+#search_box {
+  float: left;
+}
+#main {
+  float:left;
+}
+</style>
+
+<div id="search_box" class="well">
   <div id="shop_search">
-    <ul>
+    <ul class="nav nav-list">
+    <li class="nav-header">ショップ</li>
     <%- @shops.each do |shop|-%>
       <li>
-        <%= link_to shop.name, {:controller => "search", :action => "products", :shop_id => shop.id}%>
+        <%= link_to shop.name, params.merge({:shop_id => shop.id}) %>
       </li>
     <%- end -%>
     </ul>
   </div>
   <div id="category_search">
-    <ul>
+    <ul class="nav nav-list">
+    <li class="nav-header">カテゴリー</li>
     <%- MasterTable::Category::NAME.each do |category_id, category_name|-%>
       <li>
-        <%= link_to category_name, {:controller => "search", :action => "products", :category_id => category_id}%>
-        <ul>
+        <%= link_to category_name, params.merge({:category_id => category_id}) %>
+        <ul class="nav nav-list">
         <%- category_types = @types.select{|type| type.category_id == category_id}
             category_types.each do |type|-%>
           <li>
-            <%= link_to type.name, {:controller => "search", :action => "products", :type_id => type.id}%>
+            <%= link_to type.name, params.merge({:type_id => type.id})%>
           </li>
         <%- end -%>
         </ul>
@@ -26,17 +37,24 @@
     </ul>
   </div>
   <div id="flavor_search">
-    <ul>
+    <ul class="nav nav-list">
+    <li class="nav-header">味</li>
       <%- @flavors.each do |flavor| -%>
       <li>
-        <%= link_to flavor.name, {:controller => "search", :action => "products", :flavor_id => flavor.id}%>
+        <%= link_to flavor.name, params.merge({:flavor_id => flavor.id}) %>
       </li>
       <%- end -%>
     </ul>
   </div>
 </div>
-<%= form_tag({:controller => "search", :action => "products"}) do  %>
-<%- end -%>
+<%-
+ params.delete(:score_order)
+ params.delete(:updated_order)
+-%>
+  <div id="order_box" class="btn-group">
+    <span class="btn"><%= link_to "点数順", params.merge({:order => "score"})%></span>
+    <span class="btn"><%= link_to "新着順", params.merge({:order => "updated"})%></span>
+  </div>
 <div id="main">
   <%- if @products.present?-%>
     <%- @products.each do |product| -%>

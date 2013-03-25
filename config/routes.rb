@@ -90,7 +90,7 @@ SuiteSelection::Application.routes.draw do
   match ':controller/:action/(.:format)'
 
   root :to => 'welcome#index'
-# for omniauth settings
-match 'auth/:provider/callback' => 'sessions#login'
-match '/logout' => 'sessions#logout', :as => :logout
+  # for omniauth settings
+  match 'auth/:provider/callback' => 'sessions#login'
+  match '/logout' => 'sessions#logout', :as => :logout
 end

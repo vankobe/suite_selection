@@ -1,3 +1,62 @@
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDxnvCvMd1zdl3DVbkU9N5lcN_lK6v_Osw&sensor=false"></script>
+<script>
+<!--
+var map;
+var marker;
+var geocoder;
+
+function initialize() {
+  var mapOptions = {
+    center: new google.maps.LatLng(34.397, 135.644),
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  // 地図の設定
+  map = new google.maps.Map(document.getElementById("map"),mapOptions);
+  marker = new google.maps.Marker({
+    position: map.getCenter(),
+    map: map,
+    title: 'zoom Click',
+    draggable: true
+  });
+
+  // マーカーイベントのリスナー
+  google.maps.event.addListener(marker, "dragend", function(){
+    setLatLng(marker);
+    map.setCenter(marker.getPosition());
+  });
+
+  // マーカーの座標をセット
+  setLatLng(marker);
+}
+
+function setLatLng(marker){
+  var p = marker.getPosition();
+  $("#shop_latitude").val(p.lat());
+  $("#shop_longitude").val(p.lng());
+}
+
+function setMarkerFromAddress(){
+  var state = $("#shop_state_id option:selected").text();
+  var address = state + $("#shop_address").text();
+
+  geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({"address": address}, function(results, status){
+    map.setCenter(results[0].geometry.location);
+    marker.setPosition(results[0].geometry.location);
+    setLatLng(marker);
+  });
+}
+
+$(function(){
+   initialize();
+   $("#shop_address").on("change", function(){
+     setMarkerFromAddress();
+   });
+});
+-->
+</script>
 <%= form_tag({:controller => "shops", :action => "create"}) do  %>
    <% if @shop.errors.any? %>
     <div id="error_explanation">
@@ -17,22 +76,25 @@
   </select>
   <label>県名</label>
   <select id="shop_state_id" name="shop[state_id]">
-    <%= options_for_select [["北海道", 1]]%>
+    <%= options_for_select [["北海道", 1], ["青森", 2]]%>
   </select>
   <label>住所</label>
-  <input id="shop_address" name="shop[address]" type="text" value=<%= @shop.address%>>
+  <input id="shop_address" name="shop[address]" type="text" value="<%= @shop.address%>" />
   <div class="field">
      <label>ブランド名</label>
-     <input id="shop_name" name="shop[name]" type="text" value=<%= @shop.name%> />
+     <input id="shop_name" name="shop[name]" type="text" value="<%= @shop.name%>" />
   </div>
   <div class="field">
      <label>ホームページ</label>
-     <input id="shop_name" name="shop[home_url]" type="text" value=<%= @shop.home_url%> />
+     <input id="shop_name" name="shop[home_url]" type="text" value="<%= @shop.home_url%>" />
   </div>
   <div class="field">
      <label>オンラインショップページ</label>
-     <input id="shop_name" name="shop[online_url]" type="text" value=<%= @shop.online_url%> />
+     <input id="shop_name" name="shop[online_url]" type="text" value="<%= @shop.online_url%>" />
   </div>
+  <div id="map" style="width:500px;height:500px;"></div>
+  <%= hidden_field "shop", "latitude"%>
+  <%= hidden_field "shop", "longitude"%>
   <div class="actions">
     <%= submit_tag "保存"%>
   </div>
