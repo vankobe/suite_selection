@@ -6,8 +6,6 @@ class Product < ActiveRecord::Base
   has_many :review, :include => ["content"], :order  => "id DESC"
   has_many :review_image, :order => "id DESC"
 
-  validates :country_id, :currency_id, :name, :price, :shop_id, :url, :presence => true
+  validates :name, :shop_id, :presence => true
   validates :name, :length => {:maximum => 200}
-  validates :url, :format => {:with => /^http(s)*:\/\//}
-  validates_numericality_of :price, :less_than_or_equal_to => 1000000
 end

@@ -32,6 +32,7 @@ class ShopsController < ApplicationController
   # GET /shops/new.json
   def new
     @shop = Shop.new
+    @states = State.all
 
     respond_to do |format|
       format.html # new.html.erb

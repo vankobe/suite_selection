@@ -10,8 +10,17 @@
     </tr>
     <tr>
      <td colspan="2">
-       <a  href="<%= shop.home_url %>"><input type="button" class="btn btn-info" value="ホームページ" /></a>
-       <a href="<%= shop.online_url %>"><input type="button" class="btn btn-success" value="オンラインショップ" /></a>
+       <a  href="<%= shop.home_url %>"><input type="button" class="btn btn-info span3" value="ホームページ" /></a>
+     </td>
+    </tr>
+    <tr>
+     <td colspan="2">
+       <a href="<%= shop.online_url %>"><input type="button" class="btn btn-success span3" value="オンラインショップ" /></a>
+     </td>
+    </tr>
+    <tr>
+     <td colspan="2">
+       <%= button_to "商品を登録する", {:controller => 'products', :action => 'new', :shop_id => @shop.id}, {:class => "btn btn-warning span3", :id => "new_product_btn"} %>
      </td>
     </tr>
   </table>

@@ -7,7 +7,7 @@ div#shop_review_main {
   margin: 10px 0;
 }
 div.review_box_main {
-  margin: 10px;
+  margin: 0px;
 }
 div.review_box_main p{
   margin: 2px;
@@ -22,7 +22,7 @@ span.review_main_user {
 <div id="shop_review_main">
   <%- if review.present? -%>
     <div class="review_box_main span6">
-      <p class="review_subject_main span4">
+      <p class="review_subject_main span6">
         <strong><%= review.subject %></strong>
         <span class="review_main_user"><a href=<%= review.user.facebook_url%>> by <%= review.user.nickname %></a></span>
       </p>

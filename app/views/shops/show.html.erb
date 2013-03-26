@@ -3,25 +3,26 @@
   float:left;
 }
 #shop_image {
+  clear:both;
   float:left;
 }
 .guide {
   clear:both;
 }
-#new_product_btn {
-  float:right;
+#shop_info {
+  float: left;
 }
 </style>
 <p id="notice"><%= notice %></p>
 
 <h1><%= @shop.name %></h1>
-<%= button_to "商品を登録する", {:controller => 'products', :action => 'new', :shop_id => @shop.id}, {:class => "btn btn-success", :id => "new_product_btn"} %>
 <%= render :partial => 'shop_review_box_main', :locals => {:review => @shop_main_review}%>
 <%- if @shop_main_image -%>
   <div id="shop_image_main">
-    <%= image_tag @shop_main_image.shop_review_image.thumb("500x400#").url%>
+    <%= image_tag @shop_main_image.shop_review_image.thumb("500x350#").url, :class => "img-polaroid"%>
   </div>
 <%- end -%> 
+<%= render :partial => '/products/shop_info_box', :locals => {:shop => @shop}%>
 <div id="shop_image">
   <%- if @shop_images.present? -%>
     <% @shop_images.each do |shop_image| %>
@@ -29,7 +30,6 @@
     <%- end -%>
   <%- end -%>
 </div>
-<%= render :partial => '/products/shop_info_box', :locals => {:shop => @shop}%>
 <%= render :partial => 'shop_product_box', :locals => {:products => @shop_products} %>
 <%= render :partial => 'shop_review_box', :locals => {:reviews => @shop_reviews}%>
 <div class="guide">

@@ -12,11 +12,11 @@
   <% end %>
   <div class="field">
      <label>概要</label>
-     <input id="shop_review_subject" name="shop_review[subject]" type="text" value="" />
+     <input id="shop_review_subject" name="shop_review[subject]" type="text" value="<%= @shop_review.subject%>" />
   </div>
   <div class="field">
      <label>説明</label>
-     <input id="shop_review_comment" name="shop_review[comment]" type="textarea" value="" />
+     <textarea id="shop_review_comment" class="input-xxlarge" name="shop_review[comment]" type="textarea" value="<%= @shop_review.comment%>" rows="5"></textarea>
   </div>
   <div class="field">
      <label>画像</label>
@@ -25,6 +25,6 @@
   <input id="shop_review_shop_id" name="shop_review[shop_id]"type="hidden" value=<%=@shop_id%>>
   <input id="shop_review_language_id" name="shop_review[language_id]"type="hidden" value=<%=MasterTable::Language::JAPANESE%>
   <div class="actions">
-    <%= submit_tag "確認" %>
+    <%= submit_tag "保存" %>
   </div>
 <% end %>
