@@ -41,11 +41,10 @@ class FlavorsController < ApplicationController
   # POST /flavors.json
   def create
     @flavor = Flavor.new(params[:flavor])
-
     respond_to do |format|
       if @flavor.save
         format.html { redirect_to @flavor, notice: 'Flavor was successfully created.' }
-        format.json { render json: @flavor, status: :created, location: @flavor }
+        format.json { render json: flavor_box, status: :created, location: @flavor }
       else
         format.html { render action: "new" }
         format.json { render json: @flavor.errors, status: :unprocessable_entity }

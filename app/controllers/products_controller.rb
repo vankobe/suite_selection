@@ -19,6 +19,8 @@ class ProductsController < ApplicationController
   def show
     @product = Product.where(["id = ?", params[:id].to_i]).first
     raise NoProductError if @product.blank?
+
+    @providers = @product.provider
     @product_contents = @product.contents
 
     @shop = @product.shop
@@ -42,6 +44,7 @@ class ProductsController < ApplicationController
     @shop_id = params[:shop_id]
     raise "お探しのお店が見つかりません" unless @shop_id.present?
     @product = Product.new
+    @provider = Provider.new
     @product_types = ProductType.all
     @flavors = Flavor.all
 
@@ -59,15 +62,21 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
+    product = Product.new(params[:product])
+    if params[:product].present? && params[:product][:shop_id].present? && shop = Shop.where(["id = ?", params[:product][:shop_id]])
+      shop_name = shop.first.name
+    end
     content_params = params[:product_content]
     flavors     = params[:product_flavor]
     saved_flg   = false
+
     Product.transaction do
-      @product.save!
+      product.save!
+      provider = Provider.new((params[:provider]).merge({:name => shop_name, :product_id => product.id}))
+      provider.save!
       flavors.each do |flavor_id, quantity|
         if quantity.to_i != 0
-          product_content = ProductContent.new(content_params.merge(:product_id => @product.id, :flavor_id => flavor_id, :quantity => quantity))
+          product_content = ProductContent.new(content_params.merge(:product_id => product.id, :flavor_id => flavor_id, :quantity => quantity))
           product_content.save!
         end
       end
@@ -76,11 +85,9 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if saved_flg
-        format.html { redirect_to :controller => "reviews", :action => "new", :product_id => @product.id }
-        format.json { render json: @product, status: :created, location: @product }
+        format.html { redirect_to :controller => "reviews", :action => "new", :product_id => product.id }
       else
         format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end

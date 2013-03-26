@@ -4,6 +4,28 @@
   flavor_id ||= nil
   quantity ||= nil
 -%>
+<script>
+$(function(){
+  $("#flavor_add").on('click', function(){
+    $(this).attr("disabled", true)
+    var flavor_name = $("#flavor_name").val();
+    var authenticity_token = $("input[name=authenticity_token]").val()
+    $.ajax({
+      type: 'POST',
+      url: '/flavors/create',
+      dataType: 'json',
+      data: {flavor: {name: flavor_name}, authenticity_token: authenticity_token},
+      success: function(data){
+        $(this).attr("disabled", false)
+        $(".flavor_select").append(data);
+      },
+      error: function(data){
+        $(this).attr("disabled", false)
+      }
+    });
+  });
+});
+</script>
 <tr>
   <th>カテゴリー</th>
   <td>
@@ -12,14 +34,16 @@
 </tr>
 <tr>
   <th>内容</th>
-  <td>
+  <td id="flavor_select">
   <%- if @flavors.present?-%>
     <%- @flavors.each do |flavor| -%>
-      <div class="flavors span1.5" data-flavor_id="<%= flavor.id%>">
-      <%= flavor.name %>
-      <%= number_field_tag "product_flavor[#{flavor.id}]", 0,{:min => 0, :class => "span1"} %>
-      </div>
+      <%= render :partial => 'flavor_select_box', :locals=> {:flavor => flavor} %>
     <%- end -%>
   <%- end -%>
+      <div>
+        <%= label :flavor, :name, "フレーバーを追加"%>
+        <%= text_field :flavor, :name, :class => "span4"%>
+        <%= link_to "追加", "#", :id => "flavor_add", :class => "btn" %>
+      </div>
   </td>
 </tr>

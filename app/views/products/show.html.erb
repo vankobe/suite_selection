@@ -47,6 +47,7 @@
   <%- end -%>
 </div>
 <%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
+<%= render :partial => 'provider_info_box', :locals => {:providers => @providers} %>
 <%= render :partial => 'product_review_box', :locals => {:reviews => @reviews}%>
 <%= render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
 <div class="guide">

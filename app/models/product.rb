@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   belongs_to :shop, :include => ["state"]
   has_many :review, :include => ["content"], :order  => "id DESC"
   has_many :review_image, :order => "id DESC"
+  has_many :provider
 
   validates :name, :shop_id, :presence => true
   validates :name, :length => {:maximum => 200}

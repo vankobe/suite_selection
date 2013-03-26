@@ -1,6 +1,8 @@
 class Provider < ActiveRecord::Base
   attr_accessible :country_id, :currency_id, :name, :price, :product_id, :url
 
+  belongs_to :product
+
   validates :country_id, :currency_id, :price, :name, :url, :presence => true
   validates :name, :length => {:maximum => 200}
   validates :url, :format => {:with => /^http(s)*:\/\//}
