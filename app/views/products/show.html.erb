@@ -89,6 +89,34 @@ $(function(){
     }
   });
 
+  var ProviderAddView = Backbone.View.extend({
+    el: "#provider-add-box",
+    events: {"click #add-provider": "addProvider"},
+    addProvider: function(e){
+      var url = $("#provider_url").val();
+      var country_id = $("#provider_country_id").val();
+      var currency_id = $("#provider_currency_id").val();
+      var price = $("#provider_price").val();
+      var name = $("#provider_name").val();
+      var product_id = $("#provider_product_id").val();
+      this.model.set({
+        url: url,
+        country_id: country_id,
+        currency_id: currency_id,
+        price: price,
+        name: name,
+        product_id: product_id
+      });
+      this.model.save({},{
+        success: function(provider){
+          var providerView = new ProviderView({model: provider});
+          $("#provider_info_table").append(providerView.render().el);
+        }
+      });
+      return this;
+    }
+  });
+
   var Providers = Backbone.Collection.extend({
     model: Provider,
     url: '/providers/',
@@ -108,16 +136,22 @@ $(function(){
   });
 
   var provider = new Provider({id: 1});
-console.log(provider.toJSON())
   provider.fetch();
+  var providerView = new ProviderView({model: provider});
+  $("#provider_info_table").append(providerView.render().el);
+  var providerAddView = new ProviderAddView({model: new Provider});
   var providers = new Providers({model: provider});
   var providersView = new ProvidersView({collection: providers});
 });
 </script>
-<div class="span8">
+<div id="provider-add-box" class="span8">
       <p>
         <%= label :provider, :url, "販売ページ"%>
         <%= url_field :provider, :url, :class => "input-xxlarge"%>
+      </p>
+      <p>
+        <%= label :provider, :name, "ページ名"%>
+        <%= text_field :provider, :name, :class => "input-xxlarge"%>
       </p>
       <p>
         <span class="float-left">
@@ -128,7 +162,8 @@ console.log(provider.toJSON())
         <%= label :provider, :currency_id, "値段" -%>
         <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options), {},{:class => "input-mini"} -%>
         <%= text_field :provider, :price, :class => "input-xlarge" -%>
-        <%= link_to "保存", "#", :class => "btn btn-success"%>
+        <%= hidden_field :provider, :product_id, :value => @product.id%>
+        <%= link_to "保存", "#", :id => "add-provider", :class => "btn btn-success"%>
         </span>
       </p>
 </div>

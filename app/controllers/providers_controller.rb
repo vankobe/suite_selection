@@ -43,9 +43,8 @@ class ProvidersController < ApplicationController
     @provider = Provider.new(params[:provider])
     respond_to do |format|
       if @provider.save
-        provider_box = render_to_string :partial => "products/provider_select_box", :locals => {:provider => @provider}
         format.html { redirect_to @provider, notice: 'Provider was successfully created.' }
-        format.json { render json: provider_box, status: :created, location: @provider }
+        format.json { render json: @provider, status: :created, location: @provider }
       else
         format.html { render action: "new" }
         format.json { render json: @provider.errors, status: :unprocessable_entity }
