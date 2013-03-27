@@ -24,6 +24,7 @@
     }
   }
   $(function(){
+    SearchType.search($("#product_content_category_id"));
     $("#product_content_category_id").on("change", function(){
       $("#product_type").remove();
       SearchType.search($(this));
@@ -69,7 +70,7 @@
     <tr>
       <th>商品名</th>
       <td>
-        <input id="product_name" name="product[name]" type="text" value="<%= @product.name %>" />
+        <%= text_field :product, :name, :class => "input-xxlarge"%>
       </td>
     </tr>
     <%- contents = @product.try(:contents) || []
@@ -83,25 +84,26 @@
     <tr>
       <th class="span2">国名</th>
       <td>
-        <%= select :provider, :country_id, options_for_select(MasterTable::CountryJp::Options, :selected => @provider.country_id)%>
+        <%= select :provider, :country_id, options_for_select(MasterTable::CountryJp::Options, :selected => @provider.try(:country_id)) %>
       </td>
     </tr>
     <tr>
       <th>値段</th>
       <td>
-       <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options, :selected => @provider.currency_id) %>
-       <input id="provider_price" name="provider[price]" type="text" value="<%= @provider.price %>" />
+        <span><%= MasterTable::Currency::Options(@provider.currency_id)%></span>
+        <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options, :selected => @provider.try(:currency_id)) %>
+        <%= text_field :provider, :price%>
       </td>
     </tr>
     <tr>
       <th>販売ページ</th>
       <td>
-        <input id="provider_url" name="provider[url]" type="text" value="<%= @provider.url %>" />
+        <%= url_field :provider, :url%>
       </td>
     </tr>
   </table>
-  <input id="product_shop_id" name="product[shop_id]"type="hidden" value=<%=@shop_id %>>
+  <%= hidden_field :product, :shop_id, :value => @shop_id%>
   <div class="actions">
-    <%= submit_tag "保存" %>
+    <%= submit_tag "保存", :class => "btn btn-success" %>
   </div>
 <% end %>

@@ -29,6 +29,9 @@
   .guide {
     clear:both;
   }
+  .float-left{
+    float:left;
+  }
 </style>
 <p id="notice"><%= notice %></p>
 
@@ -48,6 +51,87 @@
 </div>
 <%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
 <%= render :partial => 'provider_info_box', :locals => {:providers => @providers} %>
+<%= javascript_include_tag "underscore", "backbone"%>
+<script type="text/template" id="provider-template" >
+<table id="product_info_table" class="table table-striped span6">
+    <tbody><tr>
+      <td>
+        <a href="{{= url }}"><input type="button" class="btn btn-success span4 center" value="{{= name }}"></a>
+        {{= country_id}}
+        {{= currency_id}} {{= price }}
+      </td>
+    </tr>
+</tbody></table>
+</script>
+<script>
+_.templateSettings = {
+    interpolate: /\{\{\=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g
+};
+$(function(){
+  var Provider = Backbone.Model.extend({
+    defaults: {
+      country_id: 0,
+      currency_id: 0,
+      price: 0,
+      url: "",
+    },
+    urlRoot: "/providers"
+  });
+  
+  var ProviderView = Backbone.View.extend({
+    tagName: "div",
+    template: _.template($("#provider-template").html()),
+    render: function(){
+      var template = this.template(this.model.toJSON());
+      this.$el.html(template);
+      return this;
+    }
+  });
+
+  var Providers = Backbone.Collection.extend({
+    model: Provider,
+    url: '/providers/',
+    initialize: function(){
+    }
+  });
+
+  var ProvidersView = Backbone.View.extend({
+    tagName: "p",
+    render: function(){
+      this.collection.each(function(provider){
+        var providerView = new ProviderView({ model: provider});
+        this.$el.html(providerView.render().el);
+      }, this);
+      return this;
+    }
+  });
+
+  var provider = new Provider({id: 1});
+console.log(provider.toJSON())
+  provider.fetch();
+  var providers = new Providers({model: provider});
+  var providersView = new ProvidersView({collection: providers});
+});
+</script>
+<div class="span8">
+      <p>
+        <%= label :provider, :url, "販売ページ"%>
+        <%= url_field :provider, :url, :class => "input-xxlarge"%>
+      </p>
+      <p>
+        <span class="float-left">
+        <%= label :provider, :country_id, "国" -%>
+        <%= select :provider, :country_id, options_for_select(MasterTable::CountryJp::Options),{}, {:class => "input-small"} -%>
+        </span>
+        <span class="float-left">
+        <%= label :provider, :currency_id, "値段" -%>
+        <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options), {},{:class => "input-mini"} -%>
+        <%= text_field :provider, :price, :class => "input-xlarge" -%>
+        <%= link_to "保存", "#", :class => "btn btn-success"%>
+        </span>
+      </p>
+</div>
 <%= render :partial => 'product_review_box', :locals => {:reviews => @reviews}%>
 <%= render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
 <div class="guide">

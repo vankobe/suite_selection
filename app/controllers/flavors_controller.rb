@@ -43,6 +43,7 @@ class FlavorsController < ApplicationController
     @flavor = Flavor.new(params[:flavor])
     respond_to do |format|
       if @flavor.save
+        flavor_box = render_to_string :partial => "products/flavor_select_box", :locals => {:flavor => @flavor}
         format.html { redirect_to @flavor, notice: 'Flavor was successfully created.' }
         format.json { render json: flavor_box, status: :created, location: @flavor }
       else

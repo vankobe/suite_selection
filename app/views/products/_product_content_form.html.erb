@@ -15,12 +15,9 @@ $(function(){
       url: '/flavors/create',
       dataType: 'json',
       data: {flavor: {name: flavor_name}, authenticity_token: authenticity_token},
-      success: function(data){
+      complete: function(data){
         $(this).attr("disabled", false)
-        $(".flavor_select").append(data);
-      },
-      error: function(data){
-        $(this).attr("disabled", false)
+        $("#flavor_select").append(data.responseText);
       }
     });
   });
