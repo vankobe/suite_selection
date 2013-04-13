@@ -43,3 +43,4 @@ gem 'omniauth-facebook'
 
 gem 'rack-cache'
 gem 'dragonfly'
+gem 'kaminari'

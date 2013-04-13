@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326061524) do
+ActiveRecord::Schema.define(:version => 20130413105636) do
+
+  create_table "countries", :force => true do |t|
+    t.string "name_ja"
+    t.string "name_en"
+  end
 
   create_table "flavors", :force => true do |t|
     t.string   "name"
@@ -122,7 +127,7 @@ ActiveRecord::Schema.define(:version => 20130326061524) do
   create_table "states", :force => true do |t|
     t.integer "country_id"
     t.string  "name"
-    t.string  "ruby"
+    t.string  "code"
   end
 
   create_table "users", :force => true do |t|
