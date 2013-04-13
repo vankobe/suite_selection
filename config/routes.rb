@@ -1,5 +1,11 @@
 SuiteSelection::Application.routes.draw do
 
+  resources :countries
+
+
+  resources :states
+
+
   resources :product_types
 
   resources :providers

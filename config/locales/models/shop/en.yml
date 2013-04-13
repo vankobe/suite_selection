@@ -1,0 +1,12 @@
+en:
+  shop:
+    attributes:
+      score: "score" 
+      country_id: "country" 
+      state_id: "state"   
+      address: "address"
+      name: "shop name"
+      home_url: "home page"
+      online_url: "online shop page"
+      longitude: "longitude"  
+      latitude: "latitude"

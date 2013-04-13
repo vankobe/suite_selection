@@ -1,0 +1,12 @@
+ja:
+  shop: 
+    attributes:
+      score: "点数" 
+      country_id: "国名" 
+      state_id: "県名"   
+      address: "住所"
+      name: "店名"
+      home_url: "ホームページ"
+      online_url: "オンラインショップページ"
+      longitude: "経度"  
+      latitude: "緯度"
