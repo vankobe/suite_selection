@@ -1,0 +1,40 @@
+<div id="search_box" class="well">
+  <div id="shop_search" class="well">
+    <ul class="nav nav-list">
+    <li class="nav-header">ショップ</li>
+    <%- @shops.each do |shop|-%>
+      <li>
+        <%= link_to shop.name, params.merge({:shop_id => shop.id}) %>
+      </li>
+    <%- end -%>
+    </ul>
+  </div>
+  <div id="category_search"class="well">
+    <ul class="nav nav-list">
+    <li class="nav-header">カテゴリー</li>
+    <%- MasterTable::Category::NAME.each do |category_id, category_name|-%>
+      <li>
+        <%= link_to category_name, params.merge({:category_id => category_id}) %>
+        <ul class="nav nav-list">
+        <%- category_types = @types.select{|type| type.category_id == category_id}
+            category_types.each do |type|-%>
+          <li>
+            <%= link_to type.name, params.merge({:type_id => type.id})%>
+          </li>
+        <%- end -%>
+        </ul>
+      </li>
+    <%- end -%>
+    </ul>
+  </div>
+  <div id="flavor_search" class="well">
+    <ul class="nav nav-list">
+    <li class="nav-header">味</li>
+      <%- @flavors.each do |flavor| -%>
+      <li>
+        <%= link_to flavor.name, params.merge({:flavor_id => flavor.id}) %>
+      </li>
+      <%- end -%>
+    </ul>
+  </div>
+</div>

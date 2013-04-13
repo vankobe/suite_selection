@@ -1,2 +1,18 @@
-<h1>Search#shops</h1>
-<p>Find me in app/views/search/shops.html.erb</p>
+<%=image_tag "sweetalogo.jpg", :width => "100%"%>
+<div id="search_bar">
+  <%= form_tag({:controller => "search", :action => "shops"}, :class => "form-search") do %>
+    <%= text_field_tag :name,"", :class => "search-query" %>
+    <%= submit_tag "検索", :class => "btn" %>
+  <%- end -%>
+</div>
+<div id="main">
+  <%= paginate @shops%>
+  <%- if @shops.present?-%>
+    <%- @shops.each do |shop| -%>
+      <h3><%= shop.name %></h3>
+      <p><%= shop.try(:score) %></p>
+      <hr />
+    <%- end -%>
+  <%- end -%>
+</div>
+

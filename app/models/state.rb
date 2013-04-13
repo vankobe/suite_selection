@@ -1,4 +1,5 @@
 class State < ActiveRecord::Base
-  attr_accessible :country_id, :name
-  has_many :shop
+  attr_accessible :code, :country_id, :name
+  
+  belongs_to :country
 end

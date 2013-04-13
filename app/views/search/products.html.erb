@@ -2,51 +2,17 @@
 #search_box {
   float: left;
 }
+#order_box {
+  float: right;
+}
 #main {
-  float:left;
+  clear:right;
+  margin: 10px;
 }
 </style>
 
-<div id="search_box" class="well">
-  <div id="shop_search">
-    <ul class="nav nav-list">
-    <li class="nav-header">ショップ</li>
-    <%- @shops.each do |shop|-%>
-      <li>
-        <%= link_to shop.name, params.merge({:shop_id => shop.id}) %>
-      </li>
-    <%- end -%>
-    </ul>
-  </div>
-  <div id="category_search">
-    <ul class="nav nav-list">
-    <li class="nav-header">カテゴリー</li>
-    <%- MasterTable::Category::NAME.each do |category_id, category_name|-%>
-      <li>
-        <%= link_to category_name, params.merge({:category_id => category_id}) %>
-        <ul class="nav nav-list">
-        <%- category_types = @types.select{|type| type.category_id == category_id}
-            category_types.each do |type|-%>
-          <li>
-            <%= link_to type.name, params.merge({:type_id => type.id})%>
-          </li>
-        <%- end -%>
-        </ul>
-      </li>
-    <%- end -%>
-    </ul>
-  </div>
-  <div id="flavor_search">
-    <ul class="nav nav-list">
-    <li class="nav-header">味</li>
-      <%- @flavors.each do |flavor| -%>
-      <li>
-        <%= link_to flavor.name, params.merge({:flavor_id => flavor.id}) %>
-      </li>
-      <%- end -%>
-    </ul>
-  </div>
-</div>
+<%=image_tag "sweetalogo.jpg", :width => "100%"%>
+<%= render :partial => 'search_box' %>
 <%-
  params.delete(:score_order)
  params.delete(:updated_order)
@@ -56,9 +22,17 @@
     <span class="btn"><%= link_to "新着順", params.merge({:order => "updated"})%></span>
   </div>
 <div id="main">
+  <%= paginate @products%>
   <%- if @products.present?-%>
     <%- @products.each do |product| -%>
       <h3><%= product.name %></h3>
+      <p><%= product.try(:score) %></p>
+      <p>
+        <% if product.provider.first.present? %>
+          <%= product.provider.first.price%>
+        <% end %>
+      </p>
+      <hr />
     <%- end -%>
   <%- end -%>
 </div>

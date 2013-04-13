@@ -136,9 +136,12 @@ $(function(){
   });
 
   var provider = new Provider({id: 1});
-  provider.fetch();
-  var providerView = new ProviderView({model: provider});
-  $("#provider_info_table").append(providerView.render().el);
+  provider.fetch({
+    success: function(provider){
+      var providerView = new ProviderView({model: provider});
+      $("#provider_info_table").append(providerView.render().el);
+    }
+  });
   var providerAddView = new ProviderAddView({model: new Provider});
   var providers = new Providers({model: provider});
   var providersView = new ProvidersView({collection: providers});
