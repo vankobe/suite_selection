@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    models:
+      review_image: "Product Image"
+    attributes:
+      review_image: 

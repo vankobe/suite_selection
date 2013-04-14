@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      shop_review: "ShopReview"
+    attributes:
+      shop_review: 
+        score: "Score" 
+        subject: "Subject" 
+        comment: "Content"   

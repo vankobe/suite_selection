@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      provider: "Provider"
+    attributes:
+      provider: 
+        country_id: "Country" 
+        name: "Provider Name"
+        url: "Online Shop Page"
+        price: "Price"

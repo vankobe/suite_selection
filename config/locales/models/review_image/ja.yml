@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    models:
+      review_image: "商品画像"
+    attributes:
+      review_image: 

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      shop_review: "店舗口コミ"
+    attributes:
+      shop_review: 
+        score: "点数" 
+        subject: "概要" 
+        comment: "本文"   
+        image: "店舗画像"

@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      review: "Review"
+    attributes:
+      review: 
+        score: "Score" 
+        subject: "Subject"

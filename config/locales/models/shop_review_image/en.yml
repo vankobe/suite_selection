@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      shop_review_image: "ShopReviewImage"
+    attributes:
+      shop_review_image:
+        image: "Imagej"

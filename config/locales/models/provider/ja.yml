@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      provider: "販売元"
+    attributes:
+      provider: 
+        country_id: "販売国" 
+        name: "販売元名"
+        url: "販売ページ"
+        price: "値段"

@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      product: "商品"
+    attributes:
+      product: 
+        score: "点数" 
+        name: "商品名"

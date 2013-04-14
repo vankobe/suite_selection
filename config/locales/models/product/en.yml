@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      product: "Product"
+    attributes:
+      product: 
+        score: "Score" 
+        name: "Product Name"

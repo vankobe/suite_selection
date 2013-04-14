@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      review: "口コミ"
+    attributes:
+      review: 
+        score: "評価" 
+        subject: "タイトル"

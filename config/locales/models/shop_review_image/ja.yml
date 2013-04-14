@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      shop_review_image: "店舗画像"
+    attributes:
+      shop_review_image:
+        image: "店舗画像"

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      product_content: "Product Content"
+    attributes:
+      product_content: 
+        category_id: "Category"
+        type_id: "Type"
+        flavor_id: "Flavor"
+        quantity: "Quantity"

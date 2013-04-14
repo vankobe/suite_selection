@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      product_content: "商品内容"
+    attributes:
+      product_content: 
+        category_id: "カテゴリ"
+        type_id: "タイプ"
+        flavor_id: "味"
+        quantity: "内容量"
+

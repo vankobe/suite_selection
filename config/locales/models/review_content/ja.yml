@@ -1,0 +1,5 @@
+ja:
+  activerecord:
+    models:
+      review_content: "本文"
+    attributes:
