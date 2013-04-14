@@ -1,6 +1,6 @@
 # encoding: utf-8
 class ReviewsController < ApplicationController
-  before_filter :get_user, :only => [:new, :edit, :create]
+  before_filter :only_user_allow, :only => [:new, :edit, :create]
 
   # GET /reviews
   # GET /reviews.json

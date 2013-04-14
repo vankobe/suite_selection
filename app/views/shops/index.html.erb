@@ -1,17 +1,16 @@
 <h1>Listing shops</h1>
-<%- scope = [:shop, :attributes]-%>
 
 <table>
   <tr>
-    <th><%=t :score, :scope => scope %></th>
-    <th><%=t :country_id, :scope => scope %></th>
-    <th><%=t :state_id, :scope => scope %></th>
-    <th><%=t :address, :scope => scope %></th>
-    <th><%=t :name, :scope => scope %></th>
-    <th><%=t :home_url, :scope => scope %></th>
-    <th><%=t :online_url, :scope => scope %></th>
-    <th><%=t :longitude, :scope => scope %></th>
-    <th><%=t :latitude, :scope => scope %></th>
+    <th><%= label :shop, :score , Shop.human_attribute_name(:score)%></th>
+    <th><%= label :shop, :country_id %></th>
+    <th><%= label :shop, :state_id %></th>
+    <th><%= label :shop, :address %></th>
+    <th><%= label :shop, :name%></th>
+    <th><%= label :shop, :home_url%></th>
+    <th><%= label :shop, :online_url%></th>
+    <th><%= label :shop, :longitude%></th>
+    <th><%= label :shop, :latitude %></th>
     <th></th>
     <th></th>
     <th></th>

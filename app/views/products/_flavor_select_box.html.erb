@@ -1,6 +1,6 @@
 <%- if flavor -%>
-<div class="flavors span1.5" data-flavor_id="<%= flavor.id%>">
-<%= flavor.name %>
-<%= number_field_tag "product_flavor[#{flavor.id}]", 0,{:min => 0, :class => "span1"} %>
-</div>
+  <div class="flavors span1.5" data-flavor_id="<%= flavor.id%>">
+  <%= flavor.name %>
+  <%= number_field_tag "product_flavor[#{flavor.id}]", 0,{:min => 0, :class => "span1"} %>
+  </div>
 <%- end -%>

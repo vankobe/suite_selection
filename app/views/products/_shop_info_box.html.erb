@@ -1,12 +1,12 @@
 <div id="shop_info">
   <table class="table table-striped span3.5">
     <tr>
-      <th class="span1.5">ショップ名</th>
-      <td><%= shop.name %></td>
+      <th class="span1.5"><%= label :shop, :name%></th>
+      <td><%= link_to shop.name, {:controller => :shops, :action => :show, :id => shop.id} %></td>
     </tr>
     <tr>
       <th>所在地</th>
-      <td><%= MasterTable::CountryJp::Name[shop.country_id] %><%= shop.state.name %><br /><%= shop.address %></td>
+      <td><%= shop.country.name %><%= shop.state.name %><br /><%= shop.address %></td>
     </tr>
     <tr>
      <td colspan="2">

@@ -11,24 +11,22 @@
     </div>
   <% end %>
 
-  <label>評価</label>
-  <select id="review_score" name="review[score]">
-    <%= options_for_select((Review::SCORES), :selected => @review.score)%>
-  </select>
+  <%= label :review, :score%>
+  <%= range_field :review, :score, :max => 5, :min => 0, :step => 0.5, :size => 10, :value => @review.score%>
   <div class="field">
-     <label>画像</label>
-     <input id="review_image" name="review_image" type="file" value="参照" />
+    <%= label_tag :review_image, ReviewImage.model_name.human%>
+    <%= file_field_tag :review_image%> 
   </div>
   <div class="field">
-    <label>タイトル</label>
-    <input id="review_subject" name="review[subject]"type="text" class="input-xxlarge" value="<%= @review.subject%>">
+    <%= label :review, :subject %>
+    <%= text_field :review, :subject, :class => 'input-xxlarge', :value => @review.subject%>
   </div>
   <div class="field">
-      <label class="field" for="textarea">本文</label>
-      <textarea class="input-xxlarge" id="comment" name="comment" rows="5"></textarea>
+    <%= label_tag :comment, ReviewContent.model_name.human %>
+    <%= text_area_tag :comment, @review.content.try(:comment), :class => 'input-xxlarge'%>
   </div>
-  <input id="review_language_id" name="review[language_id]"type="hidden" value=<%=MasterTable::Language::JAPANESE%>>
-  <input id="review_product_id" name="review[product_id]"type="hidden" value=<%=@product_id %>>
+  <%= hidden_field :review, :language_id, :value => MasterTable::Language::Options[I18n.locale]%>
+  <%= hidden_field :review, :product_id, :value => @product_id%>
   <div class="actions">
     <%= submit_tag "保存", :class => "btn btn-success" %>
   </div>

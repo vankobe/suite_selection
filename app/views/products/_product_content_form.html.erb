@@ -24,13 +24,13 @@ $(function(){
 });
 </script>
 <tr>
-  <th>カテゴリー</th>
+  <th><%= label :product_content, :category_id %></th>
   <td>
     <%= select :product_content, :category_id, options_for_select(MasterTable::Category::NAME.invert, :selected => category_id) %>
   </td>
 </tr>
 <tr>
-  <th>内容</th>
+  <th><%= label :product_content, :flavor, ProductContent.model_name.human %></th>
   <td id="flavor_select">
   <%- if @flavors.present?-%>
     <%- @flavors.each do |flavor| -%>

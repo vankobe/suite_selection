@@ -195,3 +195,7 @@ ja:
   activerecord:
     errors:
       <<: *errors
+  order:
+    score: 評価順
+    updated_at: 更新順
+    created_at: 新着順

@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_filter :get_user, :only => [:new, :edit, :create]
+  before_filter :only_user_allow, :only => [:new, :edit, :create]
 
   # GET /shops
   # GET /shops.json
@@ -32,6 +32,7 @@ class ShopsController < ApplicationController
   # GET /shops/new.json
   def new
     @shop = Shop.new
+    @countries = Country.all
     @states = State.all
 
     respond_to do |format|

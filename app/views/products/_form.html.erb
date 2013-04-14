@@ -29,24 +29,11 @@
       $("#product_type").remove();
       SearchType.search($(this));
     });
-//    $(".flavors ").on("change", function(){
-//      var flavor_id = $(this).attr("data-flavor_id");
-//      if ($(this).find("input[type=number]").val() != 0){
-//        if ($(this).find("input[type=hidden]").size() == 0) {
-//        $("<input />").attr('type', 'hidden')
-//                      .attr('name', "product_content[flavor_"+ flavor_id +"][flavor_id]")
-//                      .attr('value', flavor_id)
-//                      .appendTo($(this));
-//        }
-//      } else {
-//        $(this).find("input[type=hidden]").remove();
-//      }
-//    });
   });
 </script>
 <style>
   #provider_currency_id {
-    width:50px;
+    width:80px;
   }
   .flavors {
     display:inline;
@@ -68,7 +55,7 @@
 
   <table class="table  table-bordered table-striped">
     <tr>
-      <th>商品名</th>
+      <th><%= label :product, :name%></th>
       <td>
         <%= text_field :product, :name, :class => "input-xxlarge"%>
       </td>
@@ -82,23 +69,23 @@
           <%= render :partial => 'product_content_form' %>
         <%- end -%>
     <tr>
-      <th class="span2">国名</th>
+      <th class="span2"><%= label :provider, :country_id %></th>
       <td>
-        <%= select :provider, :country_id, options_for_select(MasterTable::CountryJp::Options, :selected => @provider.try(:country_id)) %>
+        <%= select :provider, :country_id, @countries.map{|c| [c.name, c.id]}, :selected => @provider.try(:country_id) %>
       </td>
     </tr>
     <tr>
-      <th>値段</th>
+      <th><%= label :provider, :price %></th>
       <td>
-        <span><%= MasterTable::Currency::Options(@provider.currency_id)%></span>
+        <span><%= MasterTable::Currency::Options[@provider.currency_id]%></span>
         <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options, :selected => @provider.try(:currency_id)) %>
         <%= text_field :provider, :price%>
       </td>
     </tr>
     <tr>
-      <th>販売ページ</th>
+      <th><%= label :provider, :url%></th>
       <td>
-        <%= url_field :provider, :url%>
+        <%= url_field :provider, :url, :class => "input-xxlarge"%>
       </td>
     </tr>
   </table>

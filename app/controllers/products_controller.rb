@@ -1,7 +1,7 @@
 # encoding: utf-8
 class ProductsController < ApplicationController
   include SweetaErrors
-  before_filter :get_user, :only => [:new, :edit, :create]
+  before_filter :only_user_allow, :only => [:new, :edit, :create]
 
   # GET /products
   # GET /products.json
@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
     
     @main_review = @reviews.first
     @main_image  = @review_images.first
+    @countries = Country.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,6 +48,7 @@ class ProductsController < ApplicationController
     @provider = Provider.new
     @product_types = ProductType.all
     @flavors = Flavor.all
+    @countries = Country.all
 
     respond_to do |format|
       format.html # new.html.erb

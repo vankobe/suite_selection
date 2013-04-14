@@ -4,8 +4,8 @@ module MasterTable
     JAPANESE = 1
     ENGLISH  = 2
     Options = {
-      "日本語" => JAPANESE,
-      "English"  => ENGLISH
+      :ja => JAPANESE,
+      :en => ENGLISH
     }
   end
 end

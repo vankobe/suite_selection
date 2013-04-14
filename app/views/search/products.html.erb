@@ -18,15 +18,21 @@
  params.delete(:updated_order)
 -%>
   <div id="order_box" class="btn-group">
-    <span class="btn"><%= link_to "点数順", params.merge({:order => "score"})%></span>
-    <span class="btn"><%= link_to "新着順", params.merge({:order => "updated"})%></span>
+    <span class="btn"><%= link_to t("order.score"), params.merge({:order => "score"})%></span>
+    <span class="btn"><%= link_to t("order.created_at"), params.merge({:order => "updated"})%></span>
   </div>
 <div id="main">
   <%= paginate @products%>
   <%- if @products.present?-%>
     <%- @products.each do |product| -%>
-      <h3><%= product.name %></h3>
+      <h3><%=link_to product.name, {:controller => :products, :action => :show, :id => product.id} %></h3>
       <p><%= product.try(:score) %></p>
+      <p><%= product.shop.name%></p>
+      <div id="product_content">
+      <%- product.contents.each do |product_content|-%>
+        <p><%= product_content.category_name %><%= product_content.type.try(:name) %><%= product_content.flavor.name%><%= product_content.quantity%></p>
+      <%- end -%>
+      </div>
       <p>
         <% if product.provider.first.present? %>
           <%= product.provider.first.price%>

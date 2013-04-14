@@ -1,12 +1,15 @@
 en:
-  shop:
+  activerecord:
+    models:
+      shop: "Shop"
     attributes:
-      score: "score" 
-      country_id: "country" 
-      state_id: "state"   
-      address: "address"
-      name: "shop name"
-      home_url: "home page"
-      online_url: "online shop page"
-      longitude: "longitude"  
-      latitude: "latitude"
+      shop:
+        score: "score" 
+        country_id: "country" 
+        state_id: "state"   
+        address: "address"
+        name: "shop name"
+        home_url: "home page"
+        online_url: "online shop page"
+        longitude: "longitude"  
+        latitude: "latitude"

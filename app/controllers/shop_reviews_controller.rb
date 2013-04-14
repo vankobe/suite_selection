@@ -1,6 +1,6 @@
 #encoding: utf-8
 class ShopReviewsController < ApplicationController
-  before_filter :get_user, :only => [:new, :edit, :create]
+  before_filter :only_user_allow, :only => [:new, :edit, :create]
   
   # GET /shop_reviews
   # GET /shop_reviews.json

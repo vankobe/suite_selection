@@ -6,7 +6,7 @@ providers ||= nil
     <tr>
       <td>
         <a href="<%= provider.url %>"><input type="button" class="btn btn-success span4 center" value="<%= provider.name %>で買う" /></a>
-        <%= MasterTable::CountryJp::Name[provider.country_id] %>
+        <%= provider.country.name %>
         <%= MasterTable::Currency::View[provider.currency_id]%> <%= provider.price%>
       </td>
     </tr>

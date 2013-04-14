@@ -4,6 +4,7 @@ class Shop < ActiveRecord::Base
   belongs_to :state
   has_many :shop_review, :order => "id DESC"
   has_many :images, :class_name => "ShopReviewImage", :order => "id DESC"
+  belongs_to :country
   
   validates :country_id, :name, :state_id, :presence => true
   validates :name, :length => {:maximum => 200}

@@ -36,6 +36,13 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
+    <div id="login-box">
+      <% if @user.present? %>
+        Sign in as <strong><%= @user.nickname %></strong> | <%= link_to "Sign out", {:controller => :sessions, :action => :logout}%>
+      <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+      <% end %>
+    </div>
 <!--
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">

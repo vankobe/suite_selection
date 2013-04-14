@@ -10,13 +10,13 @@ providers ||= nil
 <div id="product_info">
   <table id="product_info_table" class="table table-striped span5">
     <tr>
-      <th >商品名</th>
+      <th ><%= label :product, :name%></th>
       <td><%= product.name %></td>
     </tr>
     <%- product_contents.each_with_index do |content, i|-%>
     <tr>
     <%- if i == 0-%>
-      <th rowspan=<%= product_contents.length %>>内容</th>
+      <th rowspan=<%= product_contents.length %>><%= label :product_content, ProductContent.model_name.human%></th>
     <%- end -%>
       <td><%= content.type.name %>&nbsp;<%= content.flavor.name%>&nbsp;&nbsp;<%= content.quantity%>個</td>
     </tr>

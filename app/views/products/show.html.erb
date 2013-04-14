@@ -149,20 +149,20 @@ $(function(){
 </script>
 <div id="provider-add-box" class="span8">
       <p>
-        <%= label :provider, :url, "販売ページ"%>
+        <%= label :provider, :url %>
         <%= url_field :provider, :url, :class => "input-xxlarge"%>
       </p>
       <p>
-        <%= label :provider, :name, "ページ名"%>
+        <%= label :provider, :name %>
         <%= text_field :provider, :name, :class => "input-xxlarge"%>
       </p>
       <p>
         <span class="float-left">
-        <%= label :provider, :country_id, "国" -%>
-        <%= select :provider, :country_id, options_for_select(MasterTable::CountryJp::Options),{}, {:class => "input-small"} -%>
+        <%= label :provider, :country_id -%>
+        <%= select :provider, :country_id, @countries.map{|c| [c.name, c.id]},{}, {:class => "input-small"} -%>
         </span>
         <span class="float-left">
-        <%= label :provider, :currency_id, "値段" -%>
+        <%= label :provider, :price -%>
         <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options), {},{:class => "input-mini"} -%>
         <%= text_field :provider, :price, :class => "input-xlarge" -%>
         <%= hidden_field :provider, :product_id, :value => @product.id%>

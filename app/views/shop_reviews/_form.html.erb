@@ -11,19 +11,19 @@
     </div>
   <% end %>
   <div class="field">
-     <label>概要</label>
-     <input id="shop_review_subject" name="shop_review[subject]" type="text" value="<%= @shop_review.subject%>" />
+     <%= label :shop_review, :subject%>
+     <%= text_field :shop_review, :subject, :value => @shop_review.subject, :class => "input-xxlarge"%>
   </div>
   <div class="field">
-     <label>説明</label>
-     <textarea id="shop_review_comment" class="input-xxlarge" name="shop_review[comment]" type="textarea" value="<%= @shop_review.comment%>" rows="5"></textarea>
+     <%= label :shop_review, :comment%>
+     <%= text_area :shop_review, :comment, :value => @shop_review.comment, :class => "input-xxlarge"%>
   </div>
   <div class="field">
-     <label>画像</label>
-     <input id="shop_review_image" name="shop_review_image" type="file" value="参照" />
+     <%= label_tag :shop_review_image, ShopReviewImage.model_name.human%>
+     <%= file_field_tag :shop_review_image%>
   </div>
-  <input id="shop_review_shop_id" name="shop_review[shop_id]"type="hidden" value=<%=@shop_id%>>
-  <input id="shop_review_language_id" name="shop_review[language_id]"type="hidden" value=<%=MasterTable::Language::JAPANESE%>
+  <%= hidden_field :shop_review, :shop_id, :value => @shop_id%>
+  <%= hidden_field :shop_review, :language_id, :value => MasterTable::Language::Options[I18n.locale]%>
   <div class="actions">
     <%= submit_tag "保存" %>
   </div>
