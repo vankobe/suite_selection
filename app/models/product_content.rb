@@ -1,6 +1,7 @@
 class ProductContent < ActiveRecord::Base
   attr_accessible :category_id, :flavor_id, :product_id, :quantity, :type_id
   belongs_to :product
+  belongs_to :category, :class_name => "ProductCategory"
   belongs_to :type, :class_name => "ProductType"
   belongs_to :flavor
 

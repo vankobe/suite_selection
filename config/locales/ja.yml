@@ -199,3 +199,12 @@ ja:
     score: 評価順
     updated_at: 更新順
     created_at: 新着順
+  search: 検索
+  views:
+    pagination:
+      next: 次へ
+      previous: 前へ
+      first: 最初へ
+      last: 最後へ
+  counter:
+    product: 個

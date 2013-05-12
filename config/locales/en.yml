@@ -205,3 +205,16 @@ en:
   activerecord:
     errors:
       <<: *errors
+  order:
+    score: score
+    updated_at: latest updated
+    created_at: latest
+  search: search
+  views:
+    pagination:
+      next: next
+      previous: previous
+      first: first
+      last: last
+  counter:
+    product: ""

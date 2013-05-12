@@ -8,3 +8,4 @@ en:
         name: "Provider Name"
         url: "Online Shop Page"
         price: "Price"
+        on_sale_flg: "Now On Sale"

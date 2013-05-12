@@ -20,14 +20,14 @@ class ProductsController < ApplicationController
     @product = Product.where(["id = ?", params[:id].to_i]).first
     raise NoProductError if @product.blank?
 
-    @providers = @product.provider
+    @providers = @product.providers
     @product_contents = @product.contents
 
     @shop = @product.shop
     raise NoShopError if @shop.blank?
     
-    @reviews = @product.review
-    @review_images = @product.review_image
+    @reviews = @product.reviews
+    @review_images = @product.review_images
     
     @main_review = @reviews.first
     @main_image  = @review_images.first

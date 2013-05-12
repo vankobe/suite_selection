@@ -1,24 +1,30 @@
 <%-
 product ||= nil
-providers ||= nil
+product_contents ||= nil
 -%>
 <style>
 #product_info_table{
-  margin:5px auto;
+}
+#product_info_box {
+  float:left;
 }
 </style>
-<div id="product_info">
+<div id="product_info_box">
   <table id="product_info_table" class="table table-striped span5">
     <tr>
-      <th ><%= label :product, :name%></th>
-      <td><%= product.name %></td>
+      <th><%= Shop.human_attribute_name(:name)%></th>
+      <td><%= product.shop.name%></td>
+    </tr>
+    <tr>
+    <th><%= Product.human_attribute_name(:expire_date)%></th>
+      <td><%= product.expire_date%></td>
     </tr>
     <%- product_contents.each_with_index do |content, i|-%>
     <tr>
     <%- if i == 0-%>
       <th rowspan=<%= product_contents.length %>><%= label :product_content, ProductContent.model_name.human%></th>
     <%- end -%>
-      <td><%= content.type.name %>&nbsp;<%= content.flavor.name%>&nbsp;&nbsp;<%= content.quantity%>個</td>
+      <td><%= product_content_list(content)%></td>
     </tr>
     <%- end -%>
   </table>

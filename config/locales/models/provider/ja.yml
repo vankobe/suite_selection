@@ -8,3 +8,4 @@ ja:
         name: "販売元名"
         url: "販売ページ"
         price: "値段"
+        on_sale_flg: "在庫"

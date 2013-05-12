@@ -1,5 +1,5 @@
 <div id="shop_info">
-  <table class="table table-striped span3.5">
+  <table class="table table-striped span5">
     <tr>
       <th class="span1.5"><%= label :shop, :name%></th>
       <td><%= link_to shop.name, {:controller => :shops, :action => :show, :id => shop.id} %></td>
@@ -20,7 +20,7 @@
     </tr>
     <tr>
      <td colspan="2">
-       <%= button_to "商品を登録する", {:controller => 'products', :action => 'new', :shop_id => @shop.id}, {:class => "btn btn-warning span3", :id => "new_product_btn"} %>
+       <%= button_to "商品を登録する", {:controller => 'products', :action => 'new', :shop_id => shop.id}, {:class => "btn btn-warning span3", :id => "new_product_btn"} %>
      </td>
     </tr>
   </table>

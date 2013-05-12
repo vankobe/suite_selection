@@ -2,12 +2,12 @@
   review ||= nil
 -%>
 <style>
-div#product_review_main {
+div#product_review_box_main {
   overflow: hidden;
-  margin: 10px 0;
+  float:left;
 }
 div.review_box_main {
-  margin: 10px;
+  margin: 15px;
 }
 div.review_box_main p{
   margin: 2px;
@@ -19,7 +19,7 @@ span.review_main_user {
   float: right;
 } 
 </style>
-<div id="product_review_main">
+<div id="product_review_box_main">
   <%- if review.present? -%>
     <div class="review_box_main span6">
       <p class="review_subject_main span4">

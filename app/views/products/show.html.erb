@@ -20,11 +20,9 @@
   }
   div#product_review {
     clear:right;
-    margin: 10px 0;
   }
   div.review_box {
     clear:both;
-    margin:10px 0;
   }
   .guide {
     clear:both;
@@ -32,16 +30,21 @@
   .float-left{
     float:left;
   }
+  h1 {
+    floatt: left;
+  }
 </style>
 <p id="notice"><%= notice %></p>
 
-<h1><%= @product.name %></h1>
-<%= render :partial => 'product_review_box_main', :locals => {:review => @main_review}%>
 <div id="product_main_image">
   <%- if @main_image.present? -%>
     <%= image_tag @main_image.review_image.thumb("500x400#").url%>
   <%- end -%>
 </div>
+<h1><%= @product.name %></h1>
+<%= render :partial => 'product_review_box_main', :locals => {:review => @main_review}%>
+<%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
+<%# render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
 <div id="product_image">
   <%- if @review_images.present? -%>
     <% @review_images.each do |review_image| %>
@@ -49,9 +52,9 @@
     <%- end -%>
   <%- end -%>
 </div>
-<%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
 <%= render :partial => 'provider_info_box', :locals => {:providers => @providers} %>
 <%= javascript_include_tag "underscore", "backbone"%>
+<!--
 <script type="text/template" id="provider-template" >
 <table id="product_info_table" class="table table-striped span6">
     <tbody><tr>
@@ -147,6 +150,7 @@ $(function(){
   var providersView = new ProvidersView({collection: providers});
 });
 </script>
+-->
 <div id="provider-add-box" class="span8">
       <p>
         <%= label :provider, :url %>
@@ -171,7 +175,6 @@ $(function(){
       </p>
 </div>
 <%= render :partial => 'product_review_box', :locals => {:reviews => @reviews}%>
-<%= render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
 <div class="guide">
   <%= link_to 'Edit', edit_product_path(@product.id) %> |
   <%= link_to 'Back', products_path %>

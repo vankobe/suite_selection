@@ -1,13 +1,20 @@
 <%-
 providers ||= nil
 -%>
-<table id="provider_info_table" class="table table-striped span6">
+<table id="provider_info_table" class="table table-striped span5">
   <%- providers.each do |provider|-%>
     <tr>
       <td>
-        <a href="<%= provider.url %>"><input type="button" class="btn btn-success span4 center" value="<%= provider.name %>で買う" /></a>
+        <%= provider.name %>
+      </td>
+      <td>
         <%= provider.country.name %>
-        <%= MasterTable::Currency::View[provider.currency_id]%> <%= provider.price%>
+      </td>
+      <td>
+        <%= number_to_currency provider.price%>
+      </td>
+      <td>
+        <a href="<%= provider.url %>"><input type="button" class="btn btn-success" value="買う" /></a>
       </td>
     </tr>
   <%- end -%>

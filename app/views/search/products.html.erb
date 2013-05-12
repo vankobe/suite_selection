@@ -1,13 +1,42 @@
 <style>
 #search_box {
   float: left;
+  width: 350px;
 }
 #order_box {
   float: right;
 }
 #main {
+  width: 800px;
+  float: left;
   clear:right;
   margin: 10px;
+}
+#search_result li{
+  float: left;
+  list-style-type: none;
+  margin-left: 5px;
+}
+#search_result li.word{
+  font-weight: bold;
+}
+.product_list_each {
+  overflow: hidden;
+}
+.product_list_image {
+  width: 150px;
+  padding: 15px;
+  float: left;
+}
+.product_list_info {
+  float: left;
+}
+.product_list_info th{
+  color: #999999;
+  text-align: left;
+}
+.product_list_info td{
+  padding-left: 10px;
 }
 </style>
 
@@ -17,28 +46,54 @@
  params.delete(:score_order)
  params.delete(:updated_order)
 -%>
-  <div id="order_box" class="btn-group">
-    <span class="btn"><%= link_to t("order.score"), params.merge({:order => "score"})%></span>
-    <span class="btn"><%= link_to t("order.created_at"), params.merge({:order => "updated"})%></span>
-  </div>
+    <div id="search_result">
+<% if @category_name || @type_name || @flavor_name || @shop_name%>
+      <ul>
+<%- if @category_name -%>
+<li class="category word"><%= @category_name%></li>
+<%- end -%>
+<%- if @type_name -%>
+<li class="type word"><%= @type_name%></li>
+<%- end -%>
+<%- if @flavor_name -%>
+<li class="flavor word"><%= @flavor_name%></li>
+<%- end -%>
+<%- if @shop_name -%>
+<li class="shop word"><%= @shop_name%></li>
+<%- end -%>
+<li>の検索結果 (<%= @product_count %> 件)</li>
+      </ul>
+<%- end -%>
+    </div>
+    <div id="order_box" class="btn-group">
+      <span class="btn"><%= link_to t("order.score"), params.merge({:order => "score"})%></span>
+      <span class="btn"><%= link_to t("order.created_at"), params.merge({:order => "updated"})%></span>
+    </div>
 <div id="main">
   <%= paginate @products%>
-  <%- if @products.present?-%>
+  <%- unless @products.present?-%>
+    <p>検索結果がありません</p>
+  <%- else # 検索結果表示-%>
     <%- @products.each do |product| -%>
-      <h3><%=link_to product.name, {:controller => :products, :action => :show, :id => product.id} %></h3>
-      <p><%= product.try(:score) %></p>
-      <p><%= product.shop.name%></p>
-      <div id="product_content">
-      <%- product.contents.each do |product_content|-%>
-        <p><%= product_content.category_name %><%= product_content.type.try(:name) %><%= product_content.flavor.name%><%= product_content.quantity%></p>
-      <%- end -%>
+      <div class="product_list_each">
+        <h3><%=link_to product.name, {:controller => :products, :action => :show, :id => product.id} %><span>(<%= product.try(:score) %>)</span></h3>
+        <div class="product_list_image">
+          <%= product_thum_path(product, 150)%>
+        </div>
+        <div class="product_list_info">
+          <dl>
+            <dt>ショップ名</dt>
+            <dd><%= product.shop.name%></dd>
+            <dt>最安値</dt>
+            <dd><%= number_to_currency product.providers.first.try(&:price)%></dd>
+            <dt>内容量</dt>
+            <%- product.contents.each do |product_content|-%>
+              <dd><%= product_content_list(product_content)%></dd>
+            <%- end -%>
+          </dl>
+        </div>
       </div>
-      <p>
-        <% if product.provider.first.present? %>
-          <%= product.provider.first.price%>
-        <% end %>
-      </p>
-      <hr />
+        <hr />
     <%- end -%>
   <%- end -%>
 </div>

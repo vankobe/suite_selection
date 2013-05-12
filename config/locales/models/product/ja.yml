@@ -6,3 +6,4 @@ ja:
       product: 
         score: "点数" 
         name: "商品名"
+        expire_date: "賞味期限"

@@ -6,3 +6,4 @@ en:
       product: 
         score: "Score" 
         name: "Product Name"
+        expire_date: "Expire Date"

@@ -1,22 +1,45 @@
-<div id="search_box" class="well">
-  <div id="shop_search" class="well">
+<%
+params.delete("authenticity_token")
+params.delete("commit")
+
+%>
+<style>
+#category_search li{
+  list-style-type: none;
+  
+}
+.search-title {
+  color: #999999;
+}
+</style>
+<script>
+$(function(){
+  $(".show_type").on("click", function(){
+    console.log($(this))
+    $(this).parent().find("ul").toggle();
+  });
+});
+</script>
+<div id="search_box">
+  <div id="shop_search">
     <ul class="nav nav-list">
-    <li class="nav-header">ショップ</li>
-    <%- @shops.each do |shop|-%>
-      <li>
-        <%= link_to shop.name, params.merge({:shop_id => shop.id}) %>
-      </li>
-    <%- end -%>
+    <li class="nav-header">ショップから検索</li>
+      <%= form_tag({controller: "search", action: "products"}) do %>
+      <%= search_field_tag :search_shop%>
+      <%= submit_tag t("search"), class: "btn"%>
+      <%- end -%>
     </ul>
   </div>
-  <div id="category_search"class="well">
-    <ul class="nav nav-list">
-    <li class="nav-header">カテゴリー</li>
-    <%- MasterTable::Category::NAME.each do |category_id, category_name|-%>
+  <hr />
+  <div id="category_search">
+    <ul>
+    <li class="search-title">カテゴリー</li>
+    <%- @categories.each do |category|-%>
       <li>
-        <%= link_to category_name, params.merge({:category_id => category_id}) %>
-        <ul class="nav nav-list">
-        <%- category_types = @types.select{|type| type.category_id == category_id}
+        <span class="show_type">+</span>
+        <%= link_to category.name, params.merge({:category_id => category.id}) %>
+        <ul class="nav nav-list type_list" <%-unless params[:category_id].to_i == category.id-%>style="display:none;"<%- end -%>>
+        <%- category_types = @types.select{|type| type.category_id == category.id}
             category_types.each do |type|-%>
           <li>
             <%= link_to type.name, params.merge({:type_id => type.id})%>
@@ -27,9 +50,10 @@
     <%- end -%>
     </ul>
   </div>
-  <div id="flavor_search" class="well">
+  <hr />
+  <div id="flavor_search">
     <ul class="nav nav-list">
-    <li class="nav-header">味</li>
+    <li class="nav-header">フレーバー</li>
       <%- @flavors.each do |flavor| -%>
       <li>
         <%= link_to flavor.name, params.merge({:flavor_id => flavor.id}) %>

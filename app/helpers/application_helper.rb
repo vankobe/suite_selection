@@ -83,43 +83,15 @@ module ApplicationHelper
     {:controller => "reviews", :action => "destroy", :id => review_id}
   end
 
-#  def product_types_path
-#    {:controller => "product_types", :action => "index"}
-#  end
-#
-#  def edit_product_type_path(product_type_id)
-#    {:controller => "product_types", :action => "edit", :id => product_type_id}
-#  end
-#
-#  def new_product_type_path
-#    {:controller => "product_types", :action => "new"}
-#  end
-#
-#  def product_type_path(product_type_id)
-#    {:controller => "product_types", :action => "show", :id => product_type_id}
-#  end
-#
-#  def delete_product_type_path(product_type_id)
-#    {:controller => "product_types", :action => "destroy", :id => product_type_id}
-#  end
-#
-#  def flavors_path
-#    {:controller => "flavors", :action => "index"}
-#  end
-#
-#  def edit_flavor_path(flavor_id)
-#    {:controller => "flavors", :action => "edit", :id => flavor_id}
-#  end
-#
-#  def new_flavor_path
-#    {:controller => "flavors", :action => "new"}
-#  end
-#
-#  def flavor_path(flavor_id)
-#    {:controller => "flavors", :action => "show", :id => flavor_id}
-#  end
-#
-#  def delete_flavor_path(flavor_id)
-#    {:controller => "flavors", :action => "destroy", :id => flavor_id}
-#  end
+  def product_thum_path(product, size)
+    if product.image.present?
+      image_tag product.image.thum(size.to_s + "x"+ size.to_s).url
+    else
+      image_tag "",size: size.to_s + "x" + size.to_s
+    end
+  end
+
+  def product_content_list(product_content)
+    product_content.flavor.try(:name).to_s + " " + product_content.type.try(:name).to_s + "  " + product_content.try(:name).to_s + " " + product_content.try(:quantity).to_s + t("counter.product")
+  end
 end
