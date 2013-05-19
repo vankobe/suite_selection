@@ -1,11 +1,11 @@
 require 'nokogiri'
 require 'open-uri'
-require 'jcode'
 
 class PierrehermeCrawler
   LOG_DIR = File.join(Rails.root, "log", "batch")
   IMAGE_BASE_URL = "http://www.pierreherme.co.jp"
   BASE_URL = "http://www.pierreherme.co.jp/onlineshopping/"
+  MAX_TRY = 1000
 
   class << self
     def process
@@ -16,11 +16,12 @@ class PierrehermeCrawler
       shop = create_shop
 
       # 検査するurlの数
-      (1..1000).each do |i|
+      (1..MAX_TRY).each do |i|
         url = BASE_URL + "?no=" + i.to_s
         doc = Nokogiri::HTML(open(url))
         if doc.css("div.spec dd").present?
           type_name = doc.css("div.pankuzu li a")[1].text.sub(/^(\w|\s|　)*/,"")
+          # 例外を追加
           type_name = "チョコレート" if type_name == "ショコラ"
           type = ProductType.find_by_name(type_name)
 
@@ -55,7 +56,7 @@ class PierrehermeCrawler
                 # productの設定
                 product.shop_id = shop.id    
                 if ele.text == "品　　名"
-                  product.name = info[j].children.text.inspect
+                  product.name = info[j].children.text
                 end
                 if ele.text == "消費期限"
                   product.expire_date = info[j].text # 消費期限
@@ -70,35 +71,47 @@ class PierrehermeCrawler
                 provider.country_id = 1 # 日本
                 provider.name = shop.name
                 if ele.text == "在　　庫"
-                  provider.on_sale_flg = !(info[j].text.include?("×")) # 消費期限
+                  provider.on_sale_flg = !(info[j].text.include?("×")) # 在庫
                 end
               
                 if ele.text == "内　　容"
-                  content_info = info[j].text.split("、")
-                  content_info.reject!{|c| c.include?("了承") || c.include?("異なり")}
+                  content_info = info[j].text.split("×各")
                 end
               end
               puts i.to_s + "件目"
               # リランできるように保存しない条件
               skip_product = Product.find_by_name(product.name)
-              next if skip_product.present? && skip_product.providers.present? && skip_product.providers.map(&:url).include?(url)
-
-              product.save(validate: false)
-              provider.save(validate: false)
+              if skip_product.present? && skip_product.providers.present? && skip_product.providers.map(&:url).include?(url)
+                # 在庫のみ更新
+                provider.save(validate: false)
+              else
+                product.save(validate: false)
+                provider.save(validate: false)
  
-              # product_contentの設定
-              content_info.each do |cont|
-                content =  product.contents.build
-                content.type_id = type.try(:id)
-                content.category_id = category.try(:id)
-                content.name = cont # 内容
-                content.save(validate: false)
-              end
+                # product_contentの設定
+                contents = []
+                content_info.each_with_index do |s, i|
+                  if i.even?
+                    s.split("、").each do |name|
+                      unless name.include?("了承") || name.include?("異なり")
+                        contents << product.contents.build(name: name)
+                      end
+                    end
+                  else
+                    contents.each do |content|
+                      content.type_id = type.try(:id)
+                      content.category_id = category.try(:id)
+                      content.quantity = s.to_i
+                      content.save(validate: false)
+                    end
+                  end
+                end
 
-              # product_imageの設定
-              image_file = open(IMAGE_BASE_URL + image_url)
-              image.product_image = image_file.read
-              image.save!
+                # product_imageの設定
+                image_file = open(IMAGE_BASE_URL + image_url)
+                image.product_image = image_file.read
+                image.save!
+              end
             end
           rescue => e
             raise url + e.inspect
@@ -121,6 +134,10 @@ private
         shop.address    = "〒150-0001 東京都渋谷区神宮前5-51-8 ラ・ポルト青山1・2F"
         shop.name       = "PIERRE HERME PARIS"
         shop.save!
+        image = shop.images.build
+        image_file = open("http://www.pierreherme.co.jp/boutiques/img/aoyama.jpg")
+        image.shop_image = image_file.read
+        image.save!
       end
       shop
     end

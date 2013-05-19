@@ -3,7 +3,8 @@ class Shop < ActiveRecord::Base
   has_many :product
   belongs_to :state
   has_many :shop_review, :order => "id DESC"
-  has_many :images, :class_name => "ShopReviewImage", :order => "id DESC"
+  has_many :images, :class_name => "ShopImage", :order => "id DESC"
+  has_many :review_images, :class_name => "ShopReviewImage", :order => "id DESC"
   belongs_to :country
   
   validates :country_id, :name, :state_id, :presence => true

@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  before_filter :unpublish_pages, except: :show
   before_filter :only_user_allow, :only => [:new, :edit, :create]
 
   # GET /shops
@@ -19,8 +20,8 @@ class ShopsController < ApplicationController
     @shop_products = @shop.product
     @shop_reviews = @shop.shop_review
     @shop_main_review = @shop_reviews.first
-    @shop_images = @shop.images
-    @shop_main_image = @shop_images.first
+    @shop_images = @shop.review_images
+    @shop_main_image = @shop.images.first
 
     respond_to do |format|
       format.html  #show.html.erb

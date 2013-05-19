@@ -47,23 +47,26 @@
  params.delete(:updated_order)
 -%>
     <div id="search_result">
-<% if @category_name || @type_name || @flavor_name || @shop_name%>
       <ul>
-<%- if @category_name -%>
-<li class="category word"><%= @category_name%></li>
-<%- end -%>
-<%- if @type_name -%>
-<li class="type word"><%= @type_name%></li>
-<%- end -%>
-<%- if @flavor_name -%>
-<li class="flavor word"><%= @flavor_name%></li>
-<%- end -%>
-<%- if @shop_name -%>
-<li class="shop word"><%= @shop_name%></li>
-<%- end -%>
-<li>の検索結果 (<%= @product_count %> 件)</li>
+        <% if @category_name.present? || @type_name.present? || @flavor_name.present? || @shop_name.present? %>
+          <%- if @category_name -%>
+            <li class="category word"><%= @category_name%></li>
+          <%- end -%>
+          <%- if @type_name -%>
+            <li class="type word"><%= @type_name%></li>
+          <%- end -%>
+          <%- if @flavor_name -%>
+            <li class="flavor word"><%= @flavor_name%></li>
+          <%- end -%>
+          <%- if @shop_name -%>
+            <li class="shop word"><%= @shop_name%></li>
+          <%- end -%>
+        <%- else -%>
+          <li>全件</li>
+        <%- end -%>
+        <li>の検索結果 (<%= @product_count %> 件)</li>
+        <li><%= button_to t ".clear_search", controller: :search, action: :products%></li>
       </ul>
-<%- end -%>
     </div>
     <div id="order_box" class="btn-group">
       <span class="btn"><%= link_to t("order.score"), params.merge({:order => "score"})%></span>

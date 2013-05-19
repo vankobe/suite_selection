@@ -199,7 +199,7 @@ ja:
     score: 評価順
     updated_at: 更新順
     created_at: 新着順
-  search: 検索
+  search_word: 検索
   views:
     pagination:
       next: 次へ

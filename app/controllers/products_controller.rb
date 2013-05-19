@@ -1,6 +1,7 @@
 # encoding: utf-8
 class ProductsController < ApplicationController
   include SweetaErrors
+  before_filter :unpublish_pages, except: :show
   before_filter :only_user_allow, :only => [:new, :edit, :create]
 
   # GET /products
@@ -30,7 +31,7 @@ class ProductsController < ApplicationController
     @review_images = @product.review_images
     
     @main_review = @reviews.first
-    @main_image  = @review_images.first
+    @main_image  = @product.images.try(:first)
     @countries = Country.all
 
     respond_to do |format|

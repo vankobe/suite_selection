@@ -1,27 +1,22 @@
 <div id="shop_info">
+  <caption>店舗情報</caption>
   <table class="table table-striped span5">
-    <tr>
-      <th class="span1.5"><%= label :shop, :name%></th>
-      <td><%= link_to shop.name, {:controller => :shops, :action => :show, :id => shop.id} %></td>
-    </tr>
     <tr>
       <th>所在地</th>
       <td><%= shop.country.name %><%= shop.state.name %><br /><%= shop.address %></td>
     </tr>
     <tr>
      <td colspan="2">
-       <a  href="<%= shop.home_url %>"><input type="button" class="btn btn-info span3" value="ホームページ" /></a>
+       <a  href="<%= shop.home_url %>"><input type="button" class="btn btn-info span2" value="ホームページ" /></a>
+       <a href="<%= shop.online_url %>"><input type="button" class="btn btn-success span2" value="オンラインショップ" /></a>
      </td>
     </tr>
-    <tr>
-     <td colspan="2">
-       <a href="<%= shop.online_url %>"><input type="button" class="btn btn-success span3" value="オンラインショップ" /></a>
-     </td>
-    </tr>
+<% if false%>
     <tr>
      <td colspan="2">
        <%= button_to "商品を登録する", {:controller => 'products', :action => 'new', :shop_id => shop.id}, {:class => "btn btn-warning span3", :id => "new_product_btn"} %>
      </td>
     </tr>
+<%end%>
   </table>
 </div>

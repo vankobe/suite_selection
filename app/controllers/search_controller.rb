@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_filter :unpublish_pages, except: :products
   def products
     if params[:order].present?
       if params[:order] == "score"
@@ -8,7 +9,7 @@ class SearchController < ApplicationController
       end
     end
 
-    products = Product.includes(["contents", "providers"])
+    products = Product.includes(["contents", "providers"]).find_published
     if params[:search_shop].present?
       @shop = Shop.where(["name like ?", params[:search_shop].to_s + "%"])
       products = products.where(["shop_id in (?)", @shop.map{|s| s.try(&:id)}])

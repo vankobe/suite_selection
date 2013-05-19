@@ -2,6 +2,7 @@
   #product_main_image {
     display:inline;
     width:auto;
+    height: 100%;
     float:left;
   }
   #shop_info {
@@ -16,6 +17,9 @@
     clear:both;
   }
   .user_box {
+    float:left;
+  }
+  #provider_info_table {
     float:left;
   }
   div#product_review {
@@ -38,12 +42,13 @@
 
 <div id="product_main_image">
   <%- if @main_image.present? -%>
-    <%= image_tag @main_image.review_image.thumb("500x400#").url%>
+    <%= image_tag @main_image.product_image.thumb("500x400#").url%>
   <%- end -%>
 </div>
 <h1><%= @product.name %></h1>
-<%= render :partial => 'product_review_box_main', :locals => {:review => @main_review}%>
+<%# render :partial => 'product_review_box_main', :locals => {:review => @main_review}%>
 <%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
+<%= render :partial => 'provider_info_box', :locals => {:providers => @providers} %>
 <%# render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
 <div id="product_image">
   <%- if @review_images.present? -%>
@@ -52,130 +57,5 @@
     <%- end -%>
   <%- end -%>
 </div>
-<%= render :partial => 'provider_info_box', :locals => {:providers => @providers} %>
-<%= javascript_include_tag "underscore", "backbone"%>
-<!--
-<script type="text/template" id="provider-template" >
-<table id="product_info_table" class="table table-striped span6">
-    <tbody><tr>
-      <td>
-        <a href="{{= url }}"><input type="button" class="btn btn-success span4 center" value="{{= name }}"></a>
-        {{= country_id}}
-        {{= currency_id}} {{= price }}
-      </td>
-    </tr>
-</tbody></table>
-</script>
-<script>
-_.templateSettings = {
-    interpolate: /\{\{\=(.+?)\}\}/g,
-    evaluate: /\{\{(.+?)\}\}/g
-};
-$(function(){
-  var Provider = Backbone.Model.extend({
-    defaults: {
-      country_id: 0,
-      currency_id: 0,
-      price: 0,
-      url: "",
-    },
-    urlRoot: "/providers"
-  });
-  
-  var ProviderView = Backbone.View.extend({
-    tagName: "div",
-    template: _.template($("#provider-template").html()),
-    render: function(){
-      var template = this.template(this.model.toJSON());
-      this.$el.html(template);
-      return this;
-    }
-  });
-
-  var ProviderAddView = Backbone.View.extend({
-    el: "#provider-add-box",
-    events: {"click #add-provider": "addProvider"},
-    addProvider: function(e){
-      var url = $("#provider_url").val();
-      var country_id = $("#provider_country_id").val();
-      var currency_id = $("#provider_currency_id").val();
-      var price = $("#provider_price").val();
-      var name = $("#provider_name").val();
-      var product_id = $("#provider_product_id").val();
-      this.model.set({
-        url: url,
-        country_id: country_id,
-        currency_id: currency_id,
-        price: price,
-        name: name,
-        product_id: product_id
-      });
-      this.model.save({},{
-        success: function(provider){
-          var providerView = new ProviderView({model: provider});
-          $("#provider_info_table").append(providerView.render().el);
-        }
-      });
-      return this;
-    }
-  });
-
-  var Providers = Backbone.Collection.extend({
-    model: Provider,
-    url: '/providers/',
-    initialize: function(){
-    }
-  });
-
-  var ProvidersView = Backbone.View.extend({
-    tagName: "p",
-    render: function(){
-      this.collection.each(function(provider){
-        var providerView = new ProviderView({ model: provider});
-        this.$el.html(providerView.render().el);
-      }, this);
-      return this;
-    }
-  });
-
-  var provider = new Provider({id: 1});
-  provider.fetch({
-    success: function(provider){
-      var providerView = new ProviderView({model: provider});
-      $("#provider_info_table").append(providerView.render().el);
-    }
-  });
-  var providerAddView = new ProviderAddView({model: new Provider});
-  var providers = new Providers({model: provider});
-  var providersView = new ProvidersView({collection: providers});
-});
-</script>
--->
-<div id="provider-add-box" class="span8">
-      <p>
-        <%= label :provider, :url %>
-        <%= url_field :provider, :url, :class => "input-xxlarge"%>
-      </p>
-      <p>
-        <%= label :provider, :name %>
-        <%= text_field :provider, :name, :class => "input-xxlarge"%>
-      </p>
-      <p>
-        <span class="float-left">
-        <%= label :provider, :country_id -%>
-        <%= select :provider, :country_id, @countries.map{|c| [c.name, c.id]},{}, {:class => "input-small"} -%>
-        </span>
-        <span class="float-left">
-        <%= label :provider, :price -%>
-        <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options), {},{:class => "input-mini"} -%>
-        <%= text_field :provider, :price, :class => "input-xlarge" -%>
-        <%= hidden_field :provider, :product_id, :value => @product.id%>
-        <%= link_to "保存", "#", :id => "add-provider", :class => "btn btn-success"%>
-        </span>
-      </p>
-</div>
-<%= render :partial => 'product_review_box', :locals => {:reviews => @reviews}%>
-<div class="guide">
-  <%= link_to 'Edit', edit_product_path(@product.id) %> |
-  <%= link_to 'Back', products_path %>
-</div>
+<%# render :partial => 'provider_backbone' %>
+<%# render :partial => 'product_review_box', :locals => {:reviews => @reviews}%>

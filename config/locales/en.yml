@@ -209,7 +209,7 @@ en:
     score: score
     updated_at: latest updated
     created_at: latest
-  search: search
+  search_word: search
   views:
     pagination:
       next: next

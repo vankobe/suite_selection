@@ -32,7 +32,3 @@
 </div>
 <%= render :partial => 'shop_product_box', :locals => {:products => @shop_products} %>
 <%= render :partial => 'shop_review_box', :locals => {:reviews => @shop_reviews}%>
-<div class="guide">
-  <%= link_to 'Edit', edit_shop_path(@shop.id) %> |
-  <%= link_to 'Back', shops_path %>
-</div>

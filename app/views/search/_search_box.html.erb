@@ -1,6 +1,9 @@
 <%
 params.delete("authenticity_token")
 params.delete("commit")
+params.delete("utf8")
+params.delete("search_shop") if params["search_shop"].blank?
+params["page"] = 1
 
 %>
 <style>
@@ -26,7 +29,7 @@ $(function(){
     <li class="nav-header">ショップから検索</li>
       <%= form_tag({controller: "search", action: "products"}) do %>
       <%= search_field_tag :search_shop%>
-      <%= submit_tag t("search"), class: "btn"%>
+      <%= submit_tag t("search_word"), class: "btn"%>
       <%- end -%>
     </ul>
   </div>
@@ -37,12 +40,12 @@ $(function(){
     <%- @categories.each do |category|-%>
       <li>
         <span class="show_type">+</span>
-        <%= link_to category.name, params.merge({:category_id => category.id}) %>
+        <%= link_to category.name, params.merge({category_id: category.id, type_id: nil}) %>
         <ul class="nav nav-list type_list" <%-unless params[:category_id].to_i == category.id-%>style="display:none;"<%- end -%>>
         <%- category_types = @types.select{|type| type.category_id == category.id}
             category_types.each do |type|-%>
           <li>
-            <%= link_to type.name, params.merge({:type_id => type.id})%>
+            <%= link_to type.try(:name), params.merge({category_id: type.category.try(:id) ,type_id: type.try(:id)})%>
           </li>
         <%- end -%>
         </ul>
@@ -56,7 +59,11 @@ $(function(){
     <li class="nav-header">フレーバー</li>
       <%- @flavors.each do |flavor| -%>
       <li>
-        <%= link_to flavor.name, params.merge({:flavor_id => flavor.id}) %>
+        <% if flavor %>
+          <%= link_to flavor.name, params.merge({:flavor_id => flavor.id}) %>
+        <%- else-%>
+          <%=link_to "その他", params.merge(flavor_id: 0) %>
+        <%- end -%>
       </li>
       <%- end -%>
     </ul>

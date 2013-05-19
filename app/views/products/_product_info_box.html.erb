@@ -13,7 +13,7 @@ product_contents ||= nil
   <table id="product_info_table" class="table table-striped span5">
     <tr>
       <th><%= Shop.human_attribute_name(:name)%></th>
-      <td><%= product.shop.name%></td>
+      <td><%= link_to product.shop.name, controller: :shops, action: :show, id: product.shop.id%></td>
     </tr>
     <tr>
     <th><%= Product.human_attribute_name(:expire_date)%></th>

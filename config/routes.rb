@@ -1,10 +1,13 @@
 SuiteSelection::Application.routes.draw do
 
+scope "/:locale" do
+  resources :products
+
+  resources :shops
+
   resources :countries
 
-
   resources :states
-
 
   resources :product_types
 
@@ -17,6 +20,7 @@ SuiteSelection::Application.routes.draw do
   get "search/shops"
 
   get "welcome/index"
+end
 
 #  resources :review_images
 #

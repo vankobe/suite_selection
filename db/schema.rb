@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511195905) do
+ActiveRecord::Schema.define(:version => 20130519051647) do
 
   create_table "countries", :force => true do |t|
     t.string "name_ja"
@@ -60,8 +60,9 @@ ActiveRecord::Schema.define(:version => 20130511195905) do
     t.float    "score"
     t.string   "name"
     t.string   "expire_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "published_flg", :default => false, :null => false
   end
 
   create_table "providers", :force => true do |t|
@@ -102,6 +103,14 @@ ActiveRecord::Schema.define(:version => 20130511195905) do
     t.string   "subject"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "shop_images", :force => true do |t|
+    t.integer  "shop_id"
+    t.string   "shop_image_uid"
+    t.string   "shop_image_name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "shop_review_images", :force => true do |t|
