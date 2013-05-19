@@ -88,7 +88,7 @@
             <dt>ショップ名</dt>
             <dd><%= product.shop.name%></dd>
             <dt>最安値</dt>
-            <dd><%= number_to_currency product.providers.first.try(&:price)%></dd>
+            <dd><%= humanized_money_with_symbol product.providers.first.price.exchange_to(@currency_code)%></dd>
             <dt>内容量</dt>
             <%- product.contents.each do |product_content|-%>
               <dd><%= product_content_list(product_content)%></dd>

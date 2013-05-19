@@ -42,6 +42,9 @@ GEM
       multi_json (~> 1.0)
       rack
     erubis (2.7.0)
+    eu_central_bank (0.3.5)
+      money (>= 5.0.0)
+      nokogiri
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
@@ -71,6 +74,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    money (5.1.1)
+      i18n (~> 0.6.0)
+    money-rails (0.8.1)
+      activesupport (>= 3.0)
+      money (~> 5.1.0)
+      railties (>= 3.0)
     multi_json (1.7.3)
     multipart-post (1.2.0)
     mysql2 (0.3.11)
@@ -149,9 +158,11 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   dragonfly
+  eu_central_bank
   jquery-rails
   kaminari
   less-rails
+  money-rails
   mysql2
   nokogiri
   omniauth

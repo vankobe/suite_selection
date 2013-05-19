@@ -1,7 +1,7 @@
-ja:
+en:
   activerecord:
     models:
-      product_content: "Product Content"
+      product_content: "Content"
     attributes:
       product_content: 
         category_id: "Category"

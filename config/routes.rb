@@ -1,5 +1,9 @@
 SuiteSelection::Application.routes.draw do
 
+  get "admin/products"
+
+  get "admin/shops"
+
 scope "/:locale" do
   resources :products
 

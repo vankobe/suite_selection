@@ -41,12 +41,21 @@
         clear: both;
       }
     </style>
+    <% if false%>
     <div id="login-box">
       <% if @user.present? %>
         Sign in as <strong><%= @user.nickname %></strong> | <%= link_to "Sign out", {:controller => :sessions, :action => :logout}%>
       <% else %>
         <%= link_to "Sign in with Facebook", "/auth/facebook" %>
       <% end %>
+    </div>
+    <% end %>
+    <div id="header">
+      <ul>
+      <%- I18n.available_locales.each do |language|-%>
+        <li> <%= link_to_unless params[:locale] == language.to_s, t(language), params.merge({locale: language}) %></li>
+      <%- end -%>
+      </ul>
     </div>
     <div class="container">
         <div class="row">

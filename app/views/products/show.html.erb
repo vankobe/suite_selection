@@ -50,6 +50,7 @@
 <%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
 <%= render :partial => 'provider_info_box', :locals => {:providers => @providers} %>
 <%# render :partial => 'shop_info_box', :locals => {:shop => @shop}%>
+<% if false%>
 <div id="product_image">
   <%- if @review_images.present? -%>
     <% @review_images.each do |review_image| %>
@@ -57,5 +58,6 @@
     <%- end -%>
   <%- end -%>
 </div>
+<%- end -%>
 <%# render :partial => 'provider_backbone' %>
 <%# render :partial => 'product_review_box', :locals => {:reviews => @reviews}%>

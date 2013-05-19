@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519051647) do
+ActiveRecord::Schema.define(:version => 20130519074920) do
 
   create_table "countries", :force => true do |t|
     t.string "name_ja"
@@ -68,13 +68,13 @@ ActiveRecord::Schema.define(:version => 20130519051647) do
   create_table "providers", :force => true do |t|
     t.integer  "product_id"
     t.integer  "country_id"
-    t.integer  "currency_id"
-    t.integer  "price"
     t.string   "name"
     t.string   "url"
     t.boolean  "on_sale_flg"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "price_cents",    :default => 0,     :null => false
+    t.string   "price_currency", :default => "JPY", :null => false
   end
 
   create_table "review_contents", :force => true do |t|

@@ -45,3 +45,6 @@ gem 'rack-cache'
 gem 'dragonfly'
 gem 'kaminari'
 gem 'nokogiri'
+# exchange
+gem 'money-rails'
+gem 'eu_central_bank'

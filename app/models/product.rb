@@ -1,12 +1,12 @@
 class Product < ActiveRecord::Base
-  attr_accessible :country_id, :currency_id, :name, :price, :shop_id, :url, :published_flg
+  attr_accessible :country_id, :name, :shop_id, :url, :published_flg
 
   # relation
   has_many :contents, :class_name => "ProductContent", :include => ["type", "flavor"]
   belongs_to :shop, :include => ["state"]
   has_many :reviews, :include => ["content"], :order  => "id DESC"
   has_many :review_images, :order => "id DESC"
-  has_many :providers, :order => "price DESC"
+  has_many :providers, :order => "price_cents DESC"
   has_many :images, class_name: "ProductImage", order: "id DESC"
 
   # validation

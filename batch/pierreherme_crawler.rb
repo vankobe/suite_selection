@@ -58,13 +58,12 @@ class PierrehermeCrawler
                 if ele.text == "品　　名"
                   product.name = info[j].children.text
                 end
-                if ele.text == "消費期限"
+                if ele.text == "消費期限" || ele.text == "賞味期限"
                   product.expire_date = info[j].text # 消費期限
                 end
 
                 # providerの設定
                 if ele.text == "価　　格"
-                  provider.currency_id = 1
                   provider.price = info[j].text.gsub(",", "").gsub(/円.*/, "") #値段
                 end
                 provider.url = url
@@ -114,7 +113,10 @@ class PierrehermeCrawler
               end
             end
           rescue => e
-            raise url + e.inspect
+            p url
+            p e.inspect
+            p e.backtrace
+            raise
           end
         end
       end

@@ -22,7 +22,7 @@ product_contents ||= nil
     <%- product_contents.each_with_index do |content, i|-%>
     <tr>
     <%- if i == 0-%>
-      <th rowspan=<%= product_contents.length %>><%= label :product_content, ProductContent.model_name.human%></th>
+      <th rowspan=<%= product_contents.length %>><%= ProductContent.model_name.human%></th>
     <%- end -%>
       <td><%= product_content_list(content)%></td>
     </tr>

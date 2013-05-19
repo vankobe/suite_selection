@@ -8,6 +8,7 @@ providers ||= nil
 </style>
 <div id="provider_info_box">
 <table id="provider_info_table" class="table table-striped span5">
+  <caption><%= t(Provider.model_name.human)%></caption>
   <%- providers.each do |provider|-%>
     <tr>
       <td>
@@ -18,6 +19,9 @@ providers ||= nil
       </td>
       <td>
         <%= number_to_currency provider.price%>
+      </td>
+      <td>
+        <%= t(Provider.human_attribute_name(:on_sale_flg))%><%= provider.on_sale_flg ? "あり" : "なし"%>
       </td>
       <td>
         <a href="<%= provider.url %>"><input type="button" class="btn btn-success" value="買う" /></a>
