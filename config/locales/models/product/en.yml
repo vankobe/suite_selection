@@ -4,6 +4,8 @@ en:
       product: "Product"
     attributes:
       product: 
+        shop_id: "Shop"
         score: "Score" 
         name: "Product Name"
         expire_date: "Expire Date"
+        published_flg: "Published"

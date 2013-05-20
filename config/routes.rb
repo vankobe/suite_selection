@@ -1,10 +1,13 @@
 SuiteSelection::Application.routes.draw do
 
-  get "admin/products"
 
   get "admin/shops"
 
 scope "/:locale" do
+  namespace :admin do
+    resources :products
+  end
+
   resources :products
 
   resources :shops
@@ -24,6 +27,7 @@ scope "/:locale" do
   get "search/shops"
 
   get "welcome/index"
+
 end
 
 #  resources :review_images

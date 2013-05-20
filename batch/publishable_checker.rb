@@ -53,12 +53,7 @@ private
       products.each do |product|
         begin
           Product.transaction do 
-              product.published_flg = 1
-              product.save!
-              raise if product.contents.blank?
-              product.contents.each do |content|
-                content.save!
-              end
+              product.publish!
               success_count += 1
           end 
         rescue

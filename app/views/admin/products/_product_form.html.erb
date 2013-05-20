@@ -1,0 +1,7 @@
+  <%=label :product, :name, Product.human_attribute_name(:name).to_s %>
+    <%= text_field :product, :name, value: product.try(:name)%>
+  <%=label :product, :expire_date, Product.human_attribute_name(:expire_date).to_s %>
+    <%= text_field :product, :expire_date, value: product.try(:expire_date)%>
+  <%=label :product, :published_flg, Product.human_attribute_name(:published_flg).to_s %>
+    <%= check_box :product, :published_flg, value: product.try(:published_flg)%>
+  <%= hidden_field :product, :id, value: product.try(:id)%>

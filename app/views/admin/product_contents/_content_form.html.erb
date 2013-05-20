@@ -1,0 +1,12 @@
+  <%=label :product_content, :name, ProductContent.human_attribute_name(:name).to_s %>
+    <%= text_field :product_content, :name, value: content.try(:name)%>
+  <%=label :product_content, :category_id, ProductContent.human_attribute_name(:category_id).to_s %>
+    <%= select :product_content, :category_id, options_for_select(ProductCategory.all.map{|t| [t.name, t.id]}, selected: content.try(:category_id)), include_blank: true %>
+  <%= label :product_content, :type_id, ProductContent.human_attribute_name(:type_id).to_s%>
+    <%= select :product_content, :type_id, options_for_select(ProductType.all.map{|t| [t.name, t.id]}, selected: content.try(:type_id)), include_blank: true %>
+  <%= label :product_content, :flavor_id, ProductContent.human_attribute_name(:flavor_id).to_s%>
+    <%= select :product_content, :flavor_id, options_for_select(Flavor.all.map{|t| [t.name, t.id]}, selected: content.try(:flavor_id)), include_blank: true %>
+  <%=label :product_content, :quantity, ProductContent.human_attribute_name(:quantity).to_s %>
+    <%= number_field :product_content, :quantity, value: content.try(:quantity)%>
+  <%= hidden_field :product_content, :id, value: content.try(:id)%>
+  <%= hidden_field :product_content, :product_id, value: content.try(:product_id)%>

@@ -1,0 +1,14 @@
+  <%=label :provider, :name, Provider.human_attribute_name(:name).to_s %>
+    <%= text_field :provider, :name, value: provider.try(:name)%>
+  <%=label :provider, :url, Provider.human_attribute_name(:url).to_s %>
+    <%= text_field :provider, :url, value: provider.try(:url)%><%= link_to "URL", provider.try(:url), target: "_blank"%>
+  <%= label :provider, :country_id%>
+    <%= select :provider, :country_id, options_for_select(Country.all.map{|t| [t.name, t.id]}, selected: provider.try(:country_id)), include_blank: true %>
+  <%=label :provider, :price_currency, Provider.human_attribute_name(:price_currency).to_s %>
+    <%= text_field :provider, :price_currency, value: provider.try(:price_currency)%>
+  <%=label :provider, :price_cents, Provider.human_attribute_name(:price_cents).to_s %>
+    <%= text_field :provider, :price_cents, value: provider.try(:price_cents)%>
+  <%=label :provider, :on_sale_flg, Provider.human_attribute_name(:on_sale_flg).to_s %>
+    <%= check_box :provider, :on_sale_flg, value: provider.try(:on_sale_flg)%>
+  <%= hidden_field :provider, :id, value: provider.try(:id)%>
+  <%= hidden_field :provider, :product_id, value: provider.try(:product_id)%>

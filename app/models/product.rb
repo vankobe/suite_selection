@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
   # validation
   validates :name, :shop_id, :presence => true
   validates :name, :length => {:maximum => 200}
+  validates :contents, :providers, presence: true, if: :published?
 
   # kaminari config
   default_scope :order => "products.updated_at DESC"
@@ -23,10 +24,23 @@ class Product < ActiveRecord::Base
   scope :find_unpublished, where(published_flg: 0)
 
   def published?
-    self.published_flg == 1
+    self.published_flg == true
+  end
+
+  def publish!
+    self.published_flg = true
+    Product.transaction do
+      self.save!
+      self.contents.each{|c| c.save! if c.name.present?}
+      self.providers.each{|p| p.save! if p.name.present?}
+    end
   end
 
   def image
     self.images.first
+  end
+
+  def shop_name
+    self.shop.try(:name)
   end
 end

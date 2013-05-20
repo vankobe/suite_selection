@@ -1,0 +1,58 @@
+<style>
+table {
+  margin: 10px;
+  border: solid;
+}
+
+tr.border{
+  background-color: #ff5555;
+  color: #ffffff;
+}
+</style>
+  <% product_attributes = [:id, :name, :published_flg, :shop_name, :expire_date]%>
+  <% provider_attributes = [:id, :country_name, :name, :url, :on_sale_flg, :price]%>
+  <% content_attributes = [:id, :category_name, :type_name, :flavor_name, :name]%>
+<div id="admin_search_box">
+  <%= form_tag({controller: "admin/products", action: :index}, {method: :get}) do-%>
+    <%= label_tag :shop_name%>
+      <%= text_field_tag :shop_name%>
+    <%= label_tag :category_id%>
+      <%= select_tag :category_id, options_for_select(ProductCategory.all.map{|t| [t.name, t.id]}), include_blank: true %>
+    <%= label_tag :type_id%>
+      <%= select_tag :type_id, options_for_select(ProductType.all.map{|t| [t.name, t.id]}), include_blank: true %>
+    <%= label_tag :publish%>
+      <%= select_tag :publish, options_for_select([["公開のみ", "publish"], ["非公開のみ", "unpublish"]]), include_blank: true %>
+    <%= submit_tag%>
+  <%- end -%>
+</div>
+<%= paginate @products%>
+<%- @products.each do |product| -%>
+  <table>
+    <tbody>
+      <tr class="border"><th><%= Product.model_name.human%></th><td></td></tr>
+      <%- product_attributes.each do |product_attr| -%>
+        <tr>
+          <th><%= Product.human_attribute_name(product_attr)%></th><td><%= product.try(product_attr)%></td>
+        </tr>
+      <%- end -%>
+      <%- product.contents.each_with_index do |content, i| -%>
+        <tr class="border"><th><%= ProductContent.model_name.human%><%= i+1 %></th><td> </td></tr>
+        <%- content_attributes.each do |content_attr|-%>
+        <tr>
+          <th><%= ProductContent.human_attribute_name(content_attr)%></th><td><%= content.try(content_attr)%></td>
+        </tr>
+        <%- end -%>
+      <%- end -%>
+      <%- product.providers.each_with_index do |provider, i| -%>
+      <tr class="border"><th><%= Provider.model_name.human%><%= i+1 %></th><td> </td></tr>
+        <%- provider_attributes.each do |provider_attr|-%>
+        <tr>
+          <th><%= Provider.human_attribute_name(provider_attr)%></th><td><%= provider.try(provider_attr)%></td>
+        </tr>
+        <%- end -%>
+      <%- end -%>
+      <tr><th></th><td><%=button_to "商品編集", {controller: "admin/products", action: :edit, id: product.id}, method: :get, class: "btn" %></td></tr>
+    </tbody>
+  </table>
+<%- end -%>
+<%= paginate @products%>

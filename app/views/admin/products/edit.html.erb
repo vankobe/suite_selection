@@ -1,0 +1,42 @@
+<style>
+table {
+  margin: 10px;
+  border: solid;
+}
+
+tr.border{
+  background-color: #ff5555;
+  color: #ffffff;
+}
+p {
+  font-weight: bold;
+  font-size: 12pt;
+  background-color: #ff9999;
+}
+</style>
+  <% product_attributes = [:name, :published_flg, :shop_name, :expire_date]%>
+  <% provider_attributes = [:country_name, :name, :url, :on_sale_flg, :price]%>
+  <% content_attributes = [:category_name, :type_name, :flavor_name, :name]%>
+
+<p><%= Product.model_name.human%></p>
+<%= form_tag({controller: "admin/products", action: :update}, id: "product_form_#{@product.id}", method: :put, remote: true) do%>
+  <%= render :partial => 'product_form', locals: {product: @product} %>
+  <%= submit_tag "登録"%>
+<%- end -%>
+
+<%- @contents.each_with_index do |content, i| -%>
+  <p><%= ProductContent.model_name.human%><%= i+1 %></p>
+  <%= form_tag({controller: "admin/product_contents", action: :update}, id: "content_form_#{content.id}", method: :put, remote: true) do%>
+    <%= render :partial => 'admin/product_contents/content_form', locals: {content: content} %>
+    <%= submit_tag "登録"%>
+  <%- end -%>
+<%- end -%>
+
+<%- @providers.each_with_index do |provider, i| -%>
+  <p><%= Provider.model_name.human%><%= i+1 %></p>
+  <%= form_tag({controller: "admin/providers", action: :update}, id: "provider_form_#{provider.id}", methodd: :put, remote: true) do%>
+    <%= render :partial => 'admin/providers/provider_form', locals: {provider: provider} %>
+    <%= submit_tag "登録"%>
+  <%- end -%>
+<%- end -%>
+<%= button_to "公開する", controller: "admin/products", action: :publish, id: @product.id%>
