@@ -1,15 +1,14 @@
 # encoding: utf-8
 class AdminController < ApplicationController
-  before_filter :unpublish_pages, except: [:login, :login_process, :logout]
-  before_filter :get_admin_user, except: [:login, :login_process, :logout]
+  before_filter :unpublish_pages, except: [:login, :authenticate, :logout]
+  before_filter :get_admin_user, except: [:login, :authenticate, :logout]
   def login
   end
 
-  def login_process
-    user = AdminUser.where(["login_name = ?", Digest::SHA256.hexdigest(params["login_name"])]).first
-    if user.present? && user.password == Digest::SHA256.hexdigest(params["password"])
-      session["admin_user_id"] = user.id
-       
+  def authenticate
+    admin_user = AdminUser.authorize(params["login_name"].to_s, params["password"].to_s)
+    if admin_user
+      session["admin_user_id"] = admin_user.id
       redirect_to controller: "admin/products", action: :index
     else
       raise "ログインIDかパスワードが違います"

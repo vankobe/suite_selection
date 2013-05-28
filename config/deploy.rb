@@ -6,7 +6,7 @@ set :scm, :git # You can set :scm explicitly or Capistrano will make an intellig
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :branch, "master"
 set :deploy_to, "/var/www/#{application}"
-set :deploy_via, :copy
+set :deploy_via, :remote_cache
 
 role :web, "49.212.221.48"                          # Your HTTP server, Apache/etc
 role :app, "49.212.221.48"                          # This may be the same as your `Web` server
