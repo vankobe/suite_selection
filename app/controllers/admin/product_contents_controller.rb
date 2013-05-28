@@ -1,4 +1,5 @@
 class Admin::ProductContentsController < AdminController
+before_filter :unpublish_pages, except: :update
   def update
     @content = ProductContent.where(["id = ?", params[:product_content][:id]]).first || ProductContent.new
     @content.name = params[:product_content][:name]

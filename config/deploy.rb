@@ -1,12 +1,12 @@
 set :application, "sweeta"
 set :repository,  "ssh://app@49.212.221.48/~/git/sweeta.git"
-#set :repository,  "~/dev/suite_selection/"
+#set :repository,  "/home/masato/dev/suite_selection/"
 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :branch, "master"
 set :deploy_to, "/var/www/#{application}"
-set :deploy_via, :remote_cache
+set :deploy_via, :copy
 
 role :web, "49.212.221.48"                          # Your HTTP server, Apache/etc
 role :app, "49.212.221.48"                          # This may be the same as your `Web` server

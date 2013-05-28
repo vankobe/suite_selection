@@ -1,4 +1,5 @@
 class Admin::ProductsController < AdminController
+before_filter :unpublish_pages, except: [:index, :edit, :update, :publish]
   def index
     if params[:publish] == "publish"
       products = Product.includes(["contents", "providers"]).find_published

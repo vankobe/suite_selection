@@ -1,4 +1,5 @@
 class Admin::ProvidersController < AdminController
+before_filter :unpublish_pages, except: :update
   def update
     @provider = Provider.where(["id = ?", params[:provider][:id]]).first || Provider.new
     @provider.name = params[:provider][:name]
