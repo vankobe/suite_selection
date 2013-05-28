@@ -1,10 +1,12 @@
 set :application, "sweeta"
-set :repository,  "ssh://49.212.221.48:/home/egami_masato/git/sweeta.git"
+set :repository,  "ssh://app@49.212.221.48/~/git/sweeta.git"
+#set :repository,  "~/dev/suite_selection/"
 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :branch, "master"
 set :deploy_to, "/var/www/#{application}"
+set :deploy_via, :remote_cache
 
 role :web, "49.212.221.48"                          # Your HTTP server, Apache/etc
 role :app, "49.212.221.48"                          # This may be the same as your `Web` server
@@ -13,7 +15,7 @@ role :db,  "49.212.221.48", :primary => true # This is where Rails migrations wi
 
 # ssh
 set :user, "app"
-set :ssh_options, :port => 22, :forward_agent => false, :keys => "/home/egami_masato/.ssh/id_dsa", :passphrase => "2Gyouza7"
+set :ssh_options, :port => 22, :forward_agent => true, :keys => "/home/masato/.ssh/id_dsa", :passphrase => "2Gyouza7"
 set :use_sudo, false
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
@@ -25,6 +27,12 @@ set :use_sudo, false
 task :list do
   run "ls"
 end
+
+#namespace :assets do
+#  task :precompile, :roles => :web do
+#    run "cd #{current_path} && RAILS_ENV=production bundle exec rake assets:precompile"
+#  end
+#end
 
 namespace :deploy do
   task :start do ; end
