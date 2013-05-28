@@ -1,5 +1,6 @@
 # encoding: utf-8
 class AdminController < ApplicationController
+  before_filter :unpublish_pages, except: [:login, :login_process, :logout]
   before_filter :get_admin_user, except: [:login, :login_process, :logout]
   def login
   end
