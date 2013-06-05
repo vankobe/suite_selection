@@ -1,78 +1,43 @@
-<style>
-#search_box {
-  float: left;
-  width: 350px;
-}
-#order_box {
-  float: right;
-}
-#main {
-  width: 800px;
-  float: left;
-  clear:right;
-  margin: 10px;
-}
-#search_result li{
-  float: left;
-  list-style-type: none;
-  margin-left: 5px;
-}
-#search_result li.word{
-  font-weight: bold;
-}
-.product_list_each {
-  overflow: hidden;
-}
-.product_list_image {
-  width: 150px;
-  padding: 15px;
-  float: left;
-}
-.product_list_info {
-  float: left;
-}
-.product_list_info th{
-  color: #999999;
-  text-align: left;
-}
-.product_list_info td{
-  padding-left: 10px;
-}
-</style>
-
-<%=image_tag "sweetalogo.jpg", :width => "100%"%>
+<%= stylesheet_link_tag "products"%>
+<link href='http://fonts.googleapis.com/css?family=Meddon|Lemon|Miltonian|Salsa' rel='stylesheet' type='text/css'>
+<div id="title">
+  <h1>
+    Sweeta
+  </h1>
+</div>
 <%= render :partial => 'search_box' %>
 <%-
  params.delete(:score_order)
  params.delete(:updated_order)
 -%>
-    <div id="search_result">
-      <ul>
-        <% if @category_name.present? || @type_name.present? || @flavor_name.present? || @shop_name.present? %>
-          <%- if @category_name -%>
-            <li class="category word"><%= @category_name%></li>
-          <%- end -%>
-          <%- if @type_name -%>
-            <li class="type word"><%= @type_name%></li>
-          <%- end -%>
-          <%- if @flavor_name -%>
-            <li class="flavor word"><%= @flavor_name%></li>
-          <%- end -%>
-          <%- if @shop_name -%>
-            <li class="shop word"><%= @shop_name%></li>
-          <%- end -%>
-        <%- else -%>
-          <li>全件</li>
-        <%- end -%>
-        <li>の検索結果 (<%= @product_count %> 件)</li>
-        <li><%= button_to t ".clear_search", controller: :search, action: :products%></li>
-      </ul>
-    </div>
-    <div id="order_box" class="btn-group">
-      <span class="btn"><%= link_to t("order.score"), params.merge({:order => "score"})%></span>
-      <span class="btn"><%= link_to t("order.created_at"), params.merge({:order => "updated"})%></span>
-    </div>
 <div id="main">
+  <div id="search_result">
+    <ul>
+      <% if @category_name.present? || @type_name.present? || @flavor_name.present? || @shop_name.present? %>
+        <%- if @category_name -%>
+          <li class="category word"><%= @category_name%></li>
+        <%- end -%>
+        <%- if @type_name -%>
+          <li class="type word"><%= @type_name%></li>
+        <%- end -%>
+        <%- if @flavor_name -%>
+          <li class="flavor word"><%= @flavor_name%></li>
+        <%- end -%>
+        <%- if @shop_name -%>
+          <li class="shop word"><%= @shop_name%></li>
+        <%- end -%>
+      <%- else -%>
+        <li>全件</li>
+      <%- end -%>
+      <li>の検索結果 (<%= @product_count %> 件)</li>
+      <li><%= button_to t ".clear_search", controller: :search, action: :products%></li>
+    </ul>
+  </div>
+  <div id="order_box" class="btn-group">
+    <span class="btn"><%= link_to t("order.score"), params.merge({:order => "score"})%></span>
+    <span class="btn"><%= link_to t("order.created_at"), params.merge({:order => "updated"})%></span>
+  </div>
+  <div id="search-result-list">
   <%= paginate @products%>
   <%- unless @products.present?-%>
     <p>検索結果がありません</p>
@@ -99,4 +64,5 @@
         <hr />
     <%- end -%>
   <%- end -%>
+  </div>
 </div>

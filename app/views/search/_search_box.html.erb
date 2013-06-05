@@ -6,18 +6,9 @@ params.delete("search_shop") if params["search_shop"].blank?
 params["page"] = 1
 
 %>
-<style>
-#category_search li{
-  list-style-type: none;
-}
-.search-title {
-  color: #999999;
-}
-</style>
 <script>
 $(function(){
   $(".show_type").on("click", function(){
-    console.log($(this))
     $(this).parent().find("ul").toggle();
   });
 });
