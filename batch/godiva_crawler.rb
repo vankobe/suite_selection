@@ -5,7 +5,8 @@ class GodivaCrawler
   LOG_DIR = File.join(Rails.root, "log", "batch")
   IMAGE_BASE_URL = "http://www.godiva.co.jp/"
   BASE_URL = "http://www.godiva.co.jp/onlineshop/ItemDetail"
-  MAX_TRY = 1000
+  MAX_TRY = 500
+  EXTRACT_WORD = ["カップアイス", "タルトグラッセ", "アイスクリームトリュフ", "トリュフ", "タブレット", "カレ", "フルーツトリュフ"]
 
   class << self
     def process
@@ -14,6 +15,9 @@ class GodivaCrawler
 
       # ショップを作成する
       shop = create_shop
+      
+      # 在庫ありを初期化
+      Provider.update_all("on_sale_flg = 0", ["url like ?", BASE_URL + "%"])
 
       # 検査するurlの数
       (1..MAX_TRY).each do |i|
@@ -22,18 +26,29 @@ class GodivaCrawler
         if doc.css("div.mainshopgoodsright").present?
           title = doc.css("div.mainshopgoodsright").text
           case
-          when title.include?("アイスクリーム") || title.include?("タルトグラッセ")
+          when title.include?("アイスクリーム")
             type_name = "アイスクリーム"
-          when title.include?("トリュフ") || title.include?("ゴールド") || title.include?("グランプラス")
+          when title.include?("タルトグラッセ")
+            type_name = "クッキーアイス"
+          when title.include?("トリュフ") || title.include?("ゴールド") || title.include?("グランプラス") || title.include?("ラッピング")
             type_name = "トリュフ"
+          when title.include?("カレ")
+            type_name = "カレ"
+          when title.include?("タブレット")
+            type_name = "タブレット"
+          when title.include?("ミントスティック") || title.include?("オランジェ")
+            type_name = "グルマンディ"
           when title.include?("クッキー")
-            type_name = "サブレ"
+            type_name = "クッキー"
+          end
+          
+          if doc.css("div.mainshopcategoryright").present?
+            category = doc.css("div.mainshopcategoryright h2 img alt").text
+            if category.include?("ビスキュイ") 
+              type_name = "ビスキュイ"
+            end
           end
           type = ProductType.find_by_name(type_name)
-          #type_name = doc.css("div.pankuzu li a")[1].text.sub(/^(\w|\s|　)*/,"")
-          # 例外を追加
-          #type_name = "チョコレート" if type_name == "ショコラ"
-          #type = ProductType.find_by_name(type_name)
 
           # typeかcategoryを設定する
           if type
@@ -46,6 +61,7 @@ class GodivaCrawler
           if type.blank? && category.blank?
             log_element = [Time.now, type_name, url]
             @category_not_found_log.info log_element.join("\t")
+            puts "#{i}件目: #{url}"
             next
           end
 
@@ -62,6 +78,7 @@ class GodivaCrawler
               infos = doc.css("div.mainshopgoodsright p.mainshopgoodsmargin25")
               product.shop_id = shop.id    
               product.name = doc.css("div.mainshopgoodsright h3 strong").text
+
               infos.each do |ele|
                 if ele.text.include?("消費期限") || ele.text.include?("賞味期限")
                   product.expire_date = ele.text.gsub(/(\r|\n)/,"").gsub(/^.*<br>/,"")
@@ -74,12 +91,15 @@ class GodivaCrawler
                 provider.url = url
                 provider.country_id = 1 # 日本
                 provider.name = shop.name
+                provider.on_sale_flg = true
               end 
               puts i.to_s + "件目"
               # リランできるように保存しない条件
               skip_product = Product.find_by_name(product.name)
               if skip_product.present? && skip_product.providers.present? && skip_product.providers.map(&:url).include?(url)
-                # 何もしない
+                skip_provider = Provider.find_by_url(url)
+                skip_provider.on_sale_flg= true
+                skip_provider.save(validate: false)
               else
                 product.save(validate: false)
                 provider.save(validate: false)
@@ -88,6 +108,10 @@ class GodivaCrawler
                 content_info.each_with_index do |ele|
                   content = product.contents.build
                   content.name = ele.text.split("×")[0].strip
+                  flavor_name = content.name.gsub(/#{"("+EXTRACT_WORD.join("|")+")"}(\s|　)*/,"")
+                  flavor = Flavor.find_by_name(flavor_name)
+                  flavor = Flavor.create({name: flavor_name}) if flavor.blank?
+                  content.flavor_id = flavor.id
                   content.type_id = type.try(:id)
                   content.category_id = category.try(:id)
                   content.quantity = ele.text.split("×")[1].strip
