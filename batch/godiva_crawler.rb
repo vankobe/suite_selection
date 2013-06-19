@@ -87,7 +87,7 @@ class GodivaCrawler
                 end
 
                 # providerの設定
-                if ele.text == "販売価格"
+                if ele.text =~ /販売価格/
                   provider.price = ele.text.gsub(/^.*￥/, "").gsub(",", "").gsub(/\s\(.*/, "").strip #値段
                 end
                 provider.url = url

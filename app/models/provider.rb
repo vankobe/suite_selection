@@ -9,6 +9,7 @@ class Provider < ActiveRecord::Base
   validates :name, :length => {:maximum => 200}, if: :published?
   validates :url, :format => {:with => /^http(s)*:\/\//}, if: :published?
   validates_numericality_of :price, :less_than_or_equal_to => 1000000, if: :published?
+  validates_numericality_of :price, :more_than => 0, if: :published?
 
   # money_rails
   monetize :price_cents, as: "price"
