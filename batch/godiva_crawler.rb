@@ -40,6 +40,8 @@ class GodivaCrawler
             type_name = "グルマンディ"
           when title.include?("クッキー")
             type_name = "クッキー"
+          when title.include?("ビスキュイ")
+            type_name = "ビスキュイ"
           end
           
           if doc.css("div.mainshopcategoryright").present?
@@ -59,7 +61,7 @@ class GodivaCrawler
 
           # categoryもtypeもなかったらログに出す
           if type.blank? && category.blank?
-            log_element = [Time.now, type_name, url]
+            log_element = [Time.now, title, type_name, url]
             @category_not_found_log.info log_element.join("\t")
             puts "#{i}件目: #{url}"
             next
@@ -103,6 +105,17 @@ class GodivaCrawler
               else
                 product.save(validate: false)
                 provider.save(validate: false)
+
+                if doc.css("div.mainshopgoodsright p")[2].text.present?
+                  review = product.reviews.build
+                  review_content = review.build_content
+                  review.user_id = 0
+                  review.language_id = MasterTable::Language::JAPANESE
+                  review_content.comment = doc.css("div.mainshopgoodsright p")[2].text
+                  review.subject = review.content.comment.truncate(35, :separater => "。")
+                  review.save!
+                  review_content.save(validate: false)
+                end
  
                 # product_contentの設定
                 content_info.each_with_index do |ele|

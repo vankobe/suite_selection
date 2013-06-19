@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608092333) do
+ActiveRecord::Schema.define(:version => 20130615210906) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "login_name", :null => false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130608092333) do
     t.integer  "type_id"
     t.integer  "flavor_id"
     t.string   "name"
-    t.integer  "quantity"
+    t.string   "quantity"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

@@ -6,6 +6,7 @@ class PierrehermeCrawler
   IMAGE_BASE_URL = "http://www.pierreherme.co.jp"
   BASE_URL = "http://www.pierreherme.co.jp/onlineshopping/"
   MAX_TRY = 1000
+  EXTRACT_WORD = ["マドレーヌ"]
 
   class << self
     def process
@@ -20,9 +21,20 @@ class PierrehermeCrawler
         url = BASE_URL + "?no=" + i.to_s
         doc = Nokogiri::HTML(open(url))
         if doc.css("div.spec dd").present?
-          type_name = doc.css("div.pankuzu li a")[1].text.sub(/^(\w|\s|　)*/,"")
+          title = doc.css("div.pankuzu li a")[1].text.sub(/^(\w|\s|　)*/,"")
           # 例外を追加
-          type_name = "チョコレート" if type_name == "ショコラ"
+          case
+          when title.include?("ショコラ")
+            type_name = "ボンボンショコラ"
+          when title.include?("マカロン")
+            type_name = "マカロン"
+          when title.include?("ソルベ")
+            type_name = "アイスクリーム"
+          when title.include?("クッキー")
+            type_name = "クッキー"
+          when title.include?("焼き菓子")
+            type_name = "マドレーヌ"
+          end
           type = ProductType.find_by_name(type_name)
 
           # typeかcategoryを設定する
@@ -34,7 +46,7 @@ class PierrehermeCrawler
 
           # categoryもtypeもなかったらログに出す
           if type.blank? && category.blank?
-            log_element = [Time.now, type_name, url]
+            log_element = [Time.now, title, type_name, url]
             @category_not_found_log.info log_element.join("\t")
             next
           end
@@ -74,7 +86,7 @@ class PierrehermeCrawler
                 end
               
                 if ele.text == "内　　容"
-                  content_info = info[j].text.split("×各")
+                  content_info = info[j].text.gsub(/<br>.*/, "").split("×各")
                 end
               end
               puts i.to_s + "件目"
@@ -87,6 +99,17 @@ class PierrehermeCrawler
                 product.save(validate: false)
                 provider.save(validate: false)
  
+                if doc.css("div.item-detail h4").text.present?
+                  review = product.reviews.build
+                  review_content = review.build_content
+                  review.user_id = 0
+                  review.language_id = MasterTable::Language::JAPANESE
+                  review_content.comment = doc.css("div.item-detail h4").text
+                  review.subject = review.content.comment.truncate(35, :separater => "。")
+                  review.save!
+                  review_content.save(validate: false)
+                end
+
                 # product_contentの設定
                 contents = []
                 content_info.each_with_index do |s, i|
@@ -101,6 +124,10 @@ class PierrehermeCrawler
                       content.type_id = type.try(:id)
                       content.category_id = category.try(:id)
                       content.quantity = s.to_i
+                      flavor_name = content.name.gsub(/#{"("+EXTRACT_WORD.join("|")+")"}(\s|　)*/,"")
+                      flavor = Flavor.find_by_name(flavor_name)
+                      flavor = Flavor.create({name: flavor_name}) if flavor.blank?
+                      content.flavor_id = flavor.id
                       content.save(validate: false)
                     end
                   end
