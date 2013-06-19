@@ -23,7 +23,7 @@ class Batch::Base
         type_name = "クッキー"
       when title =~ /ビスキュイ/
         type_name = "ビスキュイ"
-      when title =~ /(コンフィチュール|タルティネ|ヴィドゥレーブ)/
+      when title =~ /(コンフィチュール|タルティネ|ヴィドゥレーブ|スプレッド)/
         type_name = "コンフィチュール"
       when title =~ /(パリ－トウキョウ|マフォリ)/
         type_name = "マドレーヌ・フィナンシェ"
