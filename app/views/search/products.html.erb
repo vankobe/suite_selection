@@ -14,11 +14,10 @@
   <div id="search_result">
     <ul>
       <% if @category_name.present? || @type_name.present? || @flavor_name.present? || @shop_name.present? %>
-        <%- if @category_name -%>
-          <li class="category word"><%= @category_name%></li>
-        <%- end -%>
         <%- if @type_name -%>
           <li class="type word"><%= @type_name%></li>
+        <%- elsif @category_name -%>
+          <li class="category word"><%= @category_name%></li>
         <%- end -%>
         <%- if @flavor_name -%>
           <li class="flavor word"><%= @flavor_name%></li>
@@ -44,9 +43,11 @@
   <%- else # 検索結果表示-%>
     <%- @products.each do |product| -%>
       <div class="product_list_each">
-        <h3><%=link_to product.name, {:controller => :products, :action => :show, :id => product.id} %><span>(<%= product.try(:score) %>)</span></h3>
+        <h3><%=link_to product.name, {:controller => :products, :action => :show, :id => product.id} %>
+          <%- if product.try(:score) -%><span>(<%= product.try(:score) %>)</span><%- end -%>
+        </h3>
         <div class="product_list_image">
-          <%= product_thum_path(product, 150)%>
+          <%= product_thum_path(product, 250)%>
         </div>
         <div class="product_list_info">
           <dl>
@@ -61,8 +62,8 @@
           </dl>
         </div>
       </div>
-        <hr />
     <%- end -%>
   <%- end -%>
+  <%= paginate @products%>
   </div>
 </div>

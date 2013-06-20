@@ -9,7 +9,7 @@ params["page"] = 1
 <script>
 $(function(){
   $(".show_type").on("click", function(){
-    $(this).parent().find("ul").toggle();
+    $(this).parent().find("ul").slideToggle();
   });
 });
 </script>
@@ -25,8 +25,8 @@ $(function(){
   </div>
   <hr />
   <div id="category_search">
-    <ul>
-    <li class="search-title">カテゴリー</li>
+    <ul class="nav nav-list">
+    <li class="nav-header">カテゴリー</li>
     <%- @categories.each do |category|-%>
       <li>
         <span class="show_type">+</span>
