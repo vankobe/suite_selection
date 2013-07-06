@@ -3,6 +3,7 @@ product ||= nil
 product_contents ||= nil
 -%>
 <div id="product_info_box">
+  <h3><%= @product.name %></h3>
   <table id="product_info_table" class="table table-striped span5">
     <tr>
       <th><%= Shop.human_attribute_name(:name)%></th>

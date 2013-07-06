@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= params[:locale] %>">
   <head>
     <meta charset="utf-8">
+    <title><%= @seo_word_hash[:title] %></title>
+    <meta name="description" content="<%= @seo_word_hash[:description] %>" />
+    <meta name="keywords" content="<%= @seo_word_hash[:keywords] %>" />
     <meta name="msvalidate.01" content="D4EFE44FBFF651D4E567CAE77FEC9850" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Sweeta" %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- if @seo_word_hash[:link].present?-%>
+      <link rel="start" rel="<%= @seo_word_hash[:link][:start]%>"/>
+      <link rel="prev" rel="<%= @seo_word_hash[:link][:prev]%>"/>
+      <link rel="next" rel="<%= @seo_word_hash[:link][:next]%>"/>
+    <%- end -%>
+    <%= yield :head %>
   </head>
     
     <%= csrf_meta_tags %>
@@ -49,14 +57,15 @@
     </div>
     <% end %>
     <div class="container">
-      <div id="header">
-        <ul>
-        <%- I18n.available_locales.each do |language|-%>
-          <li> <%= link_to_unless params[:locale] == language.to_s, t(language), params.merge({locale: language}) %></li>
-        <%- end -%>
-        </ul>
-      </div>
       <div class="row">
+        <div id="header" class="row">
+          <h1><%= @seo_word_hash[:h1] %></h1>
+          <ul>
+          <%- I18n.available_locales.each do |language|-%>
+            <li> <%= link_to_unless params[:locale] == language.to_s, t(language), params.merge({locale: language}) %></li>
+          <%- end -%>
+          </ul>
+        </div>
         <div>
           <%= yield %>
         </div>

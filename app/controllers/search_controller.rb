@@ -3,9 +3,9 @@ class SearchController < ApplicationController
   def products
     if params[:order].present?
       if params[:order] == "score"
-        order = "score DESC" 
+        order = "products.score DESC" 
       elsif params[:order] == "updated"
-        order = "id DESC"
+        order = "products.id DESC"
       end
     end
 

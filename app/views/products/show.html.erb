@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<div id="breadcrumb"><%= render_breadcrumbs %></div>
 <div id="product_main_image">
   <%- if @main_image.present? -%>
     <%= image_tag @main_image.product_image.thumb("500x400#").url%>
   <%- end -%>
 </div>
-<h1><%= @product.name %></h1>
 <%# render :partial => 'product_review_box_main', :locals => {:review => @main_review}%>
 <%= render :partial => 'product_info_box', :locals => {:product => @product, :product_contents => @product_contents} %>
 <%= render :partial => 'provider_info_box', :locals => {:providers => @providers} %>

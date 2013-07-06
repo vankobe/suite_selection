@@ -48,3 +48,6 @@ gem 'nokogiri'
 # exchange
 gem 'money-rails'
 gem 'eu_central_bank'
+
+gem 'rails3_before_render'
+gem 'breadcrumbs_on_rails'

@@ -2,6 +2,7 @@ $side_base: #ffcc99;
 $side_text: #FFFFFF;
 $side_impact: #FF1493;
 $main_base: #ffffdd;
+$main_exp: #ffffbb;
 $link_visited: #9999dd;
 $link: #3333ff;
 // fonta!!!
@@ -10,7 +11,7 @@ $link: #3333ff;
 //font-family: 'Miltonian', cursive;
 //font-family: 'Salsa', cursive;
 body {
-  background-color: #ffffbb;
+  background-color: $main_exp;
 }
 //div.container {
 //  background-color: #ffffff;
@@ -22,7 +23,7 @@ div#title {
   //background-color: $main_base;
   background-color: $main_base;
   height: 100pt;
-  h1 {
+  h2 {
     position: absolute;
     top: 30%;
     left: 30%;
@@ -190,12 +191,16 @@ nav.pagination span.disabled {
 
   color: #ffe3c6;
 }
-footer {
-  clear: both;
-}
-// header
-#header {
-  float: right;
+div#header {
+  overflow: hidden;
+  h1 {
+    font-size: 12pt;
+    color: #dddddd;
+    display:inline;
+  }
+  ul {
+    float: right;
+  }
   li {
     list-style-type: none;
     float: left;
@@ -208,3 +213,12 @@ footer {
      color: $link;
   }
 }
+#provider_info_box {
+  float: left;
+}
+
+/* footer */
+footer {
+  clear: both;
+}
+

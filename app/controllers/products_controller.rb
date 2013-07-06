@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   before_filter :unpublish_pages, except: :show
   before_filter :only_user_allow, :only => [:new, :edit, :create]
 
+  add_breadcrumb "home", :root_path
   # GET /products
   # GET /products.json
   def index
@@ -34,6 +35,7 @@ class ProductsController < ApplicationController
     @main_image  = @product.images.try(:first)
     @countries = Country.all
 
+    add_breadcrumb "#{@shop.name} - #{@product.name} 商品詳細", product_path
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
