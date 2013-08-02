@@ -2,6 +2,7 @@
 class AdminController < ApplicationController
   before_filter :unpublish_pages, except: [:login, :authenticate, :logout]
   before_filter :get_admin_user, except: [:login, :authenticate, :logout]
+  skip_before_render :set_seo_word_hash
   def login
   end
 
