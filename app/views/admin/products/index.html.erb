@@ -4,13 +4,21 @@ table {
   border: solid;
 }
 
-tr.border{
+tr.product-border{
   background-color: #ff5555;
+  color: #ffffff;
+}
+tr.content-border{
+  background-color: #ff7777;
+  color: #ffffff;
+}
+tr.provider-border{
+  background-color: #ff9999;
   color: #ffffff;
 }
 </style>
   <% product_attributes = [:id, :name, :published_flg, :shop_name, :expire_date]%>
-  <% provider_attributes = [:id, :country_name, :name, :url, :on_sale_flg, :price]%>
+  <% provider_attributes = [:id, :country_name, :name, :url, :on_sale_flg, :price, :free_postage_flg]%>
   <% content_attributes = [:id, :category_name, :type_name, :flavor_name, :name]%>
 <div id="admin_search_box">
   <%= form_tag({controller: "admin/products", action: :index}, {method: :get}) do-%>
@@ -29,14 +37,17 @@ tr.border{
 <%- @products.each do |product| -%>
   <table>
     <tbody>
-      <tr class="border"><th><%= Product.model_name.human%></th><td></td></tr>
+      <tr class="product-border"><th><%= Product.model_name.human%></th><td></td></tr>
+      <% if product.images.try(:first) %>
+        <tr><th><%= ProductImage.model_name.human%></th><td><%= image_tag product.images.first.product_image.thumb('200x200#').url  %></td></tr>
+      <% end %>
       <%- product_attributes.each do |product_attr| -%>
         <tr>
           <th><%= Product.human_attribute_name(product_attr)%></th><td><%= product.try(product_attr)%></td>
         </tr>
       <%- end -%>
       <%- product.contents.each_with_index do |content, i| -%>
-        <tr class="border"><th><%= ProductContent.model_name.human%><%= i+1 %></th><td> </td></tr>
+        <tr class="content-border"><th><%= ProductContent.model_name.human%><%= i+1 %></th><td> </td></tr>
         <%- content_attributes.each do |content_attr|-%>
         <tr>
           <th><%= ProductContent.human_attribute_name(content_attr)%></th><td><%= content.try(content_attr)%></td>
@@ -44,7 +55,7 @@ tr.border{
         <%- end -%>
       <%- end -%>
       <%- product.providers.each_with_index do |provider, i| -%>
-      <tr class="border"><th><%= Provider.model_name.human%><%= i+1 %></th><td> </td></tr>
+      <tr class="provider-border"><th><%= Provider.model_name.human%><%= i+1 %></th><td> </td></tr>
         <%- provider_attributes.each do |provider_attr|-%>
         <tr>
           <th><%= Provider.human_attribute_name(provider_attr)%></th><td><%= provider.try(provider_attr)%></td>

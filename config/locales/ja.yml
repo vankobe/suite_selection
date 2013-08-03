@@ -208,5 +208,6 @@ ja:
       previous: 前へ
       first: 最初へ
       last: 最後へ
+      truncate: ...
   counter:
     product: 個

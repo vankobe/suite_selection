@@ -218,5 +218,6 @@ en:
       previous: previous
       first: first
       last: last
+      truncate: ...
   counter:
     product: ""
