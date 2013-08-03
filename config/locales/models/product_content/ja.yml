@@ -4,8 +4,11 @@ ja:
       product_content: "商品内容"
     attributes:
       product_content: 
+        category_name: "カテゴリ"
+        type_name: "タイプ"
+        flavor_name: "フレーバー"
+        name: "名前"
         category_id: "カテゴリ"
         type_id: "タイプ"
-        flavor_id: "味"
+        flavor_id: "フレーバー"
         quantity: "内容量"
-

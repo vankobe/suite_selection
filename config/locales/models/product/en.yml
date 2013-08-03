@@ -4,7 +4,7 @@ en:
       product: "Product"
     attributes:
       product: 
-        shop_id: "Shop"
+        shop_name: "Shop Name"
         score: "Score" 
         name: "Product Name"
         expire_date: "Expire Date"

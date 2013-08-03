@@ -14,7 +14,7 @@ class ProductContent < ActiveRecord::Base
   end
 
   def category_name
-    MasterTable::Category::NAME[self.category_id]
+    self.category.try(:name)
   end
 
   def flavor_name

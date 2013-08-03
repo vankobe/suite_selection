@@ -13,7 +13,7 @@ providers ||= nil
         <%= provider.country.name %>
       </td>
       <td>
-        <%= number_to_currency provider.price%>
+	<%= humanized_money_with_symbol provider.price.exchange_to(@currency_code)%>
       </td>
       <td>
         <%= t(Provider.human_attribute_name(:on_sale_flg))%><%= provider.on_sale_flg ? "あり" : "なし"%>
