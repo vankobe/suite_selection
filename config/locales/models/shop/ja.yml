@@ -3,7 +3,7 @@ ja:
     models:
       shop: "店舗"
     attributes:
-      shop: 
+      shop:
         score: "点数" 
         country_id: "国名" 
         state_id: "県名"   

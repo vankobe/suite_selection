@@ -3,7 +3,7 @@ ja:
     models:
       product: "商品"
     attributes:
-      product: 
+      product:
         shop_name: "店舗名"
         score: "点数" 
         name: "商品名"

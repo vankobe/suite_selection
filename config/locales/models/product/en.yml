@@ -3,7 +3,7 @@ en:
     models:
       product: "Product"
     attributes:
-      product: 
+      product:
         shop_name: "Shop Name"
         score: "Score" 
         name: "Product Name"
