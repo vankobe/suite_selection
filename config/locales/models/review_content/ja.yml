@@ -3,3 +3,5 @@ ja:
     models:
       review_content: "本文"
     attributes:
+      review_content:
+        comment: "コメント"

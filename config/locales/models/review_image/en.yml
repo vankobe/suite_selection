@@ -4,3 +4,4 @@ en:
       review_image: "Product Image"
     attributes:
       review_image: 
+        image: "Image"

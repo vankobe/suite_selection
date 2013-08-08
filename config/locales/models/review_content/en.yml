@@ -3,3 +3,5 @@ ja:
     models:
       review_content: "Content"
     attributes:
+      review_content:
+        comment: "Comment"
