@@ -7,7 +7,7 @@ class JeanPaulCrawler < Batch::Base
   IMAGE_BASE_URL = "http://www.jph-japon.co.jp"
   BASE_URL = "http://www.jph-japon.co.jp/shop/"
   MAX_TRY = 1000
-  EXTRACT_WORD = ["カップアイス", "タルトグラッセ", "アイスクリームトリュフ", "トリュフ", "タブレット", "カレ", "フルーツトリュフ"]
+  EXTRACT_WORD = ["カップアイス", "タルトグラッセ", "アイスクリームトリュフ", "トリュフ", "タブレット", "カレ", "フルーツトリュフ", "マカロン", "コンフィ"]
 
   class << self
     include ActionView::Helpers::TextHelper
@@ -65,7 +65,7 @@ class JeanPaulCrawler < Batch::Base
               image = product.images.build
               product.shop_id = shop.id    
               product.name = title
-              if doc.css("td.shp p").text =~ /(賞味期限|消費期限).*\s(.*)\s/
+              if doc.css("td.shp p").text =~ /(賞味期限|消費期限|賞味期間).*\s(.*)\s/
                 product.expire_date = $2
               end
                 # providerの設定
