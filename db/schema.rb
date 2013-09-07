@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803161434) do
+ActiveRecord::Schema.define(:version => 20130907041459) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "login_name", :null => false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130803161434) do
     t.string   "quantity"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "flavor_name"
   end
 
   add_index "product_contents", ["name"], :name => "index_product_contents_on_name"
