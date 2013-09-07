@@ -9,7 +9,7 @@ before_filter :unpublish_pages, except: :update
       @content.product_id = params[:product_content][:product_id]
       @content.type_id = params[:product_content][:type_id]
       @content.category_id = ProductType.where(["id = ?", @content.type_id]).first.category_id
-      @content.flavor_id = params[:product_content][:flavor_id]
+      @content.flavor_name = params[:product_content][:flavor_name]
       @content.quantity = params[:product_content][:quantity]
       ret = @content.save
     when "削除"
