@@ -26,5 +26,14 @@ module SetSeoHash
       h1 = "#{shop_name} - #{product_name} 商品詳細"
       return_seo_hash(title, description, keywords, h1)
     end
+
+    def seo_products_new(options)
+      shop_name  = options[:shop].try(:name) 
+      title = "#{shop_name} 商品登録 [Sweeta]"
+      description = "#{shop_name} の商品登録ページです"
+      keywords = "#{shop_name}、お菓子,スイーツ,お土産,プレゼント"
+      h1 = "#{shop_name} 商品登録"
+      return_seo_hash(title, description, keywords, h1)
+    end
   end
 end

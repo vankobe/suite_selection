@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   
   def only_user_allow
     raise "ログインしてください" unless @user.present?
+    redirect_to controller: :auth, action: :facebook unless @user.present?
   end
 
   def detect_locale

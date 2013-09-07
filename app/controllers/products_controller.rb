@@ -1,7 +1,7 @@
 # encoding: utf-8
 class ProductsController < ApplicationController
   include SweetaErrors
-  before_filter :unpublish_pages, except: :show
+  before_filter :unpublish_pages, except: [ :show, :new ]
   before_filter :only_user_allow, :only => [:new, :edit, :create]
 
   add_breadcrumb "home", :root_path
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @provider = Provider.new
     @product_types = ProductType.all
-    @flavors = Flavor.all
+    @flavors = [Flavor.new]
     @countries = Country.all
 
     respond_to do |format|

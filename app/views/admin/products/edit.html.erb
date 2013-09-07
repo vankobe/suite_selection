@@ -29,6 +29,7 @@ p {
   <%= form_tag({controller: "admin/product_contents", action: :update}, id: "content_form_#{content.id}", method: :put, remote: true) do%>
     <%= render :partial => 'admin/product_contents/content_form', locals: {content: content} %>
     <%= submit_tag "登録"%>
+    <%= submit_tag "削除"%>
   <%- end -%>
 <%- end -%>
 
@@ -37,6 +38,7 @@ p {
   <%= form_tag({controller: "admin/providers", action: :update}, id: "provider_form_#{provider.id}", methodd: :put, remote: true) do%>
     <%= render :partial => 'admin/providers/provider_form', locals: {provider: provider} %>
     <%= submit_tag "登録"%>
+    <%= submit_tag "削除"%>
   <%- end -%>
 <%- end -%>
 <%= button_to "公開する", controller: "admin/products", action: :publish, id: @product.id%>

@@ -13,9 +13,6 @@ $link: #3333ff;
 body {
   background-color: $main_exp;
 }
-//div.container {
-//  background-color: #ffffff;
-//}
 div#title {
   clear: both;
   width: 1200px;
@@ -39,6 +36,9 @@ div#title {
   color: $side_text;
   font-weight: bold;
   border: solid 2px #ffffff;
+  a {
+    font-size: 16px;
+  }
   a:link {
     color: $link;
   }
@@ -57,7 +57,9 @@ div#title {
   }
   .nav li a {
     display:inline;
-    margin-left:3px;
+  }
+  .type_list {
+    margin-left: 10px;
   }
 }
 .product_list_each {
@@ -68,6 +70,23 @@ div#title {
   padding:5px;
   margin: 15px;
   overflow: hidden;
+  .product_list_image {
+    width: 200px;
+    padding: 15px;
+    float: left;
+  }
+  .product_list_info {
+    width: 500px;
+    padding: 15px;
+    float: left;
+    float: left;
+    p.shop_name {
+      font-size: 12px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+  }
 }
 #main {
   width: 880px;
@@ -89,21 +108,6 @@ div#title {
 }
 #search_result li.word{
   font-weight: bold;
-}
-.product_list_image {
-  width: 250px;
-  padding: 15px;
-  float: left;
-}
-.product_list_info {
-  float: left;
-}
-.product_list_info th{
-  color: $side_text;
-  text-align: left;
-}
-.product_list_info td{
-  padding-left: 10px;
 }
 #category_search li{
   list-style-type: none;

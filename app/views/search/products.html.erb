@@ -6,21 +6,14 @@
   </h2>
 </div>
 <%= render :partial => 'search_box' %>
-<%-
- params.delete(:score_order)
- params.delete(:updated_order)
--%>
 <div id="main">
   <div id="search_result">
     <ul>
-      <% if @category_name.present? || @type_name.present? || @flavor_name.present? || @shop_name.present? %>
+      <% if @category_name.present? || @type_name.present? || @shop_name.present? %>
         <%- if @type_name -%>
           <li class="type word"><%= @type_name%></li>
         <%- elsif @category_name -%>
           <li class="category word"><%= @category_name%></li>
-        <%- end -%>
-        <%- if @flavor_name -%>
-          <li class="flavor word"><%= @flavor_name%></li>
         <%- end -%>
         <%- if @shop_name -%>
           <li class="shop word"><%= @shop_name%></li>
@@ -33,8 +26,8 @@
     </ul>
   </div>
   <div id="order_box" class="btn-group">
-    <span class="btn"><%= link_to t("order.score"), params.merge({:order => "score"})%></span>
-    <span class="btn"><%= link_to t("order.created_at"), params.merge({:order => "updated"})%></span>
+    <span class="btn"><%= link_to t("order.score"), @hash_for_link.merge({:order => "score"})%></span>
+    <span class="btn"><%= link_to t("order.created_at"), @hash_for_link.merge({:order => "updated"})%></span>
   </div>
   <div id="search-result-list">
   <%= paginate @products%>
@@ -43,23 +36,17 @@
   <%- else # 検索結果表示-%>
     <%- @products.each do |product| -%>
       <div class="product_list_each">
-        <h3><%=link_to product.name, {:controller => :products, :action => :show, :id => product.id} %>
-          <%- if product.try(:score) -%><span>(<%= product.try(:score) %>)</span><%- end -%>
-        </h3>
         <div class="product_list_image">
-          <%= product_thum_path(product, 250)%>
+          <%= product_thum_path(product, 200)%>
         </div>
         <div class="product_list_info">
-          <dl>
-            <dt>ショップ名</dt>
-            <dd><%= product.shop.name%></dd>
-            <dt>最安値</dt>
-            <dd><%= humanized_money_with_symbol product.providers.first.price.exchange_to(@currency_code)%></dd>
-            <dt>内容量</dt>
-            <%- product.contents.each do |product_content|-%>
-              <dd><%= product_content_list(product_content)%></dd>
-            <%- end -%>
-          </dl>
+	  <p class="shop_name"><%= product.shop.name%></p>
+	  <h3>
+	    <%=link_to product.name, {:controller => :products, :action => :show, :id => product.id} %>
+            <%- if product.try(:score) -%><span>(<%= product.try(:score) %>)</span><%- end -%>
+          </h3>
+	  <p>最安値: <%= humanized_money_with_symbol product.providers.first.price.exchange_to(@currency_code)%></p>
+          <p>内容量: <%= product.contents.map(&:name).join("、") %></p>
         </div>
       </div>
     <%- end -%>

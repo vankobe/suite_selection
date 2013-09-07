@@ -77,8 +77,6 @@
     <tr>
       <th><%= label :provider, :price %></th>
       <td>
-        <span><%= MasterTable::Currency::Options[@provider.currency_id]%></span>
-        <%= select :provider, :currency_id, options_for_select(MasterTable::Currency::Options, :selected => @provider.try(:currency_id)) %>
         <%= text_field :provider, :price%>
       </td>
     </tr>

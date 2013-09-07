@@ -2,7 +2,7 @@
   <table class="table table-striped span5">
     <tr>
       <th>所在地</th>
-      <td><%= shop.country.name %><%= shop.state.name %><br /><%= shop.address %></td>
+      <td><%= shop.country.name %><%= shop.state.try(:name) %><br /><%= shop.address %></td>
     </tr>
     <tr>
      <td colspan="2">
@@ -10,12 +10,10 @@
        <a href="<%= shop.online_url %>"><input type="button" class="btn btn-success span2" value="オンラインショップ" /></a>
      </td>
     </tr>
-<% if false%>
     <tr>
      <td colspan="2">
-       <%= button_to "商品を登録する", {:controller => 'products', :action => 'new', :shop_id => shop.id}, {:class => "btn btn-warning span3", :id => "new_product_btn"} %>
+       <%= link_to "商品を登録する", {controller: :products, action: :new, shop_id: shop.id}, {class: "btn btn-warning span3", id: :new_product_btn } %>
      </td>
     </tr>
-<%end%>
   </table>
 </div>

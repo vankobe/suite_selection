@@ -7,19 +7,8 @@
 <script>
 $(function(){
   $("#flavor_add").on('click', function(){
-    $(this).attr("disabled", true)
-    var flavor_name = $("#flavor_name").val();
-    var authenticity_token = $("input[name=authenticity_token]").val()
-    $.ajax({
-      type: 'POST',
-      url: '/flavors/create',
-      dataType: 'json',
-      data: {flavor: {name: flavor_name}, authenticity_token: authenticity_token},
-      complete: function(data){
-        $(this).attr("disabled", false)
-        $("#flavor_select").append(data.responseText);
-      }
-    });
+    $(this).attr("disabled", true);
+
   });
 });
 </script>
@@ -32,15 +21,11 @@ $(function(){
 <tr>
   <th><%= label :product_content, :flavor, ProductContent.model_name.human %></th>
   <td id="flavor_select">
-  <%- if @flavors.present?-%>
-    <%- @flavors.each do |flavor| -%>
-      <%= render :partial => 'flavor_select_box', :locals=> {:flavor => flavor} %>
-    <%- end -%>
-  <%- end -%>
-      <div>
-        <%= label :flavor, :name, "フレーバーを追加"%>
-        <%= text_field :flavor, :name, :class => "span4"%>
-        <%= link_to "追加", "#", :id => "flavor_add", :class => "btn" %>
+    <% @flavors.each do |flavor|  %>
+      <%= text_field :flavor, :name, :class => "span4"%>
+      <%= number_field_tag "product_flavor[#{flavor.id}]", 0,{:min => 0, :class => "span1"} %>
       </div>
+    <%- end -%>
+    <%= link_to "追加", "#", :id => "flavor_add", :class => "btn" %>
   </td>
 </tr>

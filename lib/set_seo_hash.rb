@@ -2,6 +2,7 @@ module SetSeoHash
   def self.included(base)
     base.send(:include, SeoSearch)
     base.send(:include, SeoProducts)
+    base.send(:include, SeoShops)
   end
 
   private

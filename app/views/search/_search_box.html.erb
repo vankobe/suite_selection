@@ -1,11 +1,3 @@
-<%
-params.delete("authenticity_token")
-params.delete("commit")
-params.delete("utf8")
-params.delete("search_shop") if params["search_shop"].blank?
-params["page"] = 1
-
-%>
 <script>
 $(function(){
   $(".show_type").on("click", function(){
@@ -30,32 +22,17 @@ $(function(){
     <%- @categories.each do |category|-%>
       <li>
         <span class="show_type">+</span>
-        <%= link_to category.name, params.merge({category_id: category.id, type_id: nil}) %>
-        <ul class="nav nav-list type_list" <%-unless params[:category_id].to_i == category.id-%>style="display:none;"<%- end -%>>
+        <%= link_to category.name, @hash_for_link.merge({category_id: category.id, type_id: nil}) %>
+        <ul class="nav nav-list type_list" <%-unless @hash_for_link[:category_id].to_i == category.id-%>style="display:none;"<%- end -%>>
         <%- category_types = @types.select{|type| type.category_id == category.id}
             category_types.each do |type|-%>
           <li>
-            <%= link_to type.try(:name), params.merge({category_id: type.category.try(:id) ,type_id: type.try(:id)})%>
+            <%= link_to type.try(:name), @hash_for_link.merge({category_id: type.category.try(:id) ,type_id: type.try(:id)})%>
           </li>
         <%- end -%>
         </ul>
       </li>
     <%- end -%>
-    </ul>
-  </div>
-  <hr />
-  <div id="flavor_search">
-    <ul class="nav nav-list">
-    <li class="nav-header">フレーバー</li>
-      <%- @flavors.each do |flavor| -%>
-      <li>
-        <% if flavor %>
-          <%= link_to flavor.name, params.merge({:flavor_id => flavor.id}) %>
-        <%- else-%>
-          <%=link_to "その他", params.merge(flavor_id: 0) %>
-        <%- end -%>
-      </li>
-      <%- end -%>
     </ul>
   </div>
 </div>
