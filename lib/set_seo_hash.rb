@@ -3,6 +3,7 @@ module SetSeoHash
     base.send(:include, SeoSearch)
     base.send(:include, SeoProducts)
     base.send(:include, SeoShops)
+    base.send(:include, SeoReviews)
   end
 
   private

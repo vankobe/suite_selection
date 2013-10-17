@@ -10,5 +10,4 @@ ja:
         name: "名前"
         category_id: "カテゴリ"
         type_id: "タイプ"
-        flavor_id: "フレーバー"
         quantity: "内容量"

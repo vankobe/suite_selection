@@ -20,8 +20,6 @@ scope "/:locale" do
 
   resources :providers
 
-  resources :flavors
-
   get "search/products"
 
   get "search/shops"

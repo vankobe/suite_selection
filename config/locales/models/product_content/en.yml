@@ -6,5 +6,5 @@ en:
       product_content: 
         category_id: "Category"
         type_id: "Type"
-        flavor_id: "Flavor"
+        flavor_name: "Flavor"
         quantity: "Quantity"
