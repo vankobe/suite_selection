@@ -19,3 +19,4 @@
  batch
 7. Api作成
 8. Apiをたたくjs作成
+9. jquery_ui, autocomplete
