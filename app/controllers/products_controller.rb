@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   include SweetaErrors
   before_filter :unpublish_pages, except: [ :show, :new ]
   before_filter :only_user_allow, :only => [:new, :edit, :create]
+  skip_before_render :set_seo_word_hash, only: :create
 
   add_breadcrumb "home", :root_path
   # GET /products
@@ -45,12 +46,11 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
-    @shop_id = params[:shop_id]
-    raise "お探しのお店が見つかりません" unless @shop_id.present?
+    @shop = Shop.where(["id = ?", params[:shop_id]]).first
+    raise "お探しのお店が見つかりません" unless @shop.present?
     @product = Product.new
     @provider = Provider.new
     @product_types = ProductType.all
-    @flavors = [Flavor.new]
     @countries = Country.all
 
     respond_to do |format|
@@ -68,31 +68,30 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     product = Product.new(params[:product])
+
     if params[:product].present? && params[:product][:shop_id].present? && shop = Shop.where(["id = ?", params[:product][:shop_id]])
       shop_name = shop.first.name
     end
-    content_params = params[:product_content]
-    flavors     = params[:product_flavor]
-    saved_flg   = false
 
-    Product.transaction do
-      product.save!
-      provider = Provider.new((params[:provider]).merge({:name => shop_name, :product_id => product.id}))
-      provider.save!
-      flavors.each do |flavor_id, quantity|
-        if quantity.to_i != 0
-          product_content = ProductContent.new(content_params.merge(:product_id => product.id, :flavor_id => flavor_id, :quantity => quantity))
-          product_content.save!
-        end
+    begin 
+      Product.transaction do
+        product.save!
+        provider = Provider.new((params[:provider]).merge({:name => shop_name, :product_id => product.id}))
+        provider.save!
+        product_content = product.contents.build(params[:product_content])
+        product_content.save!
       end
       saved_flg = true
+    rescue
+      saved_flg   = false
     end
 
     respond_to do |format|
       if saved_flg
-        format.html { redirect_to :controller => "reviews", :action => "new", :product_id => product.id }
+        format.html { redirect_to action: :show, id: product.id }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :action => :new, :shop_id => params[:product][:shop_id] }
+        # redirect_to :action => :new, :shop_id => params[:shop_id]
       end
     end
   end

@@ -1,5 +1,10 @@
 class SearchController < ApplicationController
-  before_filter :unpublish_pages, except: :products
+  require 'kakasi'
+  require 'nkf'
+  include Kakasi
+  include NKF
+  skip_before_render :set_seo_word_hash, :only => :get_suggest_keyword
+  before_filter :unpublish_pages, except: [:products, :get_suggest_keyword]
   INHERIT_KEYS = [ 'search_shop', 'category_id', 'type_id', 'page', 'order']
   def products
     if params[:order].present?
@@ -22,12 +27,10 @@ class SearchController < ApplicationController
     
     @categories = ProductCategory.all
     @types = ProductType.all
-    @flavors = products.map(&:contents).flatten.map(&:flavor).uniq 
 
     # 検索結果表示部
     @category_name = ProductCategory.find_by_id(params[:category_id].to_i).try(&:name)
     @type_name = ProductType.find_by_id(params[:type_id].to_i).try(&:name)
-    @flavor_name = Flavor.find_by_id(params[:flavor_id].to_i).try(&:name)
     @shop_name = params[:search_shop].to_s
     @product_count = products.size
     @hash_for_link = params.dup
@@ -37,5 +40,16 @@ class SearchController < ApplicationController
   def shops
     shops = Shop.where(["name like ?", "%#{params[:name]}%"])
     @shops = shops.page(params[:page]).per(10)
+  end
+
+  def get_suggest_keyword
+    if params[:sw].blank?
+      render :json => {}
+      return
+    end
+    sw = params[:sw]
+    name_yomi = kakasi("-Ea -Ja -Ha -Ka", nkf("-e", sw))
+    keywords = SuggestKeyword.where(["name_yomi like ?", name_yomi + "%"]).limit(5)
+    render :json => keywords.to_json
   end
 end

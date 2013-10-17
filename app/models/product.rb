@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
-  attr_accessible :country_id, :name, :shop_id, :url, :published_flg
+  attr_accessible :country_id, :name, :shop_id, :url, :published_flg, :expire_date
 
   # relation
-  has_many :contents, :class_name => "ProductContent", :include => ["type", "flavor"]
+  has_many :contents, :class_name => "ProductContent", :include => ["type"]
   belongs_to :shop, :include => ["state"]
   has_many :reviews, :include => ["content"], :order  => "id DESC"
   has_many :review_images, :order => "id DESC"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907041459) do
+ActiveRecord::Schema.define(:version => 20131017142756) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "login_name", :null => false
@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(:version => 20130907041459) do
     t.integer  "category_id"
     t.integer  "type_id"
     t.integer  "flavor_id"
+    t.string   "flavor_name"
     t.string   "name"
     t.string   "quantity"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "flavor_name"
   end
 
   add_index "product_contents", ["name"], :name => "index_product_contents_on_name"
@@ -208,6 +208,18 @@ ActiveRecord::Schema.define(:version => 20130907041459) do
 
   add_index "states", ["code"], :name => "index_states_on_code", :unique => true
   add_index "states", ["name"], :name => "index_states_on_name", :unique => true
+
+  create_table "suggest_keywords", :force => true do |t|
+    t.string  "type"
+    t.integer "type_id"
+    t.string  "display_name"
+    t.string  "name"
+    t.string  "name_yomi"
+  end
+
+  add_index "suggest_keywords", ["display_name"], :name => "index_suggest_keywords_on_display_name", :unique => true
+  add_index "suggest_keywords", ["name"], :name => "index_suggest_keywords_on_name"
+  add_index "suggest_keywords", ["name_yomi"], :name => "index_suggest_keywords_on_name_yomi"
 
   create_table "users", :force => true do |t|
     t.integer  "facebook_uid", :limit => 8

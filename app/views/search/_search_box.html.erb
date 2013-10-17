@@ -3,6 +3,28 @@ $(function(){
   $(".show_type").on("click", function(){
     $(this).parent().find("ul").slideToggle();
   });
+  function get_suggest(word){
+    $.ajax({
+      type: "GET",
+      url: "search/get_suggest_keyword",
+      data: {sw: word},
+      success: function(data){
+	$("#suggest_words").html("");
+	$.each(data, function(i, product){
+	word = $("<li>").addClass("suggest_word").text(product.display_name)
+	$("#suggest_words").append(word)
+      })
+      }
+    });
+  }
+  $("#search_shop").on("keyup", function(){
+    var search_word = $("#search_shop").val()
+    get_suggest(search_word)
+  });
+  $("#suggest_words").on("click", ".suggest_word", function(){
+    var suggest_word = $(this).text()
+    $("#search_shop").val(suggest_word)
+  })
 });
 </script>
 <div id="search_box">
@@ -13,6 +35,8 @@ $(function(){
       <%= search_field_tag :search_shop%>
       <%= submit_tag t("search_word"), class: "btn"%>
       <%- end -%>
+    </ul>
+    <ul id="suggest_words">
     </ul>
   </div>
   <hr />

@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def product_content_list(product_content)
-    product_content.flavor.try(:name).to_s + " " + product_content.type.try(:name).to_s  + " " + product_content.try(:quantity).to_s + t("counter.product")
+    product_content.flavor_name.to_s + " " + product_content.type.try(:name).to_s  + " " + product_content.try(:quantity).to_s + t("counter.product")
   end
 end

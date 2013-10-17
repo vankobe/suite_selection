@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ApiController < ApplicationController
+  skip_before_render :set_seo_word_hash
   def get_type_from_category
     raise unless request.xhr?
 

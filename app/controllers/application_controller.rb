@@ -31,11 +31,17 @@ class ApplicationController < ActionController::Base
   end
   
   def set_currency
-    @currency_code = "JPY" if I18n.locale == :ja
-    @currency_code = "USD" if I18n.locale == :en
+    case I18n.locale
+    when :en
+      @currency_code = "USD"
+    when :ja
+      @currency_code = "JPY"
+    else
+      @currency_code = "JPY"
+    end
   end
 
   def set_seo_word_hash
-    @seo_word_hash = set_seo_word(:controller_path => controller_path, :action_name => action_name, :params => params, :product => @product, :shop => @shop)
+    @seo_word_hash = set_seo_word(:controller_path => controller_path, :action_name => action_name, :params => params, :product => @product, :shop => @shop) || {}
   end
 end

@@ -1,7 +1,6 @@
 <%-
   #locals
   category_id ||= nil
-  flavor_id ||= nil
   quantity ||= nil
 -%>
 <script>
@@ -21,11 +20,9 @@ $(function(){
 <tr>
   <th><%= label :product_content, :flavor, ProductContent.model_name.human %></th>
   <td id="flavor_select">
-    <% @flavors.each do |flavor|  %>
-      <%= text_field :flavor, :name, :class => "span4"%>
-      <%= number_field_tag "product_flavor[#{flavor.id}]", 0,{:min => 0, :class => "span1"} %>
-      </div>
-    <%- end -%>
+    <%= text_field :flavor, :name, :class => "span4"%>
+    <%= number_field_tag :quantity, 0,{:min => 0, :class => "span1"} %>
+    </div>
     <%= link_to "追加", "#", :id => "flavor_add", :class => "btn" %>
   </td>
 </tr>

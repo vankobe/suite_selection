@@ -1,0 +1,21 @@
+1. kakasiインストール
+ sudo apt-get install kakasi
+2. kakasiの挙動確認 
+ cat search_controller.rb |kakasi -JK -i utf-8 -o utf-8
+3. kakasi-rubyのインストール
+ wget https://github.com/hogelog/kakasi-ruby/archive/master.zip
+ unzip master.zip
+ ruby extconf.rb
+ make
+ sudo make install
+4. kakasi-rubyの挙動確認
+ irb
+ require "kakasi"
+ require "nkf"
+ Kakasi.kakasi("-Ea -Ja -Ha -Ka", NKF.nkf("-e", "新宿三丁目"))
+5. テーブル作成
+ rails generate model SuggestKeyword type:string type_id:integer display_name:string name:string name_yomi:string
+6. データ投入
+ batch
+7. Api作成
+8. Apiをたたくjs作成

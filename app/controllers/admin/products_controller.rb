@@ -15,7 +15,7 @@ before_filter :unpublish_pages, except: [:index, :edit, :update, :publish]
     end
     products = products.where(["product_contents.category_id = ?", params[:category_id]]) if params[:category_id].present?
     products = products.where(["product_contents.type_id = ?", params[:type_id]]) if params[:type_id].present?
-    products = products.where(["product_contents.flavor_id = ?", params[:flavor_id]]) if params[:flavor_id].present?
+    products = products.where(["product_contents.flavor_name = ?", params[:flavor_name]]) if params[:flavor_name].present?
     @products = products.page(params[:page]).per(10)
   end
 

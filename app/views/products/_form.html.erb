@@ -53,21 +53,19 @@
     </div>
   <% end %>
 
-  <table class="table  table-bordered table-striped">
+  <table>
     <tr>
       <th><%= label :product, :name%></th>
       <td>
         <%= text_field :product, :name, :class => "input-xxlarge"%>
       </td>
     </tr>
-    <%- contents = @product.try(:contents) || []
-        if contents.present?
-          contents.each do |content| -%>
-            <%= render :partial => 'product_content_form', :locals => {:category_id => content.category_id, :flavor_id => content.flavor_id, :quantity => content.quantity} %>
-          <%- end -%>
-        <%- else -%>
-          <%= render :partial => 'product_content_form' %>
-        <%- end -%>
+    <tr>
+      <th><%= label :product, :expire_date%></th>
+      <td>
+        <%= text_field :product, :expire_date, :class => "input-xxlarge"%>
+      </td>
+    </tr>
     <tr>
       <th class="span2"><%= label :provider, :country_id %></th>
       <td>
@@ -87,7 +85,40 @@
       </td>
     </tr>
   </table>
-  <%= hidden_field :product, :shop_id, :value => @shop_id%>
+  <h3>内容</h3>
+  <table class="table  table-bordered table-striped">
+    <%- contents = @product.try(:contents) || []
+        if contents.present?
+          cortents.each do |content| -%>
+            <script>
+            $(function(){
+              $("#flavor_add").on('click', function(){
+                $(this).attr("disabled", true);
+            
+              });
+            });
+            </script>
+            <tr>
+              <th><%= label :product_content, :category_id %></th>
+              <td>
+                <%= select :product_content, :category_id, options_for_select(MasterTable::Category::NAME.invert, :selected => category_id) %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= label :product_content, :flavor_name, ProductContent.model_name.human %></th>
+              <td id="flavor_select">
+                <%= text_field :product_content, :flavor_name, :class => "span4"%>
+                <%= number_field :product_content, :quantity, 0,{:min => 0, :class => "span1"} %>
+                </div>
+                <%= link_to "追加", "#", :id => "flavor_add", :class => "btn" %>
+              </td>
+            </tr>
+          <%- end -%>
+        <%- else -%>
+          <%= render :partial => 'product_content_form' %>
+        <%- end -%>
+  </table>
+  <%= hidden_field :product, :shop_id, :value => @shop.id%>
   <div class="actions">
     <%= submit_tag "保存", :class => "btn btn-success" %>
   </div>
